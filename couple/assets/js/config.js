@@ -8,7 +8,7 @@ window.SITE_CONFIG = {
 
   /* ---------- 1. КТО ВЫ ----------
      Часовые пояса берутся из базы IANA. Ваши уже стоят:
-     Алматы — Asia/Almaty (UTC+5), Баку — Asia/Baku (UTC+4).
+     Астана — Asia/Almaty (UTC+5), Баку — Asia/Baku (UTC+4).
      Другие на всякий случай: Europe/Moscow, Asia/Tashkent,
      Asia/Tbilisi, Asia/Yerevan, Asia/Dubai, Europe/Berlin.
      airport, lat, lon — для посадочного талона и погоды на главной.
@@ -18,8 +18,8 @@ window.SITE_CONFIG = {
      «рядом с Первым»).                                             */
   people: {
     a: { name: "Первый", gender: "m", gen: "Первого", dat: "Первому", ins: "Первым",
-         emoji: "💜", city: "Алматы", timeZone: "Asia/Almaty",
-         airport: "ALA", lat: 43.2389, lon: 76.8897 },
+         emoji: "💜", city: "Астана", timeZone: "Asia/Almaty",
+         airport: "NQZ", lat: 51.1694, lon: 71.4491 },
     b: { name: "Вторая", gender: "f", gen: "Второй", dat: "Второй", ins: "Второй",
          emoji: "💙", city: "Баку",   timeZone: "Asia/Baku",
          airport: "GYD", lat: 40.4093, lon: 49.8671 }
@@ -330,7 +330,7 @@ window.SITE_CONFIG = {
   timeline: [
     { date: "9 июля 2026",  icon: "✨",       title: "День, когда всё началось", text: "Ещё не знали, чем это обернётся." },
     { date: "Сегодня",      icon: "💜", title: "Мы вместе",                text: "Просто пока в разных городах." },
-    { date: "1 июня 2027",  icon: "✈️", title: "Алматы — Баку",            text: "Я прилетаю. И это уже не мечта, а дата." }
+    { date: "1 июня 2027",  icon: "✈️", title: "Астана — Баку",            text: "Я прилетаю. И это уже не мечта, а дата." }
   ],
 
   /* ---------- 9. СПИСОК ЖЕЛАНИЙ «когда встретимся» ----------
