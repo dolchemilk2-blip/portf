@@ -1,0 +1,1069 @@
+/* =====================================================================
+   Nature's Protection — site styles
+   Tokens (colour, type, spacing, motion) live in css/tokens.css, loaded first.
+   Motion rules: tokens only, no ease-in, no `transition: all`, hover movement only
+   for fine pointers, exit faster than enter, reduced motion removes movement.
+   ===================================================================== */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html {
+  overflow-x: clip; scrollbar-gutter: stable;
+  /* Anchors / scrollIntoView land below the whole sticky stack (header + toolbar + chip row) */
+  scroll-padding-top: calc(var(--sticky-offset) + 16px);
+  -webkit-text-size-adjust: 100%;
+}
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+/* Scroll lock lives on <html> (cleared after the close fade); body.modal-open only drives the chrome glide,
+   so the header/toolbar/chips start returning the moment the dialog starts closing */
+html.modal-open { overflow: hidden; }
+body {
+  font-family: var(--font); font-size: 16px;
+  color: var(--ink);
+  background-color: var(--tint, var(--paper));
+  transition: background-color var(--dur-tint) var(--ease-color);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+button { font: inherit; color: inherit; -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: var(--focus-width) solid var(--focus-color); outline-offset: 3px; }
+
+.container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+
+h1, h2, h3, h4 { font-family: var(--head); line-height: 1.15; font-weight: 600; letter-spacing: var(--track-headline); text-wrap: balance; }
+p { text-wrap: pretty; }
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 13px 26px; border-radius: var(--r-pill); font-weight: 500;
+  font-family: var(--head); font-size: 17px; line-height: 1.2; letter-spacing: -0.01em; cursor: pointer;
+  border: 1px solid transparent; white-space: nowrap;
+  transition:
+    background-color var(--dur-hover) var(--ease-color),
+    color var(--dur-hover) var(--ease-color),
+    border-color var(--dur-hover) var(--ease-color),
+    box-shadow var(--dur-hover) var(--ease-color),
+    transform var(--dur-release) var(--ease-out);
+}
+html:not(.spr) .btn:active { transform: scale(var(--press-scale)); transition-duration: var(--dur-hover), var(--dur-hover), var(--dur-hover), var(--dur-hover), var(--dur-press); }
+.btn--primary { background-color: var(--accent); color: #fff; }
+.btn--ghost { background-color: transparent; border-color: var(--hairline-strong); color: var(--accent); }
+.btn--light { background-color: #fff; color: var(--accent-hover); }
+@media (hover: hover) and (pointer: fine) {
+  .btn--primary:hover { background-color: var(--accent-hover); }
+  .btn--ghost:hover { background-color: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn--light:hover { background-color: var(--paper-2); }
+}
+
+/* ===== Header (translucent material) ===== */
+.header {
+  position: sticky; top: 0; z-index: 100;
+  background-color: var(--material-bar);
+  -webkit-backdrop-filter: var(--blur-bar); backdrop-filter: var(--blur-bar);
+  border-bottom: 1px solid var(--hairline);
+  transition: transform var(--dur-bar) var(--ease-drawer), opacity var(--dur-modal-fade) var(--ease-out);
+}
+/* Товар открыт: шапка плавно уезжает вверх, оставаясь sticky (без рывка раскладки) */
+/* Header, toolbar and chip row travel ONE distance (the whole sticky stack) so they glide as one sheet */
+body.modal-open .header { transform: translateY(calc(-1 * var(--sticky-offset) - 8px)); opacity: 0; pointer-events: none; }
+/* Hidden under the modal scrim anyway: skip the per-frame re-blur while the dialog springs in */
+body.modal-open .header, body.modal-open .catalog-bar { -webkit-backdrop-filter: none; backdrop-filter: none; }
+.header__inner { display: flex; align-items: center; justify-content: space-between; height: var(--header-h); gap: 16px; }
+.logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.logo__img { height: 44px; width: auto; display: block; }
+.logo--light .logo__img { height: 48px; }
+.logo__text { font-family: var(--head); font-weight: 600; font-size: 19px; color: var(--ink); letter-spacing: -0.015em; }
+.logo__text strong { color: var(--accent); }
+.logo--light .logo__text { color: #fff; }
+.logo__mark { width: 36px; height: 36px; flex-shrink: 0; display: block; }
+.logo__badge { fill: var(--accent); }
+.logo .logo__text { font-size: 22px; font-weight: 700; }
+.footer__col .logo { display: inline-flex; }
+.footer__col .logo__text { display: inline; margin-bottom: 0; }
+
+.nav { display: flex; gap: 28px; }
+.nav__link { font-weight: 400; font-size: 14px; color: var(--ink); position: relative; padding: 4px 0; opacity: .88; transition: opacity var(--dur-hover) var(--ease-color), color var(--dur-hover) var(--ease-color); }
+.nav__link::after {
+  content: ''; position: absolute; left: 0; bottom: -2px; width: 100%; height: 1.5px; border-radius: 2px;
+  background: var(--accent); transform: scaleX(0); transform-origin: left;
+  transition: transform var(--dur-hover) var(--ease-out);
+}
+.nav__link--active { color: var(--accent); font-weight: 500; opacity: 1; }
+.nav__link--active::after { transform: scaleX(1); }
+@media (hover: hover) and (pointer: fine) {
+  .nav__link:hover { opacity: 1; }
+  .nav__link:hover::after { transform: scaleX(1); }
+}
+
+.header__actions { display: flex; align-items: center; gap: 12px; }
+/* Instagram и телефон в шапке: маленькие круглые значки (подписи — в aria-label / title) */
+.hdr-ico {
+  display: inline-grid; place-items: center; width: 36px; height: 36px; flex: none; border-radius: 50%;
+  color: var(--ink); background-color: var(--paper-2); border: 1px solid var(--hairline);
+  transition: background-color var(--dur-hover) var(--ease-color), color var(--dur-hover) var(--ease-color);
+}
+.hdr-ico svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.hdr-ico svg .dot { fill: currentColor; stroke: none; }
+.hdr-ico:focus-visible { outline: var(--focus-width) solid var(--focus-color); outline-offset: 2px; }
+@media (hover: hover) and (pointer: fine) { .hdr-ico:hover { color: var(--accent); background-color: var(--accent-soft); } }
+.hdr-ico + .lang { margin-left: 4px; }
+
+/* ===== Language switch ===== */
+.lang { position: relative; }
+.lang__current {
+  display: flex; align-items: center; gap: 6px; background-color: var(--paper-2);
+  border: 1px solid var(--hairline); border-radius: var(--r-pill);
+  padding: 7px 14px; font-weight: 500; font-size: 14px; cursor: pointer; color: var(--ink);
+  transition: background-color var(--dur-hover) var(--ease-color), transform var(--dur-release) var(--ease-out);
+}
+html:not(.spr) .lang__current:active { transform: scale(var(--press-scale)); transition-duration: var(--dur-hover), var(--dur-press); }
+.lang__menu {
+  position: absolute; right: 0; top: calc(100% + 8px); z-index: 5;
+  background-color: var(--material-thick);
+  -webkit-backdrop-filter: var(--blur-thick); backdrop-filter: var(--blur-thick);
+  border: 1px solid var(--hairline);
+  border-radius: 14px; box-shadow: var(--shadow-lg); padding: 6px; min-width: 170px;
+  opacity: 0; visibility: hidden;
+  transform: translateY(-4px) scale(var(--pop-scale)); transform-origin: top right;
+  transition: opacity var(--dur-pop-out) var(--ease-out), transform var(--dur-pop-out) var(--ease-out), visibility 0s linear var(--dur-pop-out);
+}
+.lang.is-open .lang__menu {
+  opacity: 1; visibility: visible; transform: none;
+  transition: opacity var(--dur-pop-in) var(--ease-out), transform var(--dur-pop-in) var(--ease-out), visibility 0s;
+}
+.lang__menu button {
+  width: 100%; text-align: left; background: none; border: none; padding: 9px 12px;
+  border-radius: var(--r-chip); cursor: pointer; font-size: 14px; color: var(--ink); font-weight: 500;
+  transition: background-color var(--dur-hover) var(--ease-color);
+}
+@media (hover: hover) and (pointer: fine) {
+  .lang__current:hover { background-color: var(--paper-3); }
+  .lang__menu button:hover { background-color: rgba(0,0,0,.05); }
+}
+
+/* ===== Burger ===== */
+.burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 10px 8px; }
+.burger span {
+  width: 22px; height: 1.5px; background: var(--ink); border-radius: 2px;
+  transition: transform var(--dur-hover) var(--ease-in-out), opacity var(--dur-pop-out) var(--ease-color);
+}
+.burger.is-open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.burger.is-open span:nth-child(2) { opacity: 0; }
+.burger.is-open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ===== Hero ===== */
+.hero { position: relative; background: linear-gradient(160deg, var(--paper-2) 0%, #eaf1e3 100%); overflow: hidden; }
+.hero__inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; padding: 80px var(--gutter); }
+.hero__inner--solo { grid-template-columns: 1fr; min-height: 560px; }
+.hero__inner--solo .hero__content { max-width: 620px; }
+
+/* Full-bleed background slideshow with "wipe" transition (clip-path driven by main.js) */
+.hero-bg { position: absolute; inset: 0; z-index: 0; }
+.hero-bg__slide {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; clip-path: inset(0 0 0 0);
+}
+.hero-bg__scrim {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(105deg,
+    rgba(9,40,22,.86) 0%, rgba(12,52,28,.72) 42%,
+    rgba(0,90,45,.48) 78%, rgba(0,90,45,.36) 100%);
+}
+.hero__inner--solo .badge { background: rgba(255,255,255,.18); color: #fff; }
+.hero__inner--solo .hero__title { color: #fff; }
+.hero__inner--solo .hero__text { color: rgba(255,255,255,.9); }
+.hero__inner--solo .stat strong { color: #fff; }
+.hero__inner--solo .stat span { color: rgba(255,255,255,.82); }
+.hero__inner--solo .btn--primary { background-color: #fff; color: var(--accent-hover); border-color: #fff; }
+.hero__inner--solo .btn--ghost { border-color: rgba(255,255,255,.7); color: #fff; }
+@media (hover: hover) and (pointer: fine) {
+  .hero__inner--solo .btn--primary:hover { background-color: var(--paper-2); }
+  .hero__inner--solo .btn--ghost:hover { background-color: #fff; border-color: #fff; color: var(--accent-hover); }
+}
+
+.hero__arrow {
+  position: absolute; z-index: 3; top: 50%; transform: translateY(-50%);
+  width: 48px; height: 48px; border-radius: 50%; border: none; cursor: pointer;
+  background-color: rgba(255,255,255,.8); color: var(--ink);
+  -webkit-backdrop-filter: var(--blur-bar); backdrop-filter: var(--blur-bar);
+  font-size: 24px; line-height: 1; display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow);
+  transition: background-color var(--dur-hover) var(--ease-color), transform var(--dur-release) var(--ease-out);
+}
+.hero__arrow:active { transform: translateY(-50%) scale(.94); transition-duration: var(--dur-hover), var(--dur-press); }
+@media (hover: hover) and (pointer: fine) {
+  .hero__arrow:hover { background-color: #fff; transform: translateY(-50%) scale(1.06); }
+  .hero__arrow:hover:active { transform: translateY(-50%) scale(.94); }
+}
+.hero__arrow--prev { left: 20px; }
+.hero__arrow--next { right: 20px; }
+.badge {
+  display: inline-block; background: var(--accent-soft); color: var(--accent-hover);
+  padding: 6px 14px; border-radius: var(--r-pill); font-weight: 500; font-size: 13px; margin-bottom: 18px;
+}
+.hero__title { font: var(--t-display); letter-spacing: var(--track-display); color: var(--ink); }
+.hero__text { font: var(--t-body-lg); color: var(--ink-2); margin: 18px 0 28px; max-width: 520px; }
+.hero__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero__stats { display: flex; gap: 40px; margin-top: 44px; flex-wrap: wrap; }
+.stat strong { display: block; font-family: var(--head); font-weight: 600; font-size: 30px; letter-spacing: -0.02em; color: var(--accent); font-variant-numeric: tabular-nums; }
+.stat span { font-size: 14px; color: var(--ink-2); }
+
+.hero__visual { display: flex; justify-content: center; align-items: center; }
+
+.hero__card {
+  background: #fff; border-radius: var(--r-panel); box-shadow: var(--shadow-lg);
+  padding: 48px 40px; text-align: center; max-width: 320px;
+  display: flex; flex-direction: column; align-items: center; gap: 18px;
+  position: relative;
+}
+.hero__card::before {
+  content: ''; position: absolute; inset: -14px; border-radius: 36px;
+  background: radial-gradient(circle at 30% 20%, rgba(163,197,133,.35), transparent 60%);
+  z-index: -1;
+}
+.hero__card p { font-family: var(--head); font-weight: 600; color: var(--ink); font-size: 18px; }
+
+/* ===== Shared card motion: lift + shadow layer (opacity only) ===== */
+.feature, .value-card, .range, .step, .product { position: relative; }
+.feature::after, .value-card::after, .range::after, .step::after, .product::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  box-shadow: var(--shadow-lg); opacity: 0;
+  transition: opacity var(--dur-hover) var(--ease-color);
+}
+
+/* ===== Features ===== */
+.features { margin-top: -40px; position: relative; z-index: 2; }
+.features__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.feature {
+  background: #fff; border-radius: var(--r-card); padding: 28px 24px;
+  box-shadow: var(--shadow);
+  transition: transform var(--dur-hover) var(--ease-out);
+}
+.feature__icon { font-size: 30px; margin-bottom: 14px; }
+.feature h3 { font-size: 19px; margin-bottom: 8px; }
+.feature p { font-size: 15px; line-height: 1.45; color: var(--ink-2); }
+
+/* ===== Sections ===== */
+.section { padding: 96px 0; }
+.section__head { text-align: center; max-width: 680px; margin: 0 auto 48px; }
+.section__tag { display: inline-block; color: var(--accent); font-weight: 600; font-family: var(--head); font-size: 13px; letter-spacing: .02em; margin-bottom: 10px; }
+.section__title { font: var(--t-title); letter-spacing: var(--track-title); color: var(--ink); }
+.section__subtitle { color: var(--ink-2); font: var(--t-body); margin-top: 14px; }
+
+/* ===== Ranges (линейки бренда) ===== */
+.ranges__title { text-align: center; font: var(--t-headline); letter-spacing: var(--track-headline); margin-bottom: 24px; color: var(--ink); }
+.ranges { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 60px; }
+.range {
+  background-color: var(--paper-2); border-radius: var(--r-card); padding: 28px 24px;
+  text-align: center;
+  transition: transform var(--dur-hover) var(--ease-out), background-color var(--dur-hover) var(--ease-color);
+}
+.range__icon { font-size: 32px; margin-bottom: 12px; }
+.range__name { font-size: 19px; margin-bottom: 8px; color: var(--brand-ink); }
+.range__desc { font-size: 14px; line-height: 1.45; color: var(--ink-2); }
+
+/* ===== Product groups ===== */
+.product-group { margin-bottom: 64px; }
+/* content-visibility (catalog.css) implies paint containment: let hover lift + shadow paint past the edge */
+.product-group { overflow-clip-margin: 48px; }
+.product-group:last-child { margin-bottom: 0; }
+.product-group__title {
+  font: var(--t-title); letter-spacing: var(--track-title); font-size: clamp(24px, 2.6vw, 32px);
+  color: var(--ink); margin-bottom: 24px; display: block;
+}
+
+/* ===== Tabs (segmented control) + sliding indicator ===== */
+.tabs {
+  position: relative; isolation: isolate;
+  display: flex; justify-content: center; gap: 2px; margin-bottom: 40px;
+}
+.tab, .brand-tab {
+  position: relative; z-index: 1;
+  padding: 10px 22px; border-radius: var(--r-pill); border: 1px solid transparent;
+  background-color: transparent; color: var(--ink); font-weight: 500; font-family: var(--head);
+  cursor: pointer; font-size: 15px; letter-spacing: -0.01em; white-space: nowrap;
+  transition:
+    background-color var(--dur-indicator) var(--ease-in-out),
+    border-color var(--dur-indicator) var(--ease-in-out),
+    color var(--dur-indicator) var(--ease-in-out),
+    transform var(--dur-release) var(--ease-out);
+}
+html:not(.spr) .tab:active, html:not(.spr) .brand-tab:active { transform: scale(var(--press-scale)); transition-duration: var(--dur-indicator), var(--dur-indicator), var(--dur-indicator), var(--dur-press); }
+.tab.is-active, .brand-tab.is-active { background-color: var(--accent); color: #fff; }
+@media (hover: hover) and (pointer: fine) {
+  .tab:not(.is-active):hover, .brand-tab:not(.is-active):hover { background-color: rgba(0,0,0,.05); }
+}
+/* Индикатор (main.js placeIndicator): the pill rides NPSpring.indicator — x/y/w/h on springs, a drop-like stretch
+   while it travels — written inline every frame (transform / width / height), so none of them has a CSS transition.
+   Without the spring core main.js places it through --ind-x/-y/-w/-h (no glide). */
+.tabs__indicator, .species__indicator {
+  position: absolute; left: 0; top: 0; z-index: 0;
+  width: var(--ind-w, 0px); height: var(--ind-h, calc(100% - 6px));
+  border-radius: var(--r-pill); pointer-events: none;
+  transform: translate(var(--ind-x, 0px), var(--ind-y, 3px)); transform-origin: 50% 50%;
+  will-change: transform;
+  transition: background-color var(--dur-tint) var(--ease-color);
+}
+.tabs__indicator { background-color: var(--accent); }
+.tabs:has(.tabs__indicator) .tab.is-active,
+.tabs:has(.tabs__indicator) .brand-tab.is-active { background-color: transparent; }
+/* Label colour hand-off: main.js lights a label (.is-lit) exactly while the pill covers most of it — the colour
+   flips with the pill, in its frame, with no transition of its own (Монтажка's segOff: no second, timed fade
+   that could run ahead of the spring or flash). Hover tint still eases. */
+.tabs.spr-lit .tab {
+  transition: background-color var(--dur-hover) var(--ease-color), border-color var(--dur-hover) var(--ease-color);
+}
+.tabs.spr-lit .tab:not(.is-lit) { color: var(--ink); }
+.tabs.spr-lit .tab.is-lit { color: #fff; }
+
+/* ===== Species filter (segmented, iOS-style white thumb) ===== */
+.species {
+  position: relative; isolation: isolate;
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 2px; margin: -18px auto 26px;
+  width: fit-content; max-width: 100%;
+  padding: 3px; border-radius: var(--r-pill);
+  background-color: var(--tint-soft);
+  transition: background-color var(--dur-tint) var(--ease-color);
+}
+.species__btn {
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 16px; border-radius: var(--r-pill); border: none;
+  background-color: transparent; color: var(--ink-2-tint); font-family: var(--head); font-weight: 500;
+  font-size: 14px; cursor: pointer; white-space: nowrap;
+  transition:
+    background-color var(--dur-indicator) var(--ease-in-out),
+    color var(--dur-indicator) var(--ease-in-out),
+    box-shadow var(--dur-indicator) var(--ease-in-out),
+    opacity var(--dur-hover) var(--ease-color),
+    transform var(--dur-release) var(--ease-out);
+}
+html:not(.spr) .species__btn:active { transform: scale(var(--press-scale)); transition-duration: var(--dur-indicator), var(--dur-indicator), var(--dur-indicator), var(--dur-hover), var(--dur-press); }
+.species__btn.is-active { background-color: #fff; color: var(--ink); box-shadow: var(--shadow-thumb); }
+.species__ico { font-size: 15px; line-height: 1; }
+.species__btn svg { width: 18px; height: 18px; flex: none; }
+.species__btn--baby.is-active { color: var(--brand-ink); }
+@media (hover: hover) and (pointer: fine) {
+  .species__btn:not(.is-active):not([aria-disabled="true"]):hover { color: var(--ink); }
+}
+.species__indicator { background-color: #fff; box-shadow: var(--shadow-thumb); }
+.species:has(.species__indicator) .species__btn.is-active { background-color: transparent; box-shadow: none; }
+/* same hand-off as the brand tabs: the label under the white thumb is the dark one */
+.species.spr-lit .species__btn { transition: opacity var(--dur-hover) var(--ease-color); }
+.species.spr-lit .species__btn:not(.is-lit):not([aria-disabled="true"]) { color: var(--ink-2-tint); }
+.species.spr-lit .species__btn.is-lit { color: var(--ink); }
+.species.spr-lit .species__btn--baby.is-lit { color: var(--brand-ink); }
+@media (hover: hover) and (pointer: fine) {
+  /* hover may ease (only the hovered state carries the transition — the pill's flip stays instant) */
+  .species.spr-lit .species__btn:not(.is-lit):not([aria-disabled="true"]):hover { color: var(--ink); transition: color var(--dur-hover) var(--ease-color), opacity var(--dur-hover) var(--ease-color); }
+}
+/* Нулевые варианты: не скрываем, а приглушаем (фокус сохраняется, причина — в title) */
+.species__btn[aria-disabled="true"] { opacity: .42; cursor: not-allowed; }
+.species__btn[aria-disabled="true"]:active { transform: none; }
+
+/* Баннер «Забота о малышах» */
+.baby-banner {
+  display: flex; align-items: center; gap: 18px;
+  background-color: var(--tint-soft);
+  border-radius: var(--r-card);
+  padding: 22px 26px; margin-bottom: 40px;
+}
+.baby-banner__icon { font-size: 40px; line-height: 1; }
+.baby-banner__text h2, .baby-banner__text h3 { color: var(--brand-ink); font: var(--t-headline); letter-spacing: var(--track-headline); margin-bottom: 4px; }
+.baby-banner__text p { color: var(--ink-2-tint); font-size: 15px; }
+
+/* ===== Floating product decorations (parallax) ===== */
+.floaties-host { position: relative; overflow: hidden; }
+.floaties-host > .container { position: relative; z-index: 1; }
+.floatie { position: absolute; z-index: 0; pointer-events: none; opacity: .12; will-change: transform; }
+.floatie__img { width: 100%; display: block; animation: floatBob 8s ease-in-out infinite; }
+@keyframes floatBob {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50%      { transform: translateY(-18px) rotate(3deg); }
+}
+@media (max-width: 720px) { .floatie { display: none; } }
+
+/* ===== Category quick-nav (чипы) ===== */
+.cat-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; }
+.cat-nav:empty { display: none; }
+.cat-chip {
+  padding: 7px 14px; border-radius: var(--r-pill); border: 1px solid var(--hairline);
+  background-color: var(--paper); color: var(--ink-2-tint); font-size: 14px; font-weight: 500;
+  font-family: var(--font); cursor: pointer; font-variant-numeric: tabular-nums;
+  transition:
+    background-color var(--dur-hover) var(--ease-color),
+    border-color var(--dur-hover) var(--ease-color),
+    color var(--dur-hover) var(--ease-color),
+    transform var(--dur-release) var(--ease-out);
+}
+html:not(.spr) .cat-chip:active { transform: scale(var(--press-scale)); transition-duration: var(--dur-hover), var(--dur-hover), var(--dur-hover), var(--dur-press); }
+.cat-chip.is-active, .cat-chip[aria-current="true"] { background-color: var(--ink); border-color: var(--ink); color: #fff; }
+@media (hover: hover) and (pointer: fine) {
+  .cat-chip:hover { border-color: var(--brand-ink); color: var(--brand-ink); }
+}
+.catalog-empty { text-align: center; color: var(--ink-2); padding: 48px 0; font: var(--t-body); }
+
+/* ===== Sticky catalog toolbar (translucent material, tinted per brand) ===== */
+.catalog-bar {
+  position: sticky; top: var(--header-h); z-index: 50;
+  background-color: color-mix(in srgb, var(--tint) var(--material-tint-mix), transparent);
+  -webkit-backdrop-filter: var(--blur-bar-lite); backdrop-filter: var(--blur-bar-lite);
+  border-bottom: 1px solid var(--hairline); padding: 10px 0;
+  transition:
+    transform var(--dur-bar) var(--ease-drawer),
+    opacity var(--dur-modal-fade) var(--ease-out),
+    background-color var(--dur-tint) var(--ease-color);
+}
+@supports not (background-color: color-mix(in srgb, red 50%, transparent)) {
+  .catalog-bar { background-color: var(--material-bar); }
+}
+/* Товар открыт: панель «шторкой» уходит вверх из своего реального положения, при закрытии — возвращается */
+body.modal-open .catalog-bar { transform: translateY(calc(-1 * var(--sticky-offset) - 8px)); opacity: 0; pointer-events: none; }
+.catalog-bar__inner { display: flex; align-items: center; justify-content: space-between; gap: 10px 24px; flex-wrap: wrap; }
+.catalog-bar .tabs {
+  margin: 0; justify-content: flex-start; flex-wrap: wrap; gap: 2px;
+  padding: 3px; border-radius: var(--r-pill);
+  background-color: rgba(0,0,0,.045);
+}
+.catalog-bar .species { margin: 0; }
+.catalog-bar .tab { padding-top: 7px; padding-bottom: 7px; }
+.catalog-bar .tab.is-active { background-color: var(--brand-ink); color: #fff; }
+.catalog-bar .tabs__indicator {
+  background-color: var(--brand-ink);
+  /* the pill is the control: its colour lands with its motion (the page tint keeps its 700ms) */
+  transition: background-color var(--duration-medium) var(--ease-smooth-out);
+}
+.catalog-bar .tabs:has(.tabs__indicator) .tab.is-active { background-color: transparent; }
+.catalog-bar__search { flex: 0 1 320px; min-width: 0; }
+.catalog-bar__search:empty { display: none; }
+
+/* Линейки бренда — внизу страницы */
+.ranges-block { margin-top: 80px; padding-top: 48px; border-top: 1px solid var(--hairline); }
+
+/* Декоративный фон шапки каталога: цвет интерполируется, поэтому пятна плавно перекрашиваются */
+.page-hero { position: relative; overflow: hidden; }
+.page-hero::before, .page-hero::after {
+  content: ''; position: absolute; border-radius: 50%; z-index: 0; pointer-events: none;
+  color: var(--brand-accent);
+  background: radial-gradient(circle, currentColor, transparent 70%);
+  transition: color var(--dur-tint) var(--ease-color);
+}
+.page-hero::before { width: 380px; height: 380px; top: -130px; right: -70px; opacity: .16; }
+.page-hero::after { width: 320px; height: 320px; bottom: -150px; left: -60px; opacity: .18; }
+.page-hero .container { position: relative; z-index: 1; }
+
+/* ===== Product cards ===== */
+.products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.product {
+  background-color: var(--card-bg); border-radius: var(--r-card);
+  display: flex; flex-direction: column;
+  contain: layout;
+  /* No background-color transition: 100+ cards re-tinting for 700ms was the costliest part of a brand
+     switch. The grid itself cross-fades on a brand switch, which hides the colour swap.
+     Each transform channel has one owner (they compose): hover lift → `translate` (this transition),
+     press → inline `scale` (js/spring.js), desktop tilt → inline `transform` (NPSpring.tilt), FLIP → inline
+     `translate` while .is-flip (css/catalog.css turns this transition off for the glide). */
+  transition: translate var(--duration-fast) var(--ease-smooth-out);
+}
+.product__img {
+  position: relative; overflow: hidden; border-radius: var(--r-card) var(--r-card) 0 0;
+  height: 240px; display: flex; align-items: center; justify-content: center;
+  padding: 20px 20px 16px;
+}
+/* Контактная тень под упаковкой */
+.product__img::before {
+  content: ''; position: absolute; left: 20%; right: 20%; bottom: 10px; height: 12px; z-index: 0;
+  background: radial-gradient(closest-side, rgba(0,0,0,.16), transparent); pointer-events: none;
+}
+.product__img img {
+  position: relative; z-index: 1;
+  max-height: 100%; max-width: 100%; width: auto; object-fit: contain; mix-blend-mode: multiply;
+  transition: transform var(--dur-swap-in) var(--ease-out);
+}
+.product__emoji { font-size: 64px; position: relative; z-index: 1; }
+.product__body { padding: 4px 22px 22px; flex: 1; display: flex; flex-direction: column; }
+.product__cat { font: var(--t-footnote); letter-spacing: var(--track-footnote); color: var(--ink-2-tint); margin-bottom: 6px; }
+.product__name { font-size: 18px; line-height: 1.3; font-weight: 600; letter-spacing: -0.012em; margin-bottom: 8px; }
+.product__desc {
+  font: var(--t-callout); color: var(--ink-2-tint); flex: 1;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.product__tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.product__tags span {
+  font-size: 12px; font-weight: 500; line-height: 1.3;
+  background-color: rgba(255,255,255,.7); color: var(--ink-2-tint);
+  padding: 4px 10px; border-radius: var(--r-pill);
+}
+/* Слот для сердечка (пакет LIST наполняет) */
+.product__actions { position: absolute; top: 10px; right: 10px; z-index: 3; display: flex; gap: 6px; }
+.product__actions:empty { display: none; }
+
+/* ===== Подбор по цвету шерсти (Superior Care) ===== */
+.coat-ribbon {
+  position: absolute; top: 12px; left: 12px; z-index: 2;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px 4px 8px; border-radius: var(--r-pill);
+  font-size: 12px; font-weight: 600; letter-spacing: 0;
+  background: rgba(255,255,255,.94); color: var(--ink);
+  box-shadow: var(--shadow-thumb);
+}
+.coat-ribbon__dot { width: 9px; height: 9px; border-radius: 50%; background: var(--coat); box-shadow: 0 0 0 2px var(--coat-soft); }
+.coat-ribbon--white { --coat:#1f7fa0; --coat-soft:#d6ecf4; --coat-border:rgba(31,127,160,.3); }
+.coat-ribbon--red   { --coat:#b5561f; --coat-soft:#f7e2d2; --coat-border:rgba(181,86,31,.3); }
+.coat-ribbon--dark  { --coat:#3a3f4a; --coat-soft:#e0e3e9; --coat-border:rgba(58,63,74,.3); }
+
+.product--coat-white, .product--coat-red, .product--coat-dark { box-shadow: inset 0 3px 0 var(--coat-line); }
+.product--coat-white { --coat-line: #1f7fa0; }
+.product--coat-red   { --coat-line: #b5561f; }
+.product--coat-dark  { --coat-line: #3a3f4a; }
+
+.product-group--coat .coat-note { color: var(--ink-2-tint); font: var(--t-body); max-width: 64ch; margin: -10px 0 24px; }
+.coat-insert {
+  display: flex; align-items: flex-start; gap: 18px;
+  background-color: var(--coat-bg);
+  border-radius: var(--r-panel); padding: 24px 28px; margin: 32px 0 20px;
+}
+.coat-insert__dot { flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--coat); margin-top: 2px; box-shadow: 0 0 0 5px var(--coat-ring); }
+.coat-insert__text h4 { font: var(--t-headline); letter-spacing: var(--track-headline); color: var(--coat-ink); margin-bottom: 4px; }
+.coat-insert__text p { font: var(--t-callout); color: var(--coat-ink-2, var(--ink-2-tint)); }
+.coat-subline {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--head); font-size: 13px; font-weight: 600; color: var(--coat, var(--ink-2-tint));
+  margin: 24px 0 12px; letter-spacing: .01em;
+}
+.coat-subline::after { content: ''; flex: 1; height: 1px; background: var(--hairline); }
+.coat-subline--white { --coat:#1f7fa0; }
+.coat-subline--red   { --coat:#b5561f; }
+.coat-subline--dark  { --coat:#3a3f4a; }
+.coat-insert--white { --coat:#1f7fa0; --coat-bg:#f6f4ef; --coat-ring:#e3eef3; --coat-ink:#1d1d1f; }
+.coat-insert--red   { --coat:#b5561f; --coat-bg:#f7e9e0; --coat-ring:#f1d6c4; --coat-ink:#1d1d1f; --coat-ink-2:#5f5f64; }
+.coat-insert--dark  { --coat:#c9c2b8; --coat-bg:#2b2724; --coat-ring:rgba(255,255,255,.12); --coat-ink:#fff; --coat-ink-2:#c9c2b8; }
+
+/* ===== Кликабельные карточки ===== */
+.product.is-clickable { cursor: pointer; }
+.product.is-clickable:focus-visible,
+.product.is-clickable:has(.product__open:focus-visible) { outline: var(--focus-width) solid var(--focus-color); outline-offset: 3px; }
+/* The product name is the card's button; its ::after stretches over the whole card (heart/ribbon sit above it) */
+.product__open {
+  appearance: none; -webkit-appearance: none; background: none; border: 0; padding: 0; margin: 0;
+  font: inherit; color: inherit; letter-spacing: inherit; line-height: inherit; text-align: inherit; cursor: pointer;
+}
+.product__open::after { content: ''; position: absolute; inset: 0; z-index: 1; border-radius: var(--r-card); }
+.product__open:focus-visible { outline: none; }
+html:not(.spr) .product.is-clickable { transition: translate var(--duration-fast) var(--ease-smooth-out), transform var(--dur-release) var(--ease-out); }
+html:not(.spr) .product.is-clickable:active { transform: scale(var(--press-scale-card)); transition-duration: var(--duration-fast), var(--dur-press); }
+.product__more {
+  margin-top: 14px; display: inline-flex; align-items: center; gap: 4px;
+  color: var(--brand-ink); font-weight: 500; font-size: 14px; font-family: var(--head);
+}
+.product__more svg { transition: transform var(--dur-hover) var(--ease-out); }
+
+@media (hover: hover) and (pointer: fine) {
+  .feature:hover, .value-card:hover { transform: translateY(var(--lift)); }
+  /* the lift lands on a snappy spring (a hair of overshoot), and leaves on the smooth curve */
+  .product:hover { translate: 0 var(--lift); transition: translate var(--spring-snappy-dur) var(--spring-snappy); }
+  .range:hover, .step:hover { transform: translateY(-3px); background-color: #fff; }
+  .feature:hover::after, .value-card:hover::after, .range:hover::after, .step:hover::after, .product:hover::after { opacity: 1; }
+  .product:hover .product__img img { transform: scale(1.04); }
+  .product.is-clickable:hover .product__more svg { transform: translateX(3px); }
+  html:not(.spr) .product.is-clickable:hover:active { transform: scale(var(--press-scale-card)); }
+  /* the tilt glare (css/spring.css .spr-glare) shares the card's hover layer: shadow outside, soft light inside */
+  .product.spr-glare::after {
+    background: radial-gradient(380px circle at var(--gx, 50%) var(--gy, 30%), rgba(255, 255, 255, .3), transparent 60%);
+  }
+}
+
+/* ===== Модальное окно товара =====
+   Переходы (не keyframes) — можно прервать в любой момент.
+   Открытие (Монтажка: from the point of invocation): main.js sets --from-x/-y/-s to the clicked card's centre and
+   rough size; the dialog zooms from there to the middle on a spring (--pm-spring, set by main.js from
+   NPSpring.ease) and fades in within 150ms. Закрытие: main.js plays a ghost copy out (180ms) and closes the real
+   one at once; the .is-closing transition below is only the fallback without the spring core. */
+.pmodal {
+  position: fixed; inset: 0; z-index: 200;
+  visibility: hidden; pointer-events: none;
+  transition: visibility 0s linear var(--dur-modal-out);
+}
+.pmodal.is-open:not(.is-closing) { visibility: visible; pointer-events: auto; transition-delay: 0s; }
+.pmodal__backdrop {
+  position: absolute; inset: 0; background: var(--backdrop); opacity: 0;
+  transition: opacity var(--dur-modal-out) var(--ease-out);
+}
+.pmodal.is-open:not(.is-closing) .pmodal__backdrop { opacity: 1; transition-duration: 260ms; }
+.pmodal__dialog {
+  position: absolute; left: 50%; top: 50%;
+  width: min(920px, calc(100vw - 32px)); max-height: min(90vh, 900px); max-height: min(90dvh, 900px);
+  overflow-y: auto; overscroll-behavior: contain;
+  background: var(--paper); border-radius: var(--r-panel); box-shadow: var(--shadow-modal);
+  transform-origin: var(--pm-origin, 50% 50%);
+  opacity: 0;
+  transform: translate(calc(-50% + var(--from-x, 0px)), calc(-50% + var(--from-y, 0px))) scale(var(--from-s, var(--modal-scale)));
+  transition:
+    opacity var(--dur-modal-out) var(--ease-out),
+    transform var(--dur-modal-out) var(--ease-out);
+}
+.pmodal.is-open:not(.is-closing) .pmodal__dialog {
+  opacity: 1; transform: translate(-50%,-50%) scale(1);
+  transition:
+    opacity var(--duration-quick) var(--ease-smooth-out),
+    transform var(--pm-spring-dur, var(--dur-spring-snappy)) var(--pm-spring, var(--spring));
+}
+/* At rest (fully closed) the dialog must not transition: main.js writes --from-x/--from-y (the "fly-out"
+   point toward the clicked card) right before .is-open — animating that write would cancel the offset. */
+.pmodal:not(.is-open):not(.is-closing) .pmodal__dialog { transition: none; }
+/* Keyboard open/close (Enter / Esc) and reduced motion: main.js adds .is-instant — no motion at all */
+.pmodal.is-instant, .pmodal.is-instant .pmodal__backdrop, .pmodal.is-instant .pmodal__dialog { transition: none !important; }
+/* Шапка модалки: закрыть + действия (heart/share) */
+.pmodal__close {
+  position: absolute; top: 14px; right: 14px; z-index: 4;
+  width: 36px; height: 36px; border: none; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background-color: var(--material-thick); /* flat ground under it: no backdrop blur needed */
+  color: var(--ink); font-size: 24px; line-height: 1;
+  cursor: pointer; box-shadow: 0 0 0 1px var(--hairline);
+  transition: background-color var(--dur-hover) var(--ease-color), transform var(--dur-release) var(--ease-out);
+}
+html:not(.spr) .pmodal__close:active { transform: scale(.92); transition-duration: var(--dur-hover), var(--dur-press); }
+.pmodal__close::before { content: ''; position: absolute; inset: -4px; border-radius: 50%; } /* 44px hit area */
+.pmodal__actions { position: absolute; top: 14px; right: 58px; z-index: 4; display: flex; gap: 8px; }
+.pmodal__actions:empty { display: none; }
+/* Если CORE обернёт кнопки в .pmodal__header — он становится липкой полупрозрачной полосой */
+.pmodal__header {
+  position: sticky; top: 0; z-index: 4;
+  display: flex; align-items: center; justify-content: flex-end; gap: 8px;
+  min-height: 60px; padding: 12px 14px; margin-bottom: -60px;
+  pointer-events: none;
+}
+.pmodal__header > * { pointer-events: auto; }
+.pmodal__header .pmodal__close, .pmodal__header .pmodal__actions { position: static; }
+.pmodal__header.is-stuck {
+  background-color: var(--material-thick);
+  -webkit-backdrop-filter: var(--blur-bar-lite); backdrop-filter: var(--blur-bar-lite);
+  box-shadow: 0 1px 0 var(--hairline);
+}
+@media (hover: hover) and (pointer: fine) {
+  .pmodal__close:hover { background-color: var(--paper-3); }
+}
+.pmodal__body { display: grid; grid-template-columns: .9fr 1.1fr; }
+.pmodal__media {
+  position: relative; background-color: var(--card-bg);
+  display: flex; align-items: center; justify-content: center; padding: 40px 32px; min-height: 360px;
+  border-radius: var(--r-panel) 0 0 var(--r-panel);
+}
+.pmodal__media img { max-width: 100%; max-height: 440px; object-fit: contain; mix-blend-mode: multiply; }
+.pmodal__media .product__emoji { font-size: 96px; }
+.pmodal__info { padding: 40px 36px 36px; }
+.pmodal__info .product__cat { font-size: 14px; }
+.pmodal__name { font: var(--t-title); font-size: clamp(24px, 2.6vw, 32px); letter-spacing: var(--track-title); margin: 4px 0 16px; padding-right: 72px; }
+.pmodal__desc p { color: var(--ink-2); font: var(--t-callout); font-size: 16px; line-height: 1.6; margin-bottom: 10px; }
+.pmodal__section { margin-top: 20px; border-top: 1px solid var(--hairline); padding-top: 16px; }
+.pmodal__section h4 { font-size: 13px; font-weight: 600; letter-spacing: .01em; color: var(--ink); margin-bottom: 8px; font-family: var(--head); }
+.pmodal__section p { color: var(--ink-2); font-size: 15px; line-height: 1.55; margin-bottom: 6px; }
+.pmodal__add { margin-top: 6px; }
+.pmodal__add summary {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 32px; cursor: pointer; list-style: none;
+  font: 600 14px/1.3 var(--font); color: var(--brand-ink);
+}
+.pmodal__add summary::-webkit-details-marker { display: none; }
+.pmodal__add summary::after { content: '›'; font-size: 18px; transition: rotate var(--duration-fast) var(--ease-smooth-out); }
+.pmodal__add[open] summary::after { rotate: 90deg; }
+.pmodal__add p { font-size: 13.5px; }
+.pmodal__an { width: 100%; max-width: 420px; border-collapse: collapse; font-size: 14.5px; font-variant-numeric: tabular-nums; }
+.pmodal__an th, .pmodal__an td { padding: 6px 0; border-bottom: 1px solid var(--hairline); text-align: left; font-weight: 400; color: var(--ink-2); }
+.pmodal__an td { text-align: right; color: var(--ink); font-weight: 600; white-space: nowrap; padding-left: 16px; }
+.pmodal__an tr:last-child th, .pmodal__an tr:last-child td { border-bottom: 0; }
+.pmodal__src {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 18px; min-height: 32px;
+  font: 500 14px/1.3 var(--font); color: var(--brand-ink); text-decoration: underline; text-underline-offset: 3px;
+}
+.pmodal__info .product__tags { margin-top: 20px; }
+.pmodal__info .product__tags span { background-color: var(--paper-2); }
+.pmodal__list { margin: 6px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
+.pmodal__list li { font-size: 14px; color: var(--ink); background-color: var(--paper-2); border-radius: var(--r-pill); padding: 5px 12px; }
+@media (max-width: 720px) {
+  .pmodal__body { grid-template-columns: 1fr; }
+  .pmodal__media { border-radius: var(--r-panel) var(--r-panel) 0 0; min-height: 240px; padding: 28px 22px; }
+  .pmodal__media img { max-height: 280px; }
+  .pmodal__info { padding: 24px 22px 28px; }
+  .pmodal__name { padding-right: 0; }
+}
+
+/* ===== Плавный переход между страницами (быстрый кроссфейд, обе стороны) ===== */
+@keyframes pageFadeBody { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pageRise { from { transform: translateY(var(--rise-sm)); } to { transform: none; } }
+body.page-enter { animation: pageFadeBody var(--dur-page-in) var(--ease-out) backwards; }
+.page-enter .page-hero { animation: pageRise var(--dur-page-in) var(--ease-out) backwards; }
+.page-enter .section--top { animation: pageRise var(--dur-page-in) var(--ease-out) 40ms backwards; }
+body.page-leaving { opacity: 0; transition: opacity var(--dur-page-out) var(--ease-out); }
+
+/* ===== Tauro Pure Nature — витрина «левитирующих» флаконов (Step 1·2·3) ===== */
+/* Вставка «зачем нужны степы» — css/tpl-why.css */
+
+.tpl-system { margin: 8px 0 64px; }
+.tpl-system__head { text-align: center; max-width: 760px; margin: 0 auto; }
+.tpl-system__title { font: var(--t-title); letter-spacing: var(--track-title); color: var(--ink); margin: 8px 0 12px; }
+.tpl-system__intro { color: var(--ink-2-tint); font: var(--t-body); }
+.tpl-system__stage {
+  display: grid; grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr)); gap: 16px;
+  align-items: end; margin: 32px auto 8px; max-width: min(1060px, calc(var(--cols, 3) * 265px)); position: relative;
+}
+.tpl-bottle {
+  position: relative; display: flex; flex-direction: column; align-items: center;
+  padding-top: 48px; cursor: pointer; border-radius: var(--r-card);
+}
+.tpl-bottle:focus-visible { outline: var(--focus-width) solid var(--c, var(--focus-color)); outline-offset: 4px; }
+.tpl-bottle__num {
+  position: absolute; top: 0; font-family: var(--head); font-weight: 700; font-size: 112px; letter-spacing: -0.04em;
+  line-height: 1; color: var(--c); opacity: .12; z-index: 0; pointer-events: none; user-select: none;
+}
+/* Левитация: период 4.6s (утверждён), амплитуда — токен --float-amp */
+.tpl-bottle__img {
+  position: relative; z-index: 1; height: 300px; display: flex; align-items: flex-end; justify-content: center;
+  animation: tplFloat var(--dur-float) ease-in-out infinite; animation-delay: calc(var(--d, 0s) * -1);
+}
+/* Контактная тень «дышит» в противофазе с флаконом */
+.tpl-bottle__img::after {
+  content: ''; position: absolute; left: 22%; right: 22%; bottom: -14px; height: 14px; z-index: -1;
+  background: radial-gradient(closest-side, rgba(31,42,36,.2), transparent);
+  animation: tplShadow var(--dur-float) ease-in-out infinite; animation-delay: inherit;
+}
+.tpl-bottle__img img {
+  max-height: 300px; max-width: 100%; object-fit: contain;
+  filter: drop-shadow(0 16px 14px rgba(31,42,36,.14)); /* static: rasterised once inside the floating layer */
+  /* channels: hover lift → translate + scale (here), desktop tilt → inline transform (NPSpring.tilt in main.js).
+     The floating parent keeps its own transform (tplFloat, 4.6s). */
+  transition: translate var(--duration-fast) var(--ease-smooth-out), scale var(--duration-fast) var(--ease-smooth-out);
+}
+html:not(.spr) .tpl-bottle:active .tpl-bottle__img img { translate: 0 -6px; scale: var(--press-scale-card); transition-duration: 120ms; }
+@media (hover: hover) and (pointer: fine) {
+  .tpl-bottle:hover .tpl-bottle__img, .tpl-bottle:hover .tpl-bottle__img::after { animation-play-state: paused; }
+  /* the bottle rises toward you on a snappy spring (the whole column presses on its own spring, js/spring.js) */
+  .tpl-bottle:hover .tpl-bottle__img img {
+    translate: 0 -10px; scale: 1.04;
+    transition: translate var(--spring-snappy-dur) var(--spring-snappy), scale var(--spring-snappy-dur) var(--spring-snappy);
+  }
+  html:not(.spr) .tpl-bottle:hover:active .tpl-bottle__img img { translate: 0 -6px; scale: var(--press-scale-card); }
+}
+/* Пауза вне экрана (класс ставит JS) и пока открыт товар */
+.tpl-system.is-offscreen .tpl-bottle__img, .tpl-system.is-offscreen .tpl-bottle__img::after,
+body.modal-open .tpl-bottle__img, body.modal-open .tpl-bottle__img::after { animation-play-state: paused; }
+.tpl-bottle__label { text-align: center; margin-top: 20px; z-index: 1; }
+.tpl-bottle__step { display: block; font-family: var(--head); font-weight: 600; font-size: 12px; letter-spacing: .06em; color: var(--c); }
+.tpl-bottle__name { display: block; font-family: var(--head); font-weight: 600; font-size: 16px; color: var(--ink); margin-top: 3px; letter-spacing: -0.01em; }
+.tpl-bottle__short { display: block; font-size: 13px; color: var(--ink-2-tint); line-height: 1.45; margin: 6px auto 0; max-width: 230px; }
+@keyframes tplFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(calc(var(--float-amp) * -1)); } }
+/* тень стоит на месте: компенсирует подъём родителя и сжимается, пока флакон вверху */
+@keyframes tplShadow { 0%, 100% { transform: translateY(0) scaleX(1); opacity: 1; } 50% { transform: translateY(var(--float-amp)) scaleX(.86); opacity: .7; } }
+.tpl-system__badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 24px; }
+.tpl-system__badges span {
+  font-family: var(--head); font-weight: 500; font-size: 13px; color: var(--ink);
+  background-color: rgba(255,255,255,.8); border: 1px solid var(--hairline); border-radius: var(--r-pill); padding: 6px 14px;
+}
+.tpl-system__note { text-align: center; color: var(--ink-2-tint); font-size: 14px; max-width: 720px; margin: 16px auto 0; }
+@media (max-width: 720px) {
+  .tpl-system__stage { grid-template-columns: repeat(2, 1fr); max-width: 460px; row-gap: 30px; }
+  .tpl-bottle__img { height: 190px; }
+  .tpl-bottle__img img { max-height: 190px; }
+  .tpl-bottle__num { font-size: 64px; }
+  .tpl-bottle { padding-top: 28px; }
+  .tpl-bottle__name { font-size: 13px; }
+}
+
+/* ===== Catalog teaser (home) ===== */
+.catalog-cta { background-color: var(--paper-2); }
+.catalog-cta__inner { display: grid; grid-template-columns: 1.2fr .8fr; gap: 56px; align-items: center; }
+.catalog-cta__text p { color: var(--ink-2); font: var(--t-body); margin-top: 14px; max-width: 480px; }
+.catalog-cta__text .btn { margin-top: 28px; }
+.catalog-cta__visual {
+  display: block; border-radius: var(--r-panel); box-shadow: var(--shadow-lg);
+  overflow: hidden; line-height: 0; background: #fff;
+}
+.catalog-cta__visual img { width: 100%; height: auto; display: block; }
+
+/* ===== Brand chips ===== */
+.brand-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.brand-chip {
+  display: inline-flex; align-items: center; padding: 9px 18px; border-radius: var(--r-pill);
+  background-color: #fff; border: 1px solid var(--hairline-strong); color: var(--ink);
+  font-family: var(--head); font-weight: 500; font-size: 15px;
+  transition:
+    background-color var(--dur-hover) var(--ease-color),
+    border-color var(--dur-hover) var(--ease-color),
+    color var(--dur-hover) var(--ease-color),
+    transform var(--dur-release) var(--ease-out);
+}
+html:not(.spr) .brand-chip:active { transform: scale(var(--press-scale)); transition-duration: var(--dur-hover), var(--dur-hover), var(--dur-hover), var(--dur-press); }
+@media (hover: hover) and (pointer: fine) {
+  .brand-chip:hover { background-color: var(--accent); color: #fff; border-color: var(--accent); }
+}
+
+/* ===== Products page hero ===== */
+.page-hero {
+  background-color: var(--tint-soft, #f1f7ec);
+  transition: background-color var(--dur-tint) var(--ease-color);
+  padding: 48px 0 36px; text-align: center;
+}
+.page-hero .section__title { margin-top: 6px; font: var(--t-display); letter-spacing: var(--track-display); }
+.page-hero .section__subtitle { max-width: 620px; margin-left: auto; margin-right: auto; color: var(--ink-2-tint); }
+.page-hero__back {
+  display: inline-flex; align-items: center; gap: 4px; margin-bottom: 16px; color: var(--ink-2-tint);
+  font-weight: 400; font-size: 15px; font-family: var(--head);
+  transition: color var(--dur-hover) var(--ease-color), transform var(--dur-hover) var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .page-hero__back:hover { color: var(--ink); transform: translateX(-2px); }
+}
+.section--top {
+  padding-top: 48px; background-color: var(--tint, var(--paper));
+  transition: background-color var(--dur-tint) var(--ease-color);
+}
+
+/* ===== Тинт страницы по бренду =====
+   Никаких @property на наследуемых переменных: каждая поверхность сама плавно
+   меняет background-color (body, .page-hero, .section--top, .catalog-bar, карточки).
+   Сетка товаров держит СВОИ значения (#productsGrid[data-brand], ставит renderProducts вместе с новым содержимым):
+   смена бренда на body тогда пересчитывает стили только страницы вокруг, а не 2500 узлов старой выдачи —
+   наследуемые переменные иначе заставляли браузер пересчитать весь документ прямо в кадре нажатия. */
+body[data-brand="np"], #productsGrid[data-brand="np"] { --tint: #fcfdfb; --tint-soft: #f1f7ec; --brand-accent: #3a7d44; --brand-accent-rgb: 58,125,68;
+  --brand-ink: #007a3d; --card-bg: #f2f4f5; }
+body[data-brand="araton"], #productsGrid[data-brand="araton"] { --tint: #fdf9f0; --tint-soft: #f6ecd5; --brand-accent: #b3792b; --brand-accent-rgb: 179,121,43;
+  --brand-ink: #8a5a1c; --card-bg: #f7f1e4; }
+body[data-brand="tpl"], #productsGrid[data-brand="tpl"] { --tint: #f7f8fb; --tint-soft: #eceef3; --brand-accent: #6c7480; --brand-accent-rgb: 108,116,128;
+  --brand-ink: #5b626d; --card-bg: #f1f3f6; }
+body[data-brand="misoko"], #productsGrid[data-brand="misoko"] { --tint: #fdf5f9; --tint-soft: #fae6f0; --brand-accent: #cf7397; --brand-accent-rgb: 207,115,151;
+  --brand-ink: #a8456f; --card-bg: #fbeff5; }
+
+/* Смена бренда / вида / раздела — main.js (activateBrand, morphGrid): the old grid fades out (WAAPI), blocks on
+   screen glide (FLIP), rise in a spring staircase or ghost out; ranges + footer glide to the new height. */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ===== View Transitions for NP.swap(updateFn, type) — brand / species / section =====
+   main.js sets html[data-vt=<type>] for the duration of document.startViewTransition().
+   Root does NOT animate — it is not even captured: the page stays live under the overlay, so header,
+   toolbar, tab/species indicators and the brand tint keep running their own CSS transitions, and clicks
+   pass through. Only the grid and the chip row are captured. Old grid leaves fast, new one arrives a beat later.
+   The overlay is clipped below header + toolbar so a grid scrolled under the sticky bars never paints over them. */
+:root { view-transition-name: none; }
+html[data-vt] #productsGrid { view-transition-name: np-grid; } /* also named by catalog.css */
+::view-transition { pointer-events: none; clip-path: inset(calc(var(--header-h) + var(--bar-h)) 0 0 0); }
+::view-transition-old(root), ::view-transition-new(root), ::view-transition-group(root) { animation: none; }
+/* No size/position morph on the grid: its top edge doesn't move, only its height changes */
+::view-transition-group(np-grid) { animation: none; }
+/* If the update scrolled the page (sticky-bar click deep in the grid → jump to the results), the group sits at the
+   NEW grid box; shift the old snapshot by the scroll delta so the cards that were on screen fade out in place */
+::view-transition-old(np-grid) { translate: 0 var(--vt-dy, 0px); }
+::view-transition-old(np-grid) { animation: npVtOut var(--dur-vt-out) var(--ease-out) both; }
+::view-transition-new(np-grid) { animation: npVtIn var(--dur-vt-in) var(--ease-out) var(--vt-delay) both; }
+::view-transition-group(np-sections) { animation-duration: var(--dur-vt-chips); animation-timing-function: var(--ease-out); }
+::view-transition-old(np-sections), ::view-transition-new(np-sections) {
+  animation-duration: var(--dur-vt-chips); animation-timing-function: var(--ease-out);
+}
+@keyframes npVtOut { to { opacity: 0; } }
+@keyframes npVtIn  { from { opacity: 0; transform: translateY(var(--rise-sm)); } }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}
+
+/* ===== Values (наши ценности) ===== */
+.values { background-color: var(--paper-2); }
+.values__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.value-card {
+  background: #fff; border-radius: var(--r-card); padding: 30px 26px;
+  transition: transform var(--dur-hover) var(--ease-out);
+}
+.value-card__icon { font-size: 32px; margin-bottom: 14px; }
+.value-card h3 { font-size: 18px; margin-bottom: 10px; color: var(--ink); }
+.value-card p { font-size: 15px; line-height: 1.45; color: var(--ink-2); }
+
+/* ===== Brand tabs section (home) ===== */
+.brand { background-color: var(--paper-2); }
+.brand .tabs { margin-bottom: 36px; flex-wrap: wrap; }
+.brand-panel { display: none; }
+.brand-panel.is-active { display: block; animation: brandFade 250ms var(--ease-out); }
+@keyframes brandFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.brand-intro { text-align: center; font: var(--t-body); color: var(--ink-2); max-width: 640px; margin: 0 auto 28px; }
+.brand-panel.is-active[data-panel="ambassadors"] > p { max-width: 760px; margin: 0 auto; color: var(--ink-2); font: var(--t-body); text-align: center; }
+.timeline { max-width: 780px; margin: 0 auto; display: grid; gap: 12px; }
+.timeline li {
+  background: #fff; border-radius: var(--r-card); padding: 18px 22px 18px 48px;
+  position: relative; font-size: 16px;
+}
+.timeline li::before {
+  content: ''; position: absolute; left: 20px; top: 24px; width: 10px; height: 10px;
+  border-radius: 50%; background: var(--leaf); box-shadow: 0 0 0 4px rgba(0,154,77,.14);
+}
+.brand-slogan { text-align: center; font-family: var(--head); font-weight: 600; color: var(--accent); font-size: 21px; margin-top: 32px; }
+.brand-quote {
+  max-width: 680px; margin: 24px auto 0; padding: 22px 28px; font-style: italic;
+  color: var(--ink); background: #fff; border-radius: var(--r-card); box-shadow: inset 3px 0 0 var(--leaf);
+}
+.faq { max-width: 780px; margin: 0 auto; display: grid; gap: 10px; }
+.faq__item { background: #fff; border-radius: var(--r-card); padding: 0 24px; }
+.faq__item summary {
+  cursor: pointer; font-family: var(--head); font-weight: 600; font-size: 17px;
+  padding: 20px 36px 20px 0; list-style: none; position: relative; color: var(--ink);
+}
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary::after {
+  content: '+'; position: absolute; right: 2px; top: 15px; font-size: 24px; font-weight: 400; color: var(--ink-2);
+  transition: transform var(--dur-hover) var(--ease-out);
+}
+.faq__item[open] summary::after { transform: rotate(45deg); }
+.faq__item p { margin: 0 0 20px; color: var(--ink-2); font: var(--t-body); font-size: 16px; }
+
+/* ===== About ===== */
+.about { padding: 96px 0; background-color: var(--paper-2); }
+.about__inner { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: center; }
+.about__photo {
+  width: 100%; border-radius: var(--r-panel);
+  display: block; aspect-ratio: 1 / 1; object-fit: cover;
+}
+.about__content p { color: var(--ink-2); margin-top: 16px; font: var(--t-body); }
+.about__list { margin-top: 24px; display: grid; gap: 12px; }
+.about__list li { position: relative; padding-left: 32px; font-weight: 500; }
+.about__list li::before {
+  content: '✓'; position: absolute; left: 0; top: 1px; width: 22px; height: 22px;
+  background: var(--accent); color: #fff; border-radius: 50%; display: flex;
+  align-items: center; justify-content: center; font-size: 12px; font-weight: 700;
+}
+
+/* ===== Quality steps ===== */
+.quality { background: #fff; }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.step {
+  background-color: var(--paper-2); border-radius: var(--r-card); padding: 30px 24px;
+  transition: transform var(--dur-hover) var(--ease-out), background-color var(--dur-hover) var(--ease-color);
+}
+.step__num { font-family: var(--head); font-size: 30px; font-weight: 700; color: var(--leaf); font-variant-numeric: tabular-nums; }
+.step h3 { font-size: 19px; margin: 12px 0 8px; }
+.step p { font-size: 15px; line-height: 1.45; color: var(--ink-2); }
+
+/* ===== CTA ===== */
+.cta { background: linear-gradient(135deg, var(--accent) 0%, #00552b 100%); color: #fff; padding: 96px 0; }
+.cta__inner { text-align: center; max-width: 680px; margin: 0 auto; }
+.cta h2 { font: var(--t-title); letter-spacing: var(--track-title); margin-bottom: 16px; }
+.cta p { font: var(--t-body-lg); opacity: .92; margin-bottom: 30px; }
+
+/* ===== Contact ===== */
+.contact__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.contact__info p { color: var(--ink-2); margin-top: 14px; }
+.contact__list { margin-top: 28px; display: grid; gap: 16px; }
+.contact__list li { display: flex; align-items: center; gap: 14px; font-weight: 500; }
+.contact__list span:first-child { font-size: 20px; }
+.contact__form { background-color: var(--paper-2); padding: 32px; border-radius: var(--r-panel); display: grid; gap: 18px; }
+.contact__form label { display: grid; gap: 8px; font-weight: 500; font-size: 14px; }
+.contact__form input, .contact__form textarea {
+  padding: 13px 16px; border-radius: var(--r-input); border: 1px solid var(--hairline-strong);
+  font-family: var(--font); font-size: 16px; background: #fff; resize: vertical; color: var(--ink);
+  transition: border-color var(--dur-hover) var(--ease-color), box-shadow var(--dur-hover) var(--ease-color);
+}
+.contact__form input:focus, .contact__form textarea:focus { outline: none; border-color: var(--accent); box-shadow: var(--focus-ring); }
+.form__ok { color: var(--accent); font-weight: 600; text-align: center; }
+
+/* ===== Footer ===== */
+.footer { background: var(--ink); color: #d2d2d7; padding: 64px 0 0; }
+.footer__inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; padding-bottom: 40px; }
+.footer__col p { margin-top: 16px; font-size: 14px; max-width: 320px; color: #a1a1a6; }
+.footer__col h4 { color: #fff; font-size: 15px; margin-bottom: 16px; }
+.footer__col a, .footer__col span { display: block; color: #a1a1a6; font-size: 14px; margin-bottom: 10px; transition: color var(--dur-hover) var(--ease-color); }
+@media (hover: hover) and (pointer: fine) { .footer__col a:hover { color: #fff; } }
+.footer__bottom { border-top: 1px solid rgba(255,255,255,.1); padding: 20px 0; font-size: 13px; text-align: center; color: #86868b; }
+
+/* ===== Responsive ===== */
+@media (max-width: 960px) {
+  .features__grid { grid-template-columns: repeat(2, 1fr); }
+  .ranges { grid-template-columns: repeat(2, 1fr); }
+  .products { grid-template-columns: repeat(2, 1fr); }
+  .steps { grid-template-columns: repeat(2, 1fr); }
+  .values__grid { grid-template-columns: repeat(2, 1fr); }
+  .hero__inner { grid-template-columns: 1fr; text-align: center; }
+  .hero__inner--solo { min-height: 460px; }
+  .hero__inner--solo .hero__content { max-width: none; }
+  .hero-bg__scrim {
+    background: linear-gradient(180deg, rgba(9,40,22,.86) 0%, rgba(12,52,28,.74) 55%, rgba(0,90,45,.5) 100%);
+  }
+  .hero__arrow { width: 42px; height: 42px; font-size: 22px; }
+  .hero__arrow--prev { left: 10px; }
+  .hero__arrow--next { right: 10px; }
+  .hero__text { margin-left: auto; margin-right: auto; }
+  .hero__actions, .hero__stats { justify-content: center; }
+  .about__inner { grid-template-columns: 1fr; }
+  .contact__inner { grid-template-columns: 1fr; }
+  .footer__inner { grid-template-columns: 1fr 1fr; }
+  .catalog-cta__inner { grid-template-columns: 1fr; }
+  .catalog-cta__visual { order: -1; min-height: 220px; }
+  .catalog-bar__inner { justify-content: center; }
+  .catalog-bar .tabs { justify-content: center; }
+}
+@media (max-width: 720px) {
+  .catalog-bar { position: static; }
+  .products { gap: 12px; }
+  .product__img { height: 180px; padding: 14px; }
+  .product__body { padding: 2px 14px 16px; }
+  .product__name { font-size: 16px; }
+  .product__desc { font-size: 14px; -webkit-line-clamp: 2; }
+  .nav {
+    position: fixed; top: var(--header-h); right: 0; width: 280px; height: calc(100vh - var(--header-h)); height: calc(100dvh - var(--header-h));
+    background-color: var(--material-thick);
+    -webkit-backdrop-filter: var(--blur-thick); backdrop-filter: var(--blur-thick);
+    flex-direction: column; gap: 0; padding: 20px;
+    box-shadow: var(--shadow-lg); z-index: 99;
+    transform: translateX(100%); visibility: hidden;
+    transition: transform var(--dur-drawer-out) var(--ease-drawer), visibility 0s linear var(--dur-drawer-out);
+  }
+  .nav.is-open {
+    transform: none; visibility: visible;
+    transition: transform var(--dur-drawer-in) var(--ease-drawer), visibility 0s;
+  }
+  .nav__link { padding: 14px 0; border-bottom: 1px solid var(--hairline); width: 100%; font-size: 17px; }
+  .nav__link::after { display: none; }
+  .burger { display: flex; }
+  .section { padding: 72px 0; }
+}
+@media (max-width: 560px) {
+  .features__grid, .ranges, .steps, .values__grid { grid-template-columns: 1fr; }
+  .footer__inner { grid-template-columns: 1fr; }
+  .section { padding: 64px 0; }
+  .species__btn { padding: 7px 12px; }
+}
+
+/* ===== Reduced motion: remove movement, keep short opacity/colour fades ===== */
+@media (prefers-reduced-motion: reduce) {
+  .header, .catalog-bar { transition: opacity 150ms var(--ease-out), background-color var(--dur-tint) var(--ease-color); }
+  body.modal-open .header, body.modal-open .catalog-bar { transform: none; }
+  .btn, .tab, .brand-tab, .species__btn, .cat-chip, .brand-chip, .lang__current, .pmodal__close,
+  .feature, .value-card, .range, .step, .product, .product__img img, .tpl-bottle__img img,
+  .page-hero__back, .hero__arrow { transform: none !important; }
+  .product, .tpl-bottle__img img { translate: none !important; scale: none !important; }
+  .hero__arrow { transform: translateY(-50%) !important; }
+  .pmodal__dialog, .pmodal.is-open:not(.is-closing) .pmodal__dialog {
+    transform: translate(-50%,-50%) !important;
+    transition: opacity 150ms var(--ease-out);
+  }
+  .brand-panel.is-active { animation: fadeIn 150ms var(--ease-out); }
+  body.page-enter { animation: fadeIn 150ms var(--ease-out) backwards; }
+  .page-enter .page-hero, .page-enter .section--top { animation: none; }
+  body.page-leaving { transition: opacity 150ms var(--ease-out); }
+  .floatie__img, .tpl-bottle__img, .tpl-bottle__img::after { animation: none; }
+  .lang__menu, .lang.is-open .lang__menu { transform: none; }
+  .nav, .nav.is-open { transition: visibility 0s; }
+  .burger span { transition: opacity 150ms var(--ease-color); }
+}
+
+/* ===== Forced colours (Windows High Contrast) ===== */
+@media (forced-colors: active) {
+  .tabs__indicator, .species__indicator { background-color: Highlight; forced-color-adjust: none; }
+  .tabs:has(.tabs__indicator) .tab.is-active, .species:has(.species__indicator) .species__btn.is-active,
+  .tabs.spr-lit .tab.is-lit, .species.spr-lit .species__btn.is-lit { color: HighlightText; forced-color-adjust: none; }
+  .tabs.spr-lit .tab:not(.is-lit), .species.spr-lit .species__btn:not(.is-lit) { color: ButtonText; }
+  .tab.is-active, .brand-tab.is-active, .species__btn.is-active, .cat-chip.is-active { border: 2px solid Highlight; }
+  .species__btn[aria-disabled="true"] { color: GrayText; opacity: 1; }
+  .product, .feature, .value-card, .range, .step, .pmodal__dialog, .faq__item { border: 1px solid CanvasText; }
+  .header, .catalog-bar, .lang__menu, .nav { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  :focus-visible { outline-color: Highlight; }
+}

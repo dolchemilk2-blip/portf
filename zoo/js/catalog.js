@@ -1,0 +1,1958 @@
+// ===== Каталог брендов Araton / Tauro Pro Line / Misoko (3 языка) =====
+// Названия и описания взяты с упаковок (фото в assets/products).
+const BRANDS_EXTRA = {
+  "araton": [
+    {
+      group: { az: "İtlər üçün quru qida", ru: "Сухой корм для собак", en: "Dry food for dogs" },
+      species: "dogs",
+      items: [
+        { img: "assets/products/art-dog-lamb.webp",
+          az: { cat: "Adult · Bütün cinslər", name: "Lamb", desc: "Bütün cins yetkin itlər üçün quzu əti ilə tam rasion; sağlam dəri və parlaq tük üçün, 65% heyvani protein.", tags: ["Quzu", "Adult"] },
+          ru: { cat: "Adult · Все породы", name: "Lamb", desc: "Полнорационный корм с ягнёнком для взрослых собак всех пород; для здоровой кожи и блестящей шерсти, 65% животного белка.", tags: ["Ягнёнок", "Adult"] },
+          en: { cat: "Adult · All breeds", name: "Lamb", desc: "Complete lamb food for adult dogs of all breeds; for healthy skin and a shiny coat, 65% animal protein.", tags: ["Lamb", "Adult"] } },
+        { img: "assets/products/art-dog-poultry.webp",
+          az: { cat: "Adult · Bütün cinslər", name: "Poultry", desc: "Bütün cins yetkin itlər üçün quş əti ilə tam rasion; sağlam dəri və tük üçün.", tags: ["Quş əti", "Adult"] },
+          ru: { cat: "Adult · Все породы", name: "Poultry", desc: "Полнорационный корм с птицей для взрослых собак всех пород; для здоровой кожи и шерсти.", tags: ["Птица", "Adult"] },
+          en: { cat: "Adult · All breeds", name: "Poultry", desc: "Complete poultry food for adult dogs of all breeds; for healthy skin and coat.", tags: ["Poultry", "Adult"] } },
+        { img: "assets/products/art-dog-active.webp",
+          az: { cat: "Adult · Bütün cinslər", name: "Active", desc: "Aktiv və idmançı yetkin itlər üçün yüksək enerjili qida; otlarla (kəklikotu, adaçayı, cəfəri, qantəpər), yüksək heyvani protein.", tags: ["Active", "Yüksək enerji"] },
+          ru: { cat: "Adult · Все породы", name: "Active", desc: "Высокоэнергетический корм для активных и рабочих взрослых собак; с травами (тимьян, шалфей, петрушка, орегано), высокое содержание животного белка.", tags: ["Active", "Высокая энергия"] },
+          en: { cat: "Adult · All breeds", name: "Active", desc: "High-energy food for active and athletic adult dogs; powered by herbs (thyme, sage, parsley, oregano), high animal protein.", tags: ["Active", "High energy"] } },
+        { img: "assets/products/art-dog-junior.webp", baby: true,
+          az: { cat: "Junior · <1 il", name: "Junior", desc: "Bütün cins böyüyən bala itlər üçün qida; sağlam böyümə üçün, 58% heyvani protein.", tags: ["Junior", "<1 il"] },
+          ru: { cat: "Junior · <1 года", name: "Junior", desc: "Корм для растущих щенков всех пород; для здорового роста, 58% животного белка.", tags: ["Junior", "<1 года"] },
+          en: { cat: "Junior · <1 year", name: "Junior", desc: "Food for growing puppies of all breeds; for healthy growth, 58% animal protein.", tags: ["Junior", "<1 year"] } },
+        { img: "assets/products/art-dog-junior-lamb.webp", baby: true,
+          az: { cat: "Junior · <1 il", name: "Junior Lamb", desc: "Bütün cins böyüyən bala itlər üçün quzu əti ilə qida; optimal böyümə və həssas həzm üçün.", tags: ["Junior", "Quzu"] },
+          ru: { cat: "Junior · <1 года", name: "Junior Lamb", desc: "Корм с ягнёнком для растущих щенков всех пород; для оптимального роста и чувствительного пищеварения.", tags: ["Junior", "Ягнёнок"] },
+          en: { cat: "Junior · <1 year", name: "Junior Lamb", desc: "Lamb food for growing puppies of all breeds; for optimal growth and sensitive digestion.", tags: ["Junior", "Lamb"] } },
+        { img: "assets/products/art-dog-maxi.webp",
+          az: { cat: "Adult · İri cinslər", name: "Maxi", desc: "İri cins (25–80 kq) yetkin itlər üçün tam rasion.", tags: ["Maxi", "25–80 kq"] },
+          ru: { cat: "Adult · Крупные породы", name: "Maxi", desc: "Полнорационный корм для взрослых собак крупных пород (25–80 кг).", tags: ["Maxi", "25–80 кг"] },
+          en: { cat: "Adult · Large breeds", name: "Maxi", desc: "Complete food for adult large-breed dogs (25–80 kg).", tags: ["Maxi", "25–80 kg"] } }
+      ]
+    },
+    {
+      group: { az: "Pişiklər üçün quru qida", ru: "Сухой корм для кошек", en: "Dry food for cats" },
+      species: "cats",
+      items: [
+        { img: "assets/products/art-cat-salmon.webp",
+          az: { cat: "Adult · Bütün cinslər", name: "Salmon", desc: "Bütün cins yetkin pişiklər üçün qızılbalıqlı qida; 87% ət tərkibi.", tags: ["Qızılbalıq", "Adult"] },
+          ru: { cat: "Adult · Все породы", name: "Salmon", desc: "Корм с лососем для взрослых кошек всех пород; 87% мясных ингредиентов.", tags: ["Лосось", "Adult"] },
+          en: { cat: "Adult · All breeds", name: "Salmon", desc: "Salmon food for adult cats of all breeds; 87% meat content.", tags: ["Salmon", "Adult"] } },
+        { img: "assets/products/art-cat-outdoor.webp",
+          az: { cat: "Adult · Bütün cinslər", name: "Outdoor", desc: "Aktiv, çöldə gəzən pişiklər üçün enerjili qida; 87% ət tərkibi.", tags: ["Outdoor", "Aktiv"] },
+          ru: { cat: "Adult · Все породы", name: "Outdoor", desc: "Энергетический корм для активных, гуляющих на улице кошек; 87% мясных ингредиентов.", tags: ["Outdoor", "Активные"] },
+          en: { cat: "Adult · All breeds", name: "Outdoor", desc: "Energy food for active, outdoor cats; 87% meat content.", tags: ["Outdoor", "Active"] } },
+        { img: "assets/products/art-cat-sterilised.webp",
+          az: { cat: "Adult · Bütün cinslər", name: "Sterilised", desc: "Sterilizə olunmuş yetkin pişiklər üçün ideal çəki formulası; 47% heyvani protein.", tags: ["Sterilised", "İdeal çəki"] },
+          ru: { cat: "Adult · Все породы", name: "Sterilised", desc: "Формула идеального веса для стерилизованных взрослых кошек; 47% животного белка.", tags: ["Sterilised", "Идеальный вес"] },
+          en: { cat: "Adult · All breeds", name: "Sterilised", desc: "Ideal-weight formula for sterilised adult cats; 47% animal protein.", tags: ["Sterilised", "Ideal weight"] } },
+        { img: "assets/products/art-cat-kitten.webp", baby: true,
+          az: { cat: "Kitten · <1 il", name: "Kitten", desc: "Bütün cins böyüyən balaca pişiklər üçün qida.", tags: ["Kitten", "<1 il"] },
+          ru: { cat: "Kitten · <1 года", name: "Kitten", desc: "Корм для растущих котят всех пород.", tags: ["Kitten", "<1 года"] },
+          en: { cat: "Kitten · <1 year", name: "Kitten", desc: "Food for growing kittens of all breeds.", tags: ["Kitten", "<1 year"] } }
+      ]
+    },
+    {
+      group: { az: "İtlər üçün yaş qida (paket)", ru: "Влажный корм для собак (паучи)", en: "Wet food for dogs (pouches)" },
+      species: "dogs",
+      items: [
+        { img: "assets/products/art-dog-pouch-lamb.webp", baby: true,
+          az: { cat: "Junior · Bütün cinslər", name: "Lamb & Rabbit", desc: "Bala itlər üçün quzu və dovşan əti ilə paket; sousda şirəli ət parçaları, 92% heyvani protein, 85 q.", tags: ["Quzu", "Dovşan", "Junior"] },
+          ru: { cat: "Junior · Все породы", name: "Lamb & Rabbit", desc: "Пауч с ягнёнком и кроликом для щенков; сочные кусочки мяса в соусе, 92% животного белка, 85 г.", tags: ["Ягнёнок", "Кролик", "Junior"] },
+          en: { cat: "Junior · All breeds", name: "Lamb & Rabbit", desc: "Lamb and rabbit pouch for puppies; juicy meaty chunks in gravy, 92% animal protein, 85 g.", tags: ["Lamb", "Rabbit", "Junior"] } },
+        { img: "assets/products/art-dog-pouch-beef.webp",
+          az: { cat: "Adult · Bütün cinslər", name: "Beef & Rabbit", desc: "Yetkin itlər üçün mal və dovşan əti ilə paket; sousda şirəli ət parçaları, 93% heyvani protein, 85 q.", tags: ["Mal əti", "Dovşan", "Adult"] },
+          ru: { cat: "Adult · Все породы", name: "Beef & Rabbit", desc: "Пауч с говядиной и кроликом для взрослых собак; сочные кусочки мяса в соусе, 93% животного белка, 85 г.", tags: ["Говядина", "Кролик", "Adult"] },
+          en: { cat: "Adult · All breeds", name: "Beef & Rabbit", desc: "Beef and rabbit pouch for adult dogs; juicy meaty chunks in gravy, 93% animal protein, 85 g.", tags: ["Beef", "Rabbit", "Adult"] } },
+        { img: "assets/products/art-dog-pouch-poultry.webp",
+          az: { cat: "Adult · Bütün cinslər", name: "Poultry & Rabbit", desc: "Yetkin itlər üçün quş və dovşan əti ilə paket; sousda şirəli ət parçaları, 93% heyvani protein, 85 q.", tags: ["Quş əti", "Dovşan", "Adult"] },
+          ru: { cat: "Adult · Все породы", name: "Poultry & Rabbit", desc: "Пауч с птицей и кроликом для взрослых собак; сочные кусочки мяса в соусе, 93% животного белка, 85 г.", tags: ["Птица", "Кролик", "Adult"] },
+          en: { cat: "Adult · All breeds", name: "Poultry & Rabbit", desc: "Poultry and rabbit pouch for adult dogs; juicy meaty chunks in gravy, 93% animal protein, 85 g.", tags: ["Poultry", "Rabbit", "Adult"] } }
+      ]
+    },
+    {
+      group: { az: "Pişiklər üçün yaş qida (paket)", ru: "Влажный корм для кошек (паучи)", en: "Wet food for cats (pouches)" },
+      species: "cats",
+      items: [
+        { img: "assets/products/art-cat-pouch-salmon.webp",
+          az: { cat: "Adult · Bütün cinslər", name: "Salmon & Chicken", desc: "Yetkin pişiklər üçün qızılbalıq və toyuq ilə paket; sousda şirəli ət parçaları, 93% heyvani protein, 85 q.", tags: ["Qızılbalıq", "Toyuq", "Adult"] },
+          ru: { cat: "Adult · Все породы", name: "Salmon & Chicken", desc: "Пауч с лососем и курицей для взрослых кошек; сочные кусочки мяса в соусе, 93% животного белка, 85 г.", tags: ["Лосось", "Курица", "Adult"] },
+          en: { cat: "Adult · All breeds", name: "Salmon & Chicken", desc: "Salmon and chicken pouch for adult cats; juicy meaty chunks in gravy, 93% animal protein, 85 g.", tags: ["Salmon", "Chicken", "Adult"] } },
+        { img: "assets/products/art-cat-pouch-beef.webp",
+          az: { cat: "Adult · Bütün cinslər", name: "Beef & Chicken", desc: "Yetkin pişiklər üçün mal və toyuq əti ilə paket; sousda şirəli ət parçaları, 93% heyvani protein, 85 q.", tags: ["Mal əti", "Toyuq", "Adult"] },
+          ru: { cat: "Adult · Все породы", name: "Beef & Chicken", desc: "Пауч с говядиной и курицей для взрослых кошек; сочные кусочки мяса в соусе, 93% животного белка, 85 г.", tags: ["Говядина", "Курица", "Adult"] },
+          en: { cat: "Adult · All breeds", name: "Beef & Chicken", desc: "Beef and chicken pouch for adult cats; juicy meaty chunks in gravy, 93% animal protein, 85 g.", tags: ["Beef", "Chicken", "Adult"] } },
+        { img: "assets/products/art-cat-pouch-turkey.webp",
+          az: { cat: "Adult · Sterilised", name: "Sterilised — Turkey & Chicken", desc: "Sterilizə olunmuş yetkin pişiklər üçün hinduşka və toyuq ilə paket; sousda şirəli ət parçaları, 93% heyvani protein, 85 q.", tags: ["Hinduşka", "Toyuq", "Sterilised"] },
+          ru: { cat: "Adult · Sterilised", name: "Sterilised — Turkey & Chicken", desc: "Пауч с индейкой и курицей для стерилизованных взрослых кошек; сочные кусочки мяса в соусе, 93% животного белка, 85 г.", tags: ["Индейка", "Курица", "Sterilised"] },
+          en: { cat: "Adult · Sterilised", name: "Sterilised — Turkey & Chicken", desc: "Turkey and chicken pouch for sterilised adult cats; juicy meaty chunks in gravy, 93% animal protein, 85 g.", tags: ["Turkey", "Chicken", "Sterilised"] } },
+        { img: "assets/products/art-cat-pouch-kitten.webp", baby: true,
+          az: { cat: "Kitten · Bütün cinslər", name: "Kitten — Turkey & Chicken", desc: "Balaca pişiklər üçün hinduşka və toyuq ilə paket; sousda şirəli ət parçaları, 95% heyvani protein, 85 q.", tags: ["Hinduşka", "Toyuq", "Kitten"] },
+          ru: { cat: "Kitten · Все породы", name: "Kitten — Turkey & Chicken", desc: "Пауч с индейкой и курицей для котят; сочные кусочки мяса в соусе, 95% животного белка, 85 г.", tags: ["Индейка", "Курица", "Kitten"] },
+          en: { cat: "Kitten · All breeds", name: "Kitten — Turkey & Chicken", desc: "Turkey and chicken pouch for kittens; juicy meaty chunks in gravy, 95% animal protein, 85 g.", tags: ["Turkey", "Chicken", "Kitten"] } }
+      ]
+    }
+  ],
+
+  "tpl": [
+    {
+      "group": {
+        "az": "Volume Boost — həcm",
+        "ru": "Volume Boost — объём",
+        "en": "Volume Boost — volume"
+      },
+      "species": "both",
+      "items": [
+        {
+          "img": "assets/products/tpl-un-volume.webp",
+          "az": {
+            "cat": "Şampun",
+            "name": "Volume Boost Shampoo",
+            "desc": "Hər növ tükə heyrətamiz həcm verən şampun; buğda proteini və qliserinlə. 90% təbii.",
+            "tags": [
+              "Şampun",
+              "Həcm"
+            ]
+          },
+          "ru": {
+            "cat": "Шампунь",
+            "name": "Volume Boost Shampoo",
+            "desc": "Шампунь, придающий потрясающий объём любому типу шерсти; с пшеничным протеином и глицерином. 90% натуральных компонентов.",
+            "tags": [
+              "Шампунь",
+              "Объём"
+            ]
+          },
+          "en": {
+            "cat": "Shampoo",
+            "name": "Volume Boost Shampoo",
+            "desc": "Shampoo that adds astonishing volume to any kind of coat; with wheat protein and glycerin. 90% natural.",
+            "tags": [
+              "Shampoo",
+              "Volume"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-un-volume-leavein.webp",
+          "az": {
+            "cat": "Kondisioner · Step 3",
+            "name": "Volume Boost Leave-in Conditioner",
+            "desc": "Bütün tük tipləri üçün yuyulmayan həcm verən kondisioner; buğda proteini və pantenol ilə hər tük tipinə heyrətamiz sıxlıq verir. 97% təbii.",
+            "tags": [
+              "Kondisioner",
+              "Həcm"
+            ]
+          },
+          "ru": {
+            "cat": "Кондиционер · Step 3",
+            "name": "Volume Boost Leave-in Conditioner",
+            "desc": "Несмываемый кондиционер для объёма для всех типов шерсти; с пшеничным протеином и пантенолом придаёт потрясающую густоту любой шерсти. 97% натуральных компонентов.",
+            "tags": [
+              "Кондиционер",
+              "Объём"
+            ]
+          },
+          "en": {
+            "cat": "Conditioner · Step 3",
+            "name": "Volume Boost Leave-in Conditioner",
+            "desc": "Leave-in volume conditioner for all coat types; with wheat protein and panthenol it adds astonishing density to any kind of coat. 97% natural.",
+            "tags": [
+              "Conditioner",
+              "Volume"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "group": {
+        "az": "Keçələşməyə qarşı vasitə",
+        "ru": "Средство от колтунов",
+        "en": "Anti-mat & detangling"
+      },
+      "species": "both",
+      "items": [
+        {
+          "img": "assets/products/tpl-un-detangling.webp",
+          "az": {
+            "cat": "Kondisioner · Keçələşməyə qarşı",
+            "name": "Detangling Leave-in Conditioner",
+            "desc": "Keçələşməyə (dolaşıq tüklərə) qarşı vasitə — bütün tük tipləri üçün yuyulmayan kondisioner; keratin və günəbaxan ekstraktı ilə tükü açır, daranmanı asanlaşdırır və nəmi saxlayır. 97% təbii.",
+            "tags": [
+              "Keçələşməyə qarşı",
+              "Yuyulmayan"
+            ]
+          },
+          "ru": {
+            "cat": "Кондиционер · От колтунов",
+            "name": "Detangling Leave-in Conditioner",
+            "desc": "Средство от колтунов — несмываемый кондиционер для всех типов шерсти; с кератином и экстрактом подсолнечника распутывает шерсть, облегчает расчёсывание и удерживает влагу. 97% натуральных компонентов.",
+            "tags": [
+              "От колтунов",
+              "Несмываемый"
+            ]
+          },
+          "en": {
+            "cat": "Conditioner · Anti-mat",
+            "name": "Detangling Leave-in Conditioner",
+            "desc": "Anti-mat detangler — leave-in conditioner for all coat types; with keratin and sunflower seed extract it detangles the coat, eases combing and retains moisture. 97% natural.",
+            "tags": [
+              "Anti-mat",
+              "Leave-in"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "group": {
+        "az": "Balalar üçün — Puppy & Kitten",
+        "ru": "Для щенков и котят — Puppy & Kitten",
+        "en": "For puppies & kittens — Puppy & Kitten"
+      },
+      "species": "both",
+      "items": [
+        {
+          "img": "assets/products/tpl-pn-puppy.webp",
+          "baby": true,
+          "az": {
+            "cat": "Şampun",
+            "name": "Puppy & Kitten Shampoo",
+            "desc": "Balalar üçün incə efir yağı əsaslı şampun; həssas qulluq üçün, silikon, SLS, paraben və mineral yağsız.",
+            "tags": [
+              "Puppy",
+              "Kitten"
+            ]
+          },
+          "ru": {
+            "cat": "Шампунь",
+            "name": "Puppy & Kitten Shampoo",
+            "desc": "Деликатный шампунь на эфирных маслах для щенков и котят; для бережного ухода, без силиконов, SLS, парабенов и минеральных масел.",
+            "tags": [
+              "Puppy",
+              "Kitten"
+            ]
+          },
+          "en": {
+            "cat": "Shampoo",
+            "name": "Puppy & Kitten Shampoo",
+            "desc": "Delicate essential-oil shampoo for puppies and kittens; for gentle care, no silicones, SLS, parabens or mineral oils.",
+            "tags": [
+              "Puppy",
+              "Kitten"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-pn-puppy-cond.webp",
+          "baby": true,
+          "az": {
+            "cat": "Kondisioner",
+            "name": "Puppy & Kitten Conditioner",
+            "desc": "Balalar üçün incə efir yağı əsaslı kondisioner; həssas qulluq üçün, silikon, SLS, paraben və mineral yağsız.",
+            "tags": [
+              "Puppy",
+              "Kitten"
+            ]
+          },
+          "ru": {
+            "cat": "Кондиционер",
+            "name": "Puppy & Kitten Conditioner",
+            "desc": "Деликатный кондиционер на эфирных маслах для щенков и котят; для бережного ухода, без силиконов, SLS, парабенов и минеральных масел.",
+            "tags": [
+              "Puppy",
+              "Kitten"
+            ]
+          },
+          "en": {
+            "cat": "Conditioner",
+            "name": "Puppy & Kitten Conditioner",
+            "desc": "Delicate essential-oil conditioner for puppies and kittens; for gentle care, no silicones, SLS, parabens or mineral oils.",
+            "tags": [
+              "Puppy",
+              "Kitten"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "group": {
+        "az": "Pəncə və burun balzamları",
+        "ru": "Бальзамы для лап и носа",
+        "en": "Paw & nose balms"
+      },
+      "species": "both",
+      "items": [
+        {
+          "img": "assets/products/tpl-pn-pawbalm.webp",
+          "az": {
+            "cat": "Balzam",
+            "name": "Paw & Nose Balm",
+            "desc": "Pəncə və burun üçün nəmləndirici balzam; şirin badam yağı, hindqozu və sidr ağacı ilə. Pure Nature.",
+            "tags": [
+              "Pəncə",
+              "Burun",
+              "Nəmləndirmə"
+            ]
+          },
+          "ru": {
+            "cat": "Бальзам",
+            "name": "Paw & Nose Balm",
+            "desc": "Увлажняющий бальзам для лап и носа; со сладким миндальным маслом, кокосом и кедром. Pure Nature.",
+            "tags": [
+              "Лапы",
+              "Нос",
+              "Увлажнение"
+            ]
+          },
+          "en": {
+            "cat": "Balm",
+            "name": "Paw & Nose Balm",
+            "desc": "Hydrating balm for paws and nose; with sweet almond oil, coconut and cedarwood. Pure Nature.",
+            "tags": [
+              "Paw",
+              "Nose",
+              "Hydration"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-pn-pawbalm-repair.webp",
+          "az": {
+            "cat": "Balzam",
+            "name": "Paw Balm — Repairs & Protects",
+            "desc": "Pəncələri bərpa edən və qoruyan balzam; şirin badam yağı, aloe və lavanda ilə. Pure Nature.",
+            "tags": [
+              "Pəncə",
+              "Bərpa"
+            ]
+          },
+          "ru": {
+            "cat": "Бальзам",
+            "name": "Paw Balm — Repairs & Protects",
+            "desc": "Бальзам для лап, который восстанавливает и защищает; со сладким миндальным маслом, алоэ и лавандой. Pure Nature.",
+            "tags": [
+              "Лапы",
+              "Защита"
+            ]
+          },
+          "en": {
+            "cat": "Balm",
+            "name": "Paw Balm — Repairs & Protects",
+            "desc": "Paw balm that repairs and protects; with sweet almond oil, aloe and lavender. Pure Nature.",
+            "tags": [
+              "Paw",
+              "Repair"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-pn-pawbalm-nourish.webp",
+          "az": {
+            "cat": "Balzam",
+            "name": "Paw Balm — Nourishes & Restores",
+            "desc": "Pəncələri qidalandıran və bərpa edən balzam; aloe, çətənə yağı və may chang ilə. Pure Nature.",
+            "tags": [
+              "Pəncə",
+              "Qidalandırma"
+            ]
+          },
+          "ru": {
+            "cat": "Бальзам",
+            "name": "Paw Balm — Nourishes & Restores",
+            "desc": "Бальзам для лап, который питает и восстанавливает; с алоэ, конопляным маслом и may chang. Pure Nature.",
+            "tags": [
+              "Лапы",
+              "Питание"
+            ]
+          },
+          "en": {
+            "cat": "Balm",
+            "name": "Paw Balm — Nourishes & Restores",
+            "desc": "Paw balm that nourishes and restores; with aloe, hemp oil and may chang. Pure Nature.",
+            "tags": [
+              "Paw",
+              "Nourish"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "group": {
+        "az": "Gündəlik qulluq",
+        "ru": "Ежедневный уход",
+        "en": "Daily care"
+      },
+      "species": "both",
+      "items": [
+        {
+          "img": "assets/products/tpl-un-puremist.webp",
+          "az": {
+            "cat": "Sprey · 6in1",
+            "name": "Pure Mist 6in1",
+            "desc": "Gündəlik qulluq üçün 6-i-1 çoxfunksiyalı sprey; tükü, pəncələri, gözləri və qulaqları təzələyir, balalar üçün də uyğundur. Bütün tük tipləri üçün.",
+            "tags": [
+              "Sprey",
+              "6in1",
+              "Gündəlik"
+            ]
+          },
+          "ru": {
+            "cat": "Спрей · 6в1",
+            "name": "Pure Mist 6in1",
+            "desc": "Многофункциональный спрей 6в1 для ежедневного ухода; освежает шерсть, лапы, глаза и уши, подходит и для щенков и котят. Для всех типов шерсти.",
+            "tags": [
+              "Спрей",
+              "6в1",
+              "Ежедневно"
+            ]
+          },
+          "en": {
+            "cat": "Spray · 6in1",
+            "name": "Pure Mist 6in1",
+            "desc": "6-in-1 multi-functional spray for daily pet care; refreshes coat, paws, eyes and ears, suitable for growing pets too. For all coat types.",
+            "tags": [
+              "Spray",
+              "6in1",
+              "Daily"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-pn-stainless.webp",
+          "az": {
+            "cat": "Maska · 3in1",
+            "name": "Stainless Look",
+            "desc": "Pişik və itlərdə qəhvəyi göz yaşı ləkələrinə qarşı 3-i-1 gil qoruyucu maska; kaolin və MZG ilə, təbii və təhlükəsiz. 50 ml.",
+            "tags": [
+              "Göz yaşı ləkələri",
+              "Gil maska"
+            ]
+          },
+          "ru": {
+            "cat": "Маска · 3в1",
+            "name": "Stainless Look",
+            "desc": "Глиняная защитная маска 3в1 против коричневых слёзных пятен у кошек и собак; с каолином и MZG, натуральная и безопасная. 50 мл.",
+            "tags": [
+              "Слёзные пятна",
+              "Глиняная маска"
+            ]
+          },
+          "en": {
+            "cat": "Mask · 3in1",
+            "name": "Stainless Look",
+            "desc": "3-in-1 clay shield mask against brown tear stains for dogs and cats; with kaolin and MZG, natural and safe. 50 ml.",
+            "tags": [
+              "Tear stains",
+              "Clay mask"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "group": {
+        "az": "Dəsmallar",
+        "ru": "Полотенца",
+        "en": "Towels"
+      },
+      "species": "both",
+      "items": [
+        {
+          "img": "assets/products/tpl-acc-towel.webp",
+          "az": {
+            "cat": "Aksesuar",
+            "name": "Microfiber Towel",
+            "desc": "Ultra-hopdurucu mikrofiber dəsmal; çimdikdən sonra tez qurutma üçün, bütün tük tipləri. Ölçülər 60×90 / 80×120 sm.",
+            "tags": [
+              "Dəsmal",
+              "Mikrofiber"
+            ]
+          },
+          "ru": {
+            "cat": "Аксессуар",
+            "name": "Microfiber Towel",
+            "desc": "Ультравпитывающее полотенце из микрофибры; для быстрой сушки после купания, для всех типов шерсти. Размеры 60×90 / 80×120 см.",
+            "tags": [
+              "Полотенце",
+              "Микрофибра"
+            ]
+          },
+          "en": {
+            "cat": "Accessory",
+            "name": "Microfiber Towel",
+            "desc": "Ultra-absorbent microfiber towel; for quick drying after bathing, for all coat types. Sizes 60×90 / 80×120 cm.",
+            "tags": [
+              "Towel",
+              "Microfiber"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-acc-towel-ultra.webp",
+          "az": {
+            "cat": "Aksesuar",
+            "name": "Ultra-Absorbent Microfiber Towel",
+            "desc": "Premium ultra-hopdurucu mikrofiber dəsmal; xüsusilə yumşaq və yüksək hopdurma qabiliyyəti, səyahət üçün rahat. 80×160 sm-ə qədər.",
+            "tags": [
+              "Dəsmal",
+              "Premium"
+            ]
+          },
+          "ru": {
+            "cat": "Аксессуар",
+            "name": "Ultra-Absorbent Microfiber Towel",
+            "desc": "Премиальное ультравпитывающее полотенце из микрофибры; особенно мягкое, с высокой впитываемостью, удобно в поездках. До 80×160 см.",
+            "tags": [
+              "Полотенце",
+              "Премиум"
+            ]
+          },
+          "en": {
+            "cat": "Accessory",
+            "name": "Ultra-Absorbent Microfiber Towel",
+            "desc": "Premium ultra-absorbent microfiber towel; exceptionally soft with superior absorption, travel-friendly. Up to 80×160 cm.",
+            "tags": [
+              "Towel",
+              "Premium"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-acc-towel-cool.webp",
+          "az": {
+            "cat": "Aksesuar",
+            "name": "Drying & Cooling Towel",
+            "desc": "Quruducu və sərinləşdirici PVA dəsmal; isti havada sərinlədir, yumşaq və tez hopdurur, təkrar istifadə olunur. 64×43 sm, müxtəlif rənglər.",
+            "tags": [
+              "Dəsmal",
+              "Sərinləşdirici"
+            ]
+          },
+          "ru": {
+            "cat": "Аксессуар",
+            "name": "Drying & Cooling Towel",
+            "desc": "Сушащее и охлаждающее PVA-полотенце; охлаждает в жару, мягкое и быстро впитывает, многоразовое. 64×43 см, разные цвета.",
+            "tags": [
+              "Полотенце",
+              "Охлаждение"
+            ]
+          },
+          "en": {
+            "cat": "Accessory",
+            "name": "Drying & Cooling Towel",
+            "desc": "Drying and cooling PVA towel; cools in hot weather, soft, fast-absorbing and reusable. 64×43 cm, several colours.",
+            "tags": [
+              "Towel",
+              "Cooling"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "group": {
+        "az": "Daraqlar və fırçalar",
+        "ru": "Расчёски и щётки",
+        "en": "Brushes & combs"
+      },
+      "species": "both",
+      "items": [
+        {
+          "img": "assets/products/tpl-acc-slicker.webp",
+          "az": {
+            "cat": "Aksesuar",
+            "name": "Slicker Brush",
+            "desc": "Tükü daramaq və ölü tükü çıxarmaq üçün puxoderka (slicker) fırçası.",
+            "tags": [
+              "Fırça",
+              "Daraq"
+            ]
+          },
+          "ru": {
+            "cat": "Аксессуар",
+            "name": "Slicker Brush",
+            "desc": "Пуходёрка (slicker) для расчёсывания и удаления отмершей шерсти.",
+            "tags": [
+              "Щётка",
+              "Расчёсывание"
+            ]
+          },
+          "en": {
+            "cat": "Accessory",
+            "name": "Slicker Brush",
+            "desc": "Slicker brush for detangling and removing loose, dead hair.",
+            "tags": [
+              "Brush",
+              "Grooming"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-acc-woodbrush.webp",
+          "az": {
+            "cat": "Aksesuar",
+            "name": "Wooden Pin Brush",
+            "desc": "Ağac saplı pin fırça (Almaniyada istehsal); gündəlik daramaq və tükə parıltı vermək üçün.",
+            "tags": [
+              "Fırça",
+              "Ağac"
+            ]
+          },
+          "ru": {
+            "cat": "Аксессуар",
+            "name": "Wooden Pin Brush",
+            "desc": "Деревянная щётка с пинами (сделано в Германии); для ежедневного расчёсывания и придания блеска шерсти.",
+            "tags": [
+              "Щётка",
+              "Дерево"
+            ]
+          },
+          "en": {
+            "cat": "Accessory",
+            "name": "Wooden Pin Brush",
+            "desc": "Wooden pin brush (made in Germany); for daily brushing and adding shine to the coat.",
+            "tags": [
+              "Brush",
+              "Wood"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-acc-comb.webp",
+          "az": {
+            "cat": "Aksesuar",
+            "name": "Metal Grooming Comb",
+            "desc": "Paslanmayan polad daraq; seyrək və sıx dişlər, dolaşıqlığı açmaq və tükü səliqəyə salmaq üçün. Düz və əyri variantlarda.",
+            "tags": [
+              "Daraq",
+              "Metal"
+            ]
+          },
+          "ru": {
+            "cat": "Аксессуар",
+            "name": "Metal Grooming Comb",
+            "desc": "Металлический гребень из нержавеющей стали; редкие и частые зубья, для распутывания и укладки шерсти. Прямой и изогнутый варианты.",
+            "tags": [
+              "Гребень",
+              "Металл"
+            ]
+          },
+          "en": {
+            "cat": "Accessory",
+            "name": "Metal Grooming Comb",
+            "desc": "Stainless-steel grooming comb; coarse and fine teeth for detangling and finishing the coat. Straight and curved versions.",
+            "tags": [
+              "Comb",
+              "Metal"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "group": {
+        "az": "Diş qulluğu",
+        "ru": "Уход за зубами",
+        "en": "Dental care"
+      },
+      "species": "both",
+      "items": [
+        {
+          "img": "assets/products/tpl-acc-toothbrush.webp",
+          "az": {
+            "cat": "Diş qulluğu",
+            "name": "Toothbrush for Pets",
+            "desc": "Pişik və itlər üçün ikitərəfli diş fırçası (Pure Nature); gündəlik ağız qulluğu üçün.",
+            "tags": [
+              "Diş",
+              "Fırça"
+            ]
+          },
+          "ru": {
+            "cat": "Уход за зубами",
+            "name": "Toothbrush for Pets",
+            "desc": "Двусторонняя зубная щётка для кошек и собак (Pure Nature); для ежедневного ухода за полостью рта.",
+            "tags": [
+              "Зубы",
+              "Щётка"
+            ]
+          },
+          "en": {
+            "cat": "Dental care",
+            "name": "Toothbrush for Pets",
+            "desc": "Double-ended toothbrush for cats and dogs (Pure Nature); for daily oral care.",
+            "tags": [
+              "Teeth",
+              "Brush"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-acc-fingerbrush.webp",
+          "az": {
+            "cat": "Diş qulluğu",
+            "name": "Finger Brushes Set",
+            "desc": "Pişik və itlər üçün barmaq diş fırçaları dəsti (Pure Nature); diş ərpini yumşaq təmizləyir, çətin nahiyələrə çatır.",
+            "tags": [
+              "Diş",
+              "Barmaq fırça"
+            ]
+          },
+          "ru": {
+            "cat": "Уход за зубами",
+            "name": "Finger Brushes Set",
+            "desc": "Набор пальчиковых зубных щёток для кошек и собак (Pure Nature); мягко удаляет налёт и достаёт до труднодоступных зон.",
+            "tags": [
+              "Зубы",
+              "Пальчиковая щётка"
+            ]
+          },
+          "en": {
+            "cat": "Dental care",
+            "name": "Finger Brushes Set",
+            "desc": "Finger toothbrush set for cats and dogs (Pure Nature); gently removes plaque and reaches hard-to-reach areas.",
+            "tags": [
+              "Teeth",
+              "Finger brush"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-acc-toothpaste.webp",
+          "az": {
+            "cat": "Diş qulluğu",
+            "name": "Toothpaste — Kaolin & Nano Silver",
+            "desc": "Pişik və itlər üçün antibakterial diş pastası; kaolin gili və nano gümüş ilə, ağız sağlamlığını qoruyur. 100 ml. Pure Nature.",
+            "tags": [
+              "Diş",
+              "Antibakterial"
+            ]
+          },
+          "ru": {
+            "cat": "Уход за зубами",
+            "name": "Toothpaste — Kaolin & Nano Silver",
+            "desc": "Антибактериальная зубная паста для кошек и собак; с каолиновой глиной и наносеребром, поддерживает здоровье полости рта. 100 мл. Pure Nature.",
+            "tags": [
+              "Зубы",
+              "Антибактериальная"
+            ]
+          },
+          "en": {
+            "cat": "Dental care",
+            "name": "Toothpaste — Kaolin & Nano Silver",
+            "desc": "Antibacterial toothpaste for cats and dogs; with kaolin clay and nano silver, supports oral health. 100 ml. Pure Nature.",
+            "tags": [
+              "Teeth",
+              "Antibacterial"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-acc-toothpaste2.webp",
+          "az": {
+            "cat": "Diş qulluğu",
+            "name": "Toothpaste 2in1 — Kaolin & Green Tea",
+            "desc": "Pişik və itlər üçün 2-i-1 diş pastası; kaolin gili və yaşıl çay ekstraktı ilə, ərpi təmizləyir və nəfəsi təravətləndirir. 100 ml. Pure Nature.",
+            "tags": [
+              "Diş",
+              "Yaşıl çay"
+            ]
+          },
+          "ru": {
+            "cat": "Уход за зубами",
+            "name": "Toothpaste 2in1 — Kaolin & Green Tea",
+            "desc": "Зубная паста 2в1 для кошек и собак; с каолиновой глиной и экстрактом зелёного чая, удаляет налёт и освежает дыхание. 100 мл. Pure Nature.",
+            "tags": [
+              "Зубы",
+              "Зелёный чай"
+            ]
+          },
+          "en": {
+            "cat": "Dental care",
+            "name": "Toothpaste 2in1 — Kaolin & Green Tea",
+            "desc": "2-in-1 toothpaste for cats and dogs; with kaolin clay and green tea extract, removes plaque and freshens breath. 100 ml. Pure Nature.",
+            "tags": [
+              "Teeth",
+              "Green tea"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "group": {
+        "az": "Qırxım maşınları və trimmerlər",
+        "ru": "Машинки и триммеры",
+        "en": "Clippers & trimmers"
+      },
+      "species": "both",
+      "items": [
+        {
+          "img": "assets/products/tpl-acc-clipper.webp",
+          "az": {
+            "cat": "Alət",
+            "name": "Pro Hair Clipper",
+            "desc": "Peşəkar simsiz tük maşını; məcburi hava soyutma sistemi, Turbo rejimi və LCD ekran. Bütün tük tipləri üçün.",
+            "tags": [
+              "Maşın",
+              "Peşəkar"
+            ]
+          },
+          "ru": {
+            "cat": "Инструмент",
+            "name": "Pro Hair Clipper",
+            "desc": "Профессиональная беспроводная машинка для стрижки; система воздушного охлаждения, режим Turbo и LCD-дисплей. Для всех типов шерсти.",
+            "tags": [
+              "Машинка",
+              "Профессиональная"
+            ]
+          },
+          "en": {
+            "cat": "Tool",
+            "name": "Pro Hair Clipper",
+            "desc": "Professional cordless hair clipper; forced-air cooling system, Turbo mode and LCD display. For all coat types.",
+            "tags": [
+              "Clipper",
+              "Professional"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-acc-trimmer.webp",
+          "az": {
+            "cat": "Alət",
+            "name": "Cordless Trimmer",
+            "desc": "Simsiz dəqiq trimmer; pəncə, üz və həssas nahiyələrin səliqəli kəsimi üçün, sakit və yüngül.",
+            "tags": [
+              "Trimmer",
+              "Pəncə"
+            ]
+          },
+          "ru": {
+            "cat": "Инструмент",
+            "name": "Cordless Trimmer",
+            "desc": "Беспроводной триммер для точной стрижки; для аккуратной стрижки лап, морды и чувствительных зон, тихий и лёгкий.",
+            "tags": [
+              "Триммер",
+              "Лапы"
+            ]
+          },
+          "en": {
+            "cat": "Tool",
+            "name": "Cordless Trimmer",
+            "desc": "Cordless precision trimmer; for neat trimming of paws, face and sensitive areas, quiet and lightweight.",
+            "tags": [
+              "Trimmer",
+              "Paws"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-acc-vacuum.webp",
+          "az": {
+            "cat": "Alət",
+            "name": "Grooming Vacuum Kit",
+            "desc": "Peşəkar qulluq vakuum dəsti; tük maşını və nasadkaları ilə tükü kəsərkən eyni anda toplayır — təmiz qulluq üçün.",
+            "tags": [
+              "Vakuum",
+              "Qulluq"
+            ]
+          },
+          "ru": {
+            "cat": "Инструмент",
+            "name": "Grooming Vacuum Kit",
+            "desc": "Профессиональный груминговый вакуумный набор; с машинкой и насадками собирает шерсть прямо во время стрижки — для чистого ухода.",
+            "tags": [
+              "Вакуум",
+              "Груминг"
+            ]
+          },
+          "en": {
+            "cat": "Tool",
+            "name": "Grooming Vacuum Kit",
+            "desc": "Professional grooming vacuum kit; with clipper and attachments it collects hair while trimming — for clean grooming.",
+            "tags": [
+              "Vacuum",
+              "Grooming"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-acc-blade.webp",
+          "az": {
+            "cat": "Ehtiyat hissə",
+            "name": "Clipper Blade",
+            "desc": "Tauro Pro Line tük maşınları üçün əvəzedici kəsici baş; iti və davamlı.",
+            "tags": [
+              "Bıçaq",
+              "Ehtiyat"
+            ]
+          },
+          "ru": {
+            "cat": "Запчасть",
+            "name": "Clipper Blade",
+            "desc": "Сменный режущий блок для машинок Tauro Pro Line; острый и долговечный.",
+            "tags": [
+              "Лезвие",
+              "Запчасть"
+            ]
+          },
+          "en": {
+            "cat": "Spare part",
+            "name": "Clipper Blade",
+            "desc": "Replacement cutting blade for Tauro Pro Line clippers; sharp and durable.",
+            "tags": [
+              "Blade",
+              "Spare"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "group": {
+        "az": "Dırnaq qulluğu",
+        "ru": "Уход за когтями",
+        "en": "Claw care"
+      },
+      "species": "both",
+      "items": [
+        {
+          "img": "assets/products/tpl-acc-scissors.webp",
+          "az": {
+            "cat": "Aksesuar",
+            "name": "Claw Scissors",
+            "desc": "Pişik və balaca heyvanlar üçün dırnaq qayçısı; ağac saplı, dəqiq kəsim.",
+            "tags": [
+              "Dırnaq",
+              "Qayçı"
+            ]
+          },
+          "ru": {
+            "cat": "Аксессуар",
+            "name": "Claw Scissors",
+            "desc": "Когтерез-ножницы для кошек и мелких животных; деревянные ручки, аккуратный срез.",
+            "tags": [
+              "Когти",
+              "Ножницы"
+            ]
+          },
+          "en": {
+            "cat": "Accessory",
+            "name": "Claw Scissors",
+            "desc": "Claw scissors for cats and small pets; wooden handles, precise cut.",
+            "tags": [
+              "Claws",
+              "Scissors"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-acc-clawclip.webp",
+          "az": {
+            "cat": "Aksesuar",
+            "name": "Claw Clipper",
+            "desc": "Ağac saplı dırnaq kəskisi; pişik və itlərin dırnaqlarının təhlükəsiz və dəqiq kəsimi üçün.",
+            "tags": [
+              "Dırnaq",
+              "Kəski"
+            ]
+          },
+          "ru": {
+            "cat": "Аксессуар",
+            "name": "Claw Clipper",
+            "desc": "Когтерез с деревянными ручками; для безопасной и точной стрижки когтей кошек и собак.",
+            "tags": [
+              "Когти",
+              "Когтерез"
+            ]
+          },
+          "en": {
+            "cat": "Accessory",
+            "name": "Claw Clipper",
+            "desc": "Claw clipper with wooden handles; for safe and precise trimming of cats' and dogs' claws.",
+            "tags": [
+              "Claws",
+              "Clipper"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "group": {
+        "az": "Ultra Natural Care",
+        "ru": "Ultra Natural Care",
+        "en": "Ultra Natural Care"
+      },
+      "species": "both",
+      "items": [
+        {
+          "img": "assets/products/tpl-un-deep.webp",
+          "az": {
+            "cat": "Şampun · Step 1",
+            "name": "Deep Clean Shampoo",
+            "desc": "Bütün tük tipləri üçün dərin təmizləyən şampun; dəri və tükdən artıq yağ, çirk və toz hissəciklərini təmizləyir. Adaçayı, pantenol və qliserinlə, 94% təbii.",
+            "tags": [
+              "Şampun",
+              "Dərin təmizləmə"
+            ]
+          },
+          "ru": {
+            "cat": "Шампунь · Step 1",
+            "name": "Deep Clean Shampoo",
+            "desc": "Глубоко очищающий шампунь для всех типов шерсти; удаляет излишки жира, грязь и частицы пыли с кожи и шерсти. С шалфеем, пантенолом и глицерином, 94% натуральных компонентов.",
+            "tags": [
+              "Шампунь",
+              "Глубокое очищение"
+            ]
+          },
+          "en": {
+            "cat": "Shampoo · Step 1",
+            "name": "Deep Clean Shampoo",
+            "desc": "Deep cleansing shampoo for all coat types; wicks away excess oil, dirt and dust particles from skin and coat. With sage, panthenol and glycerin, 94% natural.",
+            "tags": [
+              "Shampoo",
+              "Deep clean"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-un-repair-sh.webp",
+          "az": {
+            "cat": "Şampun · Step 2",
+            "name": "Repair & Nourish Shampoo",
+            "desc": "Bütün tük tipləri üçün bərpa edən və qidalandıran şampun; tükün quruluşunu bərpa edir, susuzlaşmış dərini və zədələnmiş tükü canlandırır. 95% təbii.",
+            "tags": [
+              "Şampun",
+              "Bərpa"
+            ]
+          },
+          "ru": {
+            "cat": "Шампунь · Step 2",
+            "name": "Repair & Nourish Shampoo",
+            "desc": "Восстанавливающий и питающий шампунь для всех типов шерсти; восстанавливает структуру волоса, оживляет обезвоженную кожу и повреждённую шерсть. 95% натуральных компонентов.",
+            "tags": [
+              "Шампунь",
+              "Восстановление"
+            ]
+          },
+          "en": {
+            "cat": "Shampoo · Step 2",
+            "name": "Repair & Nourish Shampoo",
+            "desc": "Repairing and nourishing shampoo for all coat types; repairs hair structure, revitalizes dehydrated skin and damaged coat. 95% natural.",
+            "tags": [
+              "Shampoo",
+              "Repair"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-un-repair-mask.webp",
+          "az": {
+            "cat": "Maska · Step 3",
+            "name": "Repair & Nourish Mask",
+            "desc": "Bütün tük tipləri üçün bərpaedici maska; şi yağı və hidrolizə olunmuş ipəklə tükü dərindən bərpa edir. 97% təbii.",
+            "tags": [
+              "Maska",
+              "Bərpa"
+            ]
+          },
+          "ru": {
+            "cat": "Маска · Step 3",
+            "name": "Repair & Nourish Mask",
+            "desc": "Восстанавливающая маска для всех типов шерсти; глубоко восстанавливает с маслом ши и гидролизованным шёлком. 97% натуральных компонентов.",
+            "tags": [
+              "Маска",
+              "Восстановление"
+            ]
+          },
+          "en": {
+            "cat": "Mask · Step 3",
+            "name": "Repair & Nourish Mask",
+            "desc": "Repairing mask for all coat types; deeply restores with shea butter and hydrolyzed silk. 97% natural.",
+            "tags": [
+              "Mask",
+              "Repair"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-un-whitening.webp",
+          "az": {
+            "cat": "Şampun · Ağ tük",
+            "name": "Whitening Shampoo",
+            "desc": "Ağ və açıq tüklər üçün ağardıcı şampun; açıq və ağ tükü canlandırır və nəmləndirir. 92% təbii.",
+            "tags": [
+              "Şampun",
+              "Ağ tük"
+            ]
+          },
+          "ru": {
+            "cat": "Шампунь · Белая шерсть",
+            "name": "Whitening Shampoo",
+            "desc": "Отбеливающий шампунь для белой и светлой шерсти; интенсивно осветляет и увлажняет светлую и белую шерсть. 92% натуральных компонентов.",
+            "tags": [
+              "Шампунь",
+              "Белая шерсть"
+            ]
+          },
+          "en": {
+            "cat": "Shampoo · White coat",
+            "name": "Whitening Shampoo",
+            "desc": "Whitening shampoo for white and light coats; intensely brightens and hydrates light and white coats. 92% natural.",
+            "tags": [
+              "Shampoo",
+              "White coat"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-un-hydrate-mask.webp",
+          "az": {
+            "cat": "Maska · Açıq tük",
+            "name": "Intense Hydrate Mask",
+            "desc": "Ağ və açıq tüklər üçün intensiv nəmləndirici maska; quru dərinin və açıq tükün təbii nəm balansını bərpa edir. 97% təbii.",
+            "tags": [
+              "Maska",
+              "Nəmləndirmə"
+            ]
+          },
+          "ru": {
+            "cat": "Маска · Светлая шерсть",
+            "name": "Intense Hydrate Mask",
+            "desc": "Интенсивно увлажняющая маска для белой и светлой шерсти; восстанавливает естественный баланс влаги сухой кожи и светлой шерсти. 97% натуральных компонентов.",
+            "tags": [
+              "Маска",
+              "Увлажнение"
+            ]
+          },
+          "en": {
+            "cat": "Mask · Light coat",
+            "name": "Intense Hydrate Mask",
+            "desc": "Intensive hydrating mask for white and light coats; restores the natural moisture balance of dry skin and light coat. 97% natural.",
+            "tags": [
+              "Mask",
+              "Hydration"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-un-hydrate-sh.webp",
+          "az": {
+            "cat": "Şampun · Açıq tük",
+            "name": "Intense Hydrate Shampoo",
+            "desc": "Ağ və açıq tüklər üçün intensiv nəmləndirici şampun; quru dərini və açıq tükü nəmləndirir və təbii nəm balansını bərpa edir. Badam, üreya və bal ekstraktı ilə, 96% təbii.",
+            "tags": [
+              "Şampun",
+              "Nəmləndirmə"
+            ]
+          },
+          "ru": {
+            "cat": "Шампунь · Светлая шерсть",
+            "name": "Intense Hydrate Shampoo",
+            "desc": "Интенсивно увлажняющий шампунь для белой и светлой шерсти; увлажняет сухую кожу и светлую шерсть, восстанавливает естественный баланс влаги. С миндалём, мочевиной и экстрактом мёда, 96% натуральных компонентов.",
+            "tags": [
+              "Шампунь",
+              "Увлажнение"
+            ]
+          },
+          "en": {
+            "cat": "Shampoo · Light coat",
+            "name": "Intense Hydrate Shampoo",
+            "desc": "Intensively hydrating shampoo for white and light coats; hydrates dry skin and light coat and restores the natural moisture balance. With almond, urea and honey extract, 96% natural.",
+            "tags": [
+              "Shampoo",
+              "Hydration"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-un-wc-deep.webp",
+          "az": {
+            "cat": "Şampun · Ağ tük",
+            "name": "White Coat Deep Clean Shampoo",
+            "desc": "Ağ və açıq tüklər üçün dərin təmizləyən şampun; sapı ağardan effekt verir, çirk və ləkələri təmizləyir. Bütün tük tipləri üçün.",
+            "tags": [
+              "Şampun",
+              "Ağ tük"
+            ]
+          },
+          "ru": {
+            "cat": "Шампунь · Белая шерсть",
+            "name": "White Coat Deep Clean Shampoo",
+            "desc": "Глубоко очищающий шампунь для белой и светлой шерсти; придаёт осветляющий эффект, удаляет грязь и пятна. Для всех типов шерсти.",
+            "tags": [
+              "Шампунь",
+              "Белая шерсть"
+            ]
+          },
+          "en": {
+            "cat": "Shampoo · White coat",
+            "name": "White Coat Deep Clean Shampoo",
+            "desc": "Deep cleansing shampoo for white and light coats; gives a brightening effect, removes dirt and stains. For all coat types.",
+            "tags": [
+              "Shampoo",
+              "White coat"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "group": {
+        "az": "Pure Nature",
+        "ru": "Pure Nature",
+        "en": "Pure Nature"
+      },
+      "species": "both",
+      "items": [
+        {
+          "img": "assets/products/tpl-pn-5in1.webp",
+          "az": {
+            "cat": "Şampun",
+            "name": "5in1 Shampoo",
+            "desc": "Nəmləndirilmiş və güclü tük üçün efir yağı əsaslı universal 5-i-1 şampun; silikon, SLS, paraben və mineral yağsız.",
+            "tags": [
+              "5in1",
+              "Efir yağı"
+            ]
+          },
+          "ru": {
+            "cat": "Шампунь",
+            "name": "5in1 Shampoo",
+            "desc": "Универсальный шампунь 5в1 на эфирных маслах для увлажнённой и крепкой шерсти; без силиконов, SLS, парабенов и минеральных масел.",
+            "tags": [
+              "5в1",
+              "Эфирные масла"
+            ]
+          },
+          "en": {
+            "cat": "Shampoo",
+            "name": "5in1 Shampoo",
+            "desc": "Universal 5-in-1 essential-oil shampoo for moisturized and strong hair; no silicones, SLS, parabens or mineral oils.",
+            "tags": [
+              "5in1",
+              "Essential oils"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-pn-furgrowth.webp",
+          "az": {
+            "cat": "Şampun",
+            "name": "Fur Growth Shampoo",
+            "desc": "Tükün sıxlığı və yenidən böyüməsi üçün efir yağı əsaslı şampun.",
+            "tags": [
+              "Tük böyüməsi"
+            ]
+          },
+          "ru": {
+            "cat": "Шампунь",
+            "name": "Fur Growth Shampoo",
+            "desc": "Шампунь на эфирных маслах для густоты и роста шерсти.",
+            "tags": [
+              "Рост шерсти"
+            ]
+          },
+          "en": {
+            "cat": "Shampoo",
+            "name": "Fur Growth Shampoo",
+            "desc": "Essential-oil shampoo for coat density and regrowth.",
+            "tags": [
+              "Fur growth"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-pn-magicplex.webp",
+          "az": {
+            "cat": "Şampun",
+            "name": "Magic-Plex Shampoo",
+            "desc": "Tükü ani canlandıran efir yağı əsaslı bərpaedici şampun.",
+            "tags": [
+              "Bərpa"
+            ]
+          },
+          "ru": {
+            "cat": "Шампунь",
+            "name": "Magic-Plex Shampoo",
+            "desc": "Восстанавливающий шампунь на эфирных маслах для мгновенного оживления шерсти.",
+            "tags": [
+              "Восстановление"
+            ]
+          },
+          "en": {
+            "cat": "Shampoo",
+            "name": "Magic-Plex Shampoo",
+            "desc": "Repairing essential-oil shampoo for instant revitalization.",
+            "tags": [
+              "Repair"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-pn-5in1-cond.webp",
+          "az": {
+            "cat": "Kondisioner",
+            "name": "5in1 Conditioner",
+            "desc": "Nəmləndirilmiş və güclü tük üçün efir yağı əsaslı universal 5-i-1 kondisioner; silikon, SLS, paraben və mineral yağsız.",
+            "tags": [
+              "5in1",
+              "Efir yağı"
+            ]
+          },
+          "ru": {
+            "cat": "Кондиционер",
+            "name": "5in1 Conditioner",
+            "desc": "Универсальный кондиционер 5в1 на эфирных маслах для увлажнённой и крепкой шерсти; без силиконов, SLS, парабенов и минеральных масел.",
+            "tags": [
+              "5в1",
+              "Эфирные масла"
+            ]
+          },
+          "en": {
+            "cat": "Conditioner",
+            "name": "5in1 Conditioner",
+            "desc": "Universal 5-in-1 essential-oil conditioner for moisturized and strong hair; no silicones, SLS, parabens or mineral oils.",
+            "tags": [
+              "5in1",
+              "Essential oils"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-pn-furgrowth-cond.webp",
+          "az": {
+            "cat": "Kondisioner",
+            "name": "Fur Growth Conditioner",
+            "desc": "Tükün sıxlığı və yenidən böyüməsi üçün efir yağı əsaslı kondisioner.",
+            "tags": [
+              "Tük böyüməsi"
+            ]
+          },
+          "ru": {
+            "cat": "Кондиционер",
+            "name": "Fur Growth Conditioner",
+            "desc": "Кондиционер на эфирных маслах для густоты и роста шерсти.",
+            "tags": [
+              "Рост шерсти"
+            ]
+          },
+          "en": {
+            "cat": "Conditioner",
+            "name": "Fur Growth Conditioner",
+            "desc": "Essential-oil conditioner for coat density and regrowth.",
+            "tags": [
+              "Fur growth"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-pn-furgrowth-leavein.webp",
+          "az": {
+            "cat": "Kondisioner · Yuyulmayan",
+            "name": "Fur Growth Leave-in Conditioner",
+            "desc": "Tükün sıxlığı və böyüməsi üçün efir yağı əsaslı yuyulmayan kondisioner; gün ərzində qoruyur və nəmləndirir. 250 ml.",
+            "tags": [
+              "Tük böyüməsi",
+              "Yuyulmayan"
+            ]
+          },
+          "ru": {
+            "cat": "Кондиционер · Несмываемый",
+            "name": "Fur Growth Leave-in Conditioner",
+            "desc": "Несмываемый кондиционер на эфирных маслах для густоты и роста шерсти; защищает и увлажняет в течение дня. 250 мл.",
+            "tags": [
+              "Рост шерсти",
+              "Несмываемый"
+            ]
+          },
+          "en": {
+            "cat": "Conditioner · Leave-in",
+            "name": "Fur Growth Leave-in Conditioner",
+            "desc": "Leave-in essential-oil conditioner for coat density and regrowth; protects and moisturizes throughout the day. 250 ml.",
+            "tags": [
+              "Fur growth",
+              "Leave-in"
+            ]
+          }
+        },
+        {
+          "img": "assets/products/tpl-pn-magicplex-cond.webp",
+          "az": {
+            "cat": "Kondisioner",
+            "name": "Magic-Plex Conditioner",
+            "desc": "Tükü ani canlandıran efir yağı əsaslı bərpaedici kondisioner.",
+            "tags": [
+              "Bərpa"
+            ]
+          },
+          "ru": {
+            "cat": "Кондиционер",
+            "name": "Magic-Plex Conditioner",
+            "desc": "Восстанавливающий кондиционер на эфирных маслах для мгновенного оживления шерсти.",
+            "tags": [
+              "Восстановление"
+            ]
+          },
+          "en": {
+            "cat": "Conditioner",
+            "name": "Magic-Plex Conditioner",
+            "desc": "Repairing essential-oil conditioner for instant revitalization.",
+            "tags": [
+              "Repair"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+
+  "misoko": [
+    {
+      group: { az: "Yumşaq plüş oyuncaqlar", ru: "Плюшевые игрушки", en: "Plush toys" },
+      species: "dogs",
+      items: [
+        { img: "assets/products/misoko-beimr01182.webp",
+          az: { cat: "Yumşaq oyuncaq", name: "Limon", desc: "Səsli yumşaq plüş oyuncaq «Limon»; əyləncəli oyun və yumşaq gəmirmək üçün.", tags: ["Plüş", "Səsli"] },
+          ru: { cat: "Плюшевая игрушка", name: "Лимон", desc: "Мягкая плюшевая игрушка «Лимон» с пищалкой; для весёлой игры и бережного покусывания.", tags: ["Плюш", "Пищалка"] },
+          en: { cat: "Plush toy", name: "Lemon", desc: "Soft plush toy “Lemon” with a squeaker; for playful fun and gentle chewing.", tags: ["Plush", "Squeaky"] } },
+        { img: "assets/products/misoko-beimr01181.webp",
+          az: { cat: "Yumşaq oyuncaq", name: "Portağal", desc: "Səsli yumşaq plüş oyuncaq «Portağal»; əyləncəli oyun və yumşaq gəmirmək üçün.", tags: ["Plüş", "Səsli"] },
+          ru: { cat: "Плюшевая игрушка", name: "Апельсин", desc: "Мягкая плюшевая игрушка «Апельсин» с пищалкой; для весёлой игры и бережного покусывания.", tags: ["Плюш", "Пищалка"] },
+          en: { cat: "Plush toy", name: "Orange", desc: "Soft plush toy “Orange” with a squeaker; for playful fun and gentle chewing.", tags: ["Plush", "Squeaky"] } },
+        { img: "assets/products/misoko-beimr01157.webp",
+          az: { cat: "Yumşaq oyuncaq", name: "Armud", desc: "Səsli yumşaq plüş oyuncaq «Armud»; əyləncəli oyun və yumşaq gəmirmək üçün.", tags: ["Plüş", "Səsli"] },
+          ru: { cat: "Плюшевая игрушка", name: "Груша", desc: "Мягкая плюшевая игрушка «Груша» с пищалкой; для весёлой игры и бережного покусывания.", tags: ["Плюш", "Пищалка"] },
+          en: { cat: "Plush toy", name: "Pear", desc: "Soft plush toy “Pear” with a squeaker; for playful fun and gentle chewing.", tags: ["Plush", "Squeaky"] } },
+        { img: "assets/products/misoko-beimr01375.webp",
+          az: { cat: "Yumşaq oyuncaq", name: "Avokado", desc: "Səsli yumşaq plüş oyuncaq «Avokado»; əyləncəli oyun və yumşaq gəmirmək üçün.", tags: ["Plüş", "Səsli"] },
+          ru: { cat: "Плюшевая игрушка", name: "Авокадо", desc: "Мягкая плюшевая игрушка «Авокадо» с пищалкой; для весёлой игры и бережного покусывания.", tags: ["Плюш", "Пищалка"] },
+          en: { cat: "Plush toy", name: "Avocado", desc: "Soft plush toy “Avocado” with a squeaker; for playful fun and gentle chewing.", tags: ["Plush", "Squeaky"] } },
+        { img: "assets/products/misoko-beimr01373.webp",
+          az: { cat: "Yumşaq oyuncaq", name: "Kivi", desc: "Səsli yumşaq plüş oyuncaq «Kivi»; əyləncəli oyun və yumşaq gəmirmək üçün.", tags: ["Plüş", "Səsli"] },
+          ru: { cat: "Плюшевая игрушка", name: "Киви", desc: "Мягкая плюшевая игрушка «Киви» с пищалкой; для весёлой игры и бережного покусывания.", tags: ["Плюш", "Пищалка"] },
+          en: { cat: "Plush toy", name: "Kiwi", desc: "Soft plush toy “Kiwi” with a squeaker; for playful fun and gentle chewing.", tags: ["Plush", "Squeaky"] } },
+        { img: "assets/products/misoko-beimr01374.webp",
+          az: { cat: "Yumşaq oyuncaq", name: "Üzüm", desc: "Səsli yumşaq plüş oyuncaq «Üzüm»; əyləncəli oyun və yumşaq gəmirmək üçün.", tags: ["Plüş", "Səsli"] },
+          ru: { cat: "Плюшевая игрушка", name: "Виноград", desc: "Мягкая плюшевая игрушка «Виноград» с пищалкой; для весёлой игры и бережного покусывания.", tags: ["Плюш", "Пищалка"] },
+          en: { cat: "Plush toy", name: "Grape", desc: "Soft plush toy “Grape” with a squeaker; for playful fun and gentle chewing.", tags: ["Plush", "Squeaky"] } },
+        { img: "assets/products/misoko-sinmisok30325.webp",
+          az: { cat: "Yumşaq oyuncaq", name: "Yengec", desc: "Səsli yumşaq plüş oyuncaq «Yengec»; əyləncəli oyun və yumşaq gəmirmək üçün.", tags: ["Plüş", "Səsli"] },
+          ru: { cat: "Плюшевая игрушка", name: "Краб", desc: "Мягкая плюшевая игрушка «Краб» с пищалкой; для весёлой игры и бережного покусывания.", tags: ["Плюш", "Пищалка"] },
+          en: { cat: "Plush toy", name: "Crab", desc: "Soft plush toy “Crab” with a squeaker; for playful fun and gentle chewing.", tags: ["Plush", "Squeaky"] } },
+        { img: "assets/products/misoko-hanyt132409.webp",
+          az: { cat: "Yumşaq oyuncaq", name: "Dəvəquşu", desc: "Səsli yumşaq plüş oyuncaq «Dəvəquşu»; əyləncəli oyun və yumşaq gəmirmək üçün.", tags: ["Plüş", "Səsli"] },
+          ru: { cat: "Плюшевая игрушка", name: "Страус", desc: "Мягкая плюшевая игрушка «Страус» с пищалкой; для весёлой игры и бережного покусывания.", tags: ["Плюш", "Пищалка"] },
+          en: { cat: "Plush toy", name: "Ostrich", desc: "Soft plush toy “Ostrich” with a squeaker; for playful fun and gentle chewing.", tags: ["Plush", "Squeaky"] } }
+      ]
+    },
+    {
+      group: { az: "Lateks heyvancıqlar və fiqurlar", ru: "Латексные зверюшки и фигурки", en: "Latex animals & figures" },
+      species: "dogs",
+      items: [
+        { img: "assets/products/misoko-beirj02939.webp",
+          az: { cat: "Lateks oyuncaq", name: "Taksa it", desc: "Səsli lateks/rezin oyuncaq «Taksa it»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Собачка такса", desc: "Латексная/резиновая игрушка-пищалка «Собачка такса»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Dachshund dog", desc: "Latex/rubber squeaky toy “Dachshund dog”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj05706.webp",
+          az: { cat: "Lateks oyuncaq", name: "Siçan", desc: "Səsli lateks/rezin oyuncaq «Siçan»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Мышка", desc: "Латексная/резиновая игрушка-пищалка «Мышка»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Mouse", desc: "Latex/rubber squeaky toy “Mouse”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj01393.webp",
+          az: { cat: "Lateks oyuncaq", name: "Ördək", desc: "Səsli lateks/rezin oyuncaq «Ördək»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Уточка", desc: "Латексная/резиновая игрушка-пищалка «Уточка»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Duck", desc: "Latex/rubber squeaky toy “Duck”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj01391.webp",
+          az: { cat: "Lateks oyuncaq", name: "Xoruz", desc: "Səsli lateks/rezin oyuncaq «Xoruz»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Петух", desc: "Латексная/резиновая игрушка-пищалка «Петух»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Rooster", desc: "Latex/rubber squeaky toy “Rooster”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj05707.webp",
+          az: { cat: "Lateks oyuncaq", name: "Tülkü", desc: "Səsli lateks/rezin oyuncaq «Tülkü»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Лиса", desc: "Латексная/резиновая игрушка-пищалка «Лиса»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Fox", desc: "Latex/rubber squeaky toy “Fox”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj03769.webp",
+          az: { cat: "Lateks oyuncaq", name: "Kirpi", desc: "Səsli lateks/rezin oyuncaq «Kirpi»; yumşaq və gəmirməyə davamlı. Bir neçə rəngdə mövcuddur.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Ёжик", desc: "Латексная/резиновая игрушка-пищалка «Ёжик»; мягкая и устойчивая к покусыванию. Доступно в нескольких цветах.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Hedgehog", desc: "Latex/rubber squeaky toy “Hedgehog”; soft and chew-resistant. Available in several colours.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj02573.webp",
+          az: { cat: "Lateks oyuncaq", name: "Fil", desc: "Səsli lateks/rezin oyuncaq «Fil»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Слоник", desc: "Латексная/резиновая игрушка-пищалка «Слоник»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Elephant", desc: "Latex/rubber squeaky toy “Elephant”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj05710.webp",
+          az: { cat: "Lateks oyuncaq", name: "Begemot", desc: "Səsli lateks/rezin oyuncaq «Begemot»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Бегемот", desc: "Латексная/резиновая игрушка-пищалка «Бегемот»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Hippo", desc: "Latex/rubber squeaky toy “Hippo”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj01770.webp",
+          az: { cat: "Lateks oyuncaq", name: "Kərgədan", desc: "Səsli lateks/rezin oyuncaq «Kərgədan»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Носорог", desc: "Латексная/резиновая игрушка-пищалка «Носорог»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Rhino", desc: "Latex/rubber squeaky toy “Rhino”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj06663.webp",
+          az: { cat: "Lateks oyuncaq", name: "Suiti", desc: "Səsli lateks/rezin oyuncaq «Suiti»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Тюлень", desc: "Латексная/резиновая игрушка-пищалка «Тюлень»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Seal", desc: "Latex/rubber squeaky toy “Seal”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj05708.webp",
+          az: { cat: "Lateks oyuncaq", name: "Akula", desc: "Səsli lateks/rezin oyuncaq «Akula»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Акула", desc: "Латексная/резиновая игрушка-пищалка «Акула»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Shark", desc: "Latex/rubber squeaky toy “Shark”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beimr01372.webp",
+          az: { cat: "Lateks oyuncaq", name: "Ay", desc: "Səsli lateks/rezin oyuncaq «Ay»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Луна", desc: "Латексная/резиновая игрушка-пищалка «Луна»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Moon", desc: "Latex/rubber squeaky toy “Moon”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj03851.webp",
+          az: { cat: "Lateks oyuncaq", name: "Krossovka", desc: "Səsli lateks/rezin oyuncaq «Krossovka»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Кроссовок", desc: "Латексная/резиновая игрушка-пищалка «Кроссовок»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Sneaker shoe", desc: "Latex/rubber squeaky toy “Sneaker shoe”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } }
+      ]
+    },
+    {
+      group: { az: "Lateks dinozavrlar və sürünənlər", ru: "Латексные динозавры и рептилии", en: "Latex dinosaurs & reptiles" },
+      species: "dogs",
+      items: [
+        { img: "assets/products/misoko-beitj00614.webp",
+          az: { cat: "Lateks oyuncaq", name: "Dinozavr", desc: "Səsli lateks/rezin oyuncaq «Dinozavr»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Динозавр", desc: "Латексная/резиновая игрушка-пищалка «Динозавр»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Dinosaur", desc: "Latex/rubber squeaky toy “Dinosaur”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj06374.webp",
+          az: { cat: "Lateks oyuncaq", name: "Dinozavr (brontozavr)", desc: "Səsli lateks/rezin oyuncaq «Dinozavr (brontozavr)»; yumşaq və gəmirməyə davamlı. Bir neçə rəngdə mövcuddur.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Динозавр (бронтозавр)", desc: "Латексная/резиновая игрушка-пищалка «Динозавр (бронтозавр)»; мягкая и устойчивая к покусыванию. Доступно в нескольких цветах.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Dinosaur (Brontosaurus)", desc: "Latex/rubber squeaky toy “Dinosaur (Brontosaurus)”; soft and chew-resistant. Available in several colours.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beitj00613.webp",
+          az: { cat: "Lateks oyuncaq", name: "Dinozavr (Steqozavr)", desc: "Səsli lateks/rezin oyuncaq «Dinozavr (Steqozavr)»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Динозавр (Стегозавр)", desc: "Латексная/резиновая игрушка-пищалка «Динозавр (Стегозавр)»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Dinosaur (Stegosaurus)", desc: "Latex/rubber squeaky toy “Dinosaur (Stegosaurus)”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj06765.webp",
+          az: { cat: "Lateks oyuncaq", name: "Timsah", desc: "Səsli lateks/rezin oyuncaq «Timsah»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Крокодильчик", desc: "Латексная/резиновая игрушка-пищалка «Крокодильчик»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Crocodile", desc: "Latex/rubber squeaky toy “Crocodile”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj06664.webp",
+          az: { cat: "Lateks oyuncaq", name: "Tısbağa", desc: "Səsli lateks/rezin oyuncaq «Tısbağa»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Черепаха", desc: "Латексная/резиновая игрушка-пищалка «Черепаха»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Turtle", desc: "Latex/rubber squeaky toy “Turtle”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } }
+      ]
+    },
+    {
+      group: { az: "Lateks yeməklər və içkilər", ru: "Латексная еда и напитки", en: "Latex food & drinks" },
+      species: "dogs",
+      items: [
+        { img: "assets/products/misoko-beimr01503.webp",
+          az: { cat: "Lateks oyuncaq", name: "Brokoli", desc: "Səsli lateks/rezin oyuncaq «Brokoli»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Брокколи", desc: "Латексная/резиновая игрушка-пищалка «Брокколи»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Broccoli", desc: "Latex/rubber squeaky toy “Broccoli”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beimr01502.webp",
+          az: { cat: "Lateks oyuncaq", name: "Sarımsaq", desc: "Səsli lateks/rezin oyuncaq «Sarımsaq»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Чеснок", desc: "Латексная/резиновая игрушка-пищалка «Чеснок»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Garlic", desc: "Latex/rubber squeaky toy “Garlic”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj03530.webp",
+          az: { cat: "Lateks oyuncaq", name: "Qızılbalıq suşi (nigiri)", desc: "Səsli lateks/rezin oyuncaq «Qızılbalıq suşi (nigiri)»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Суши с лососем (нигири)", desc: "Латексная/резиновая игрушка-пищалка «Суши с лососем (нигири)»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Salmon sushi (nigiri)", desc: "Latex/rubber squeaky toy “Salmon sushi (nigiri)”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj03528.webp",
+          az: { cat: "Lateks oyuncaq", name: "Suşi roll", desc: "Səsli lateks/rezin oyuncaq «Suşi roll»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Суши-ролл", desc: "Латексная/резиновая игрушка-пищалка «Суши-ролл»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Sushi roll", desc: "Latex/rubber squeaky toy “Sushi roll”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj03707.webp",
+          az: { cat: "Lateks oyuncaq", name: "Alma şirəsi paketi", desc: "Səsli lateks/rezin oyuncaq «Alma şirəsi paketi»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Пакет яблочного сока", desc: "Латексная/резиновая игрушка-пищалка «Пакет яблочного сока»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Apple juice carton", desc: "Latex/rubber squeaky toy “Apple juice carton”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj03706.webp",
+          az: { cat: "Lateks oyuncaq", name: "Portağal şirəsi butulkası", desc: "Səsli lateks/rezin oyuncaq «Portağal şirəsi butulkası»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Бутылка апельсинового сока", desc: "Латексная/резиновая игрушка-пищалка «Бутылка апельсинового сока»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Orange juice bottle", desc: "Latex/rubber squeaky toy “Orange juice bottle”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj03708.webp",
+          az: { cat: "Lateks oyuncaq", name: "Üzüm qazlı içki bankası", desc: "Səsli lateks/rezin oyuncaq «Üzüm qazlı içki bankası»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Банка виноградной газировки", desc: "Латексная/резиновая игрушка-пищалка «Банка виноградной газировки»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Grape soda can", desc: "Latex/rubber squeaky toy “Grape soda can”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } }
+      ]
+    },
+    {
+      group: { az: "Lentli və ayaqlı lateks oyuncaqlar", ru: "Латексные игрушки с ленточками и лапками", en: "Latex toys with ribbons & legs" },
+      species: "dogs",
+      items: [
+        { img: "assets/products/misoko-beitr00082.webp",
+          az: { cat: "Lateks oyuncaq", name: "Lentli it", desc: "Səsli lateks/rezin oyuncaq «Lentli it»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Собачка с лентами", desc: "Латексная/резиновая игрушка-пищалка «Собачка с лентами»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Dog with ribbons", desc: "Latex/rubber squeaky toy “Dog with ribbons”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beitr00083.webp",
+          az: { cat: "Lateks oyuncaq", name: "Lentli dovşan", desc: "Səsli lateks/rezin oyuncaq «Lentli dovşan»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Зайчик с лентами", desc: "Латексная/резиновая игрушка-пищалка «Зайчик с лентами»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Rabbit with ribbons", desc: "Latex/rubber squeaky toy “Rabbit with ribbons”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beitr00081.webp",
+          az: { cat: "Lateks oyuncaq", name: "Ayaqlı dovşan", desc: "Səsli lateks/rezin oyuncaq «Ayaqlı dovşan»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Зайчик с лапками", desc: "Латексная/резиновая игрушка-пищалка «Зайчик с лапками»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Rabbit with legs", desc: "Latex/rubber squeaky toy “Rabbit with legs”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beitr00080.webp",
+          az: { cat: "Lateks oyuncaq", name: "Ayaqlı xoruz", desc: "Səsli lateks/rezin oyuncaq «Ayaqlı xoruz»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Петушок с лапками", desc: "Латексная/резиновая игрушка-пищалка «Петушок с лапками»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Rooster with legs", desc: "Latex/rubber squeaky toy “Rooster with legs”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } }
+      ]
+    },
+    {
+      group: { az: "Yorğanlı sakitləşdirici oyuncaqlar", ru: "Игрушки-комфортеры с пелёнкой", en: "Comforter toys with blanket" },
+      species: "dogs",
+      items: [
+        { img: "assets/products/misoko-beirj03416.webp",
+          az: { cat: "Lateks oyuncaq", name: "Yorğanlı inək", desc: "Səsli lateks/rezin oyuncaq «Yorğanlı inək»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Коровка с пелёнкой", desc: "Латексная/резиновая игрушка-пищалка «Коровка с пелёнкой»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Cow with blanket", desc: "Latex/rubber squeaky toy “Cow with blanket”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj03415.webp",
+          az: { cat: "Lateks oyuncaq", name: "Yorğanlı zürafə", desc: "Səsli lateks/rezin oyuncaq «Yorğanlı zürafə»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Жираф с пелёнкой", desc: "Латексная/резиновая игрушка-пищалка «Жираф с пелёнкой»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Giraffe with blanket", desc: "Latex/rubber squeaky toy “Giraffe with blanket”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } }
+      ]
+    },
+    {
+      group: { az: "Kəndirli lateks oyuncaqlar", ru: "Латексные игрушки с канатом", en: "Latex toys with rope" },
+      species: "dogs",
+      items: [
+        { img: "assets/products/misoko-beirj06912.webp",
+          az: { cat: "Lateks oyuncaq", name: "Quş kəndirdə", desc: "Səsli lateks/rezin oyuncaq «Quş kəndirdə»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Птичка на канате", desc: "Латексная/резиновая игрушка-пищалка «Птичка на канате»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Bird on a rope", desc: "Latex/rubber squeaky toy “Bird on a rope”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj06914.webp",
+          az: { cat: "Lateks oyuncaq", name: "Portağal kəndirdə", desc: "Səsli lateks/rezin oyuncaq «Portağal kəndirdə»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Апельсин на канате", desc: "Латексная/резиновая игрушка-пищалка «Апельсин на канате»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Orange on a rope", desc: "Latex/rubber squeaky toy “Orange on a rope”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj06913.webp",
+          az: { cat: "Lateks oyuncaq", name: "Donuz balası kəndirdə", desc: "Səsli lateks/rezin oyuncaq «Donuz balası kəndirdə»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Поросёнок на канате", desc: "Латексная/резиновая игрушка-пищалка «Поросёнок на канате»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Piglet on a rope", desc: "Latex/rubber squeaky toy “Piglet on a rope”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirm00155.webp",
+          az: { cat: "Lateks oyuncaq", name: "İt kəndir quyruqlu", desc: "Səsli lateks/rezin oyuncaq «İt kəndir quyruqlu»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Собачка с канатным хвостом", desc: "Латексная/резиновая игрушка-пищалка «Собачка с канатным хвостом»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Dog with rope tail", desc: "Latex/rubber squeaky toy “Dog with rope tail”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirm00186.webp",
+          az: { cat: "Lateks oyuncaq", name: "Təkbuynuz kəndir quyruqlu", desc: "Səsli lateks/rezin oyuncaq «Təkbuynuz kəndir quyruqlu»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Единорог с канатным хвостом", desc: "Латексная/резиновая игрушка-пищалка «Единорог с канатным хвостом»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Unicorn with rope tail", desc: "Latex/rubber squeaky toy “Unicorn with rope tail”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirm00206.webp",
+          az: { cat: "Lateks oyuncaq", name: "Dinozavr kəndir quyruqlu", desc: "Səsli lateks/rezin oyuncaq «Dinozavr kəndir quyruqlu»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Динозавр с канатным хвостом", desc: "Латексная/резиновая игрушка-пищалка «Динозавр с канатным хвостом»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Dinosaur with rope tail", desc: "Latex/rubber squeaky toy “Dinosaur with rope tail”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } }
+      ]
+    },
+    {
+      group: { az: "Səsli lateks toplar", ru: "Латексные мячики с пищалкой", en: "Squeaky latex balls" },
+      species: "dogs",
+      items: [
+        { img: "assets/products/misoko-beirj01523.webp",
+          az: { cat: "Lateks oyuncaq", name: "Futbol topu", desc: "Səsli lateks/rezin oyuncaq «Futbol topu»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Футбольный мяч", desc: "Латексная/резиновая игрушка-пищалка «Футбольный мяч»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Soccer ball", desc: "Latex/rubber squeaky toy “Soccer ball”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj01525.webp",
+          az: { cat: "Lateks oyuncaq", name: "Basketbol topu", desc: "Səsli lateks/rezin oyuncaq «Basketbol topu»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Баскетбольный мяч", desc: "Латексная/резиновая игрушка-пищалка «Баскетбольный мяч»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Basketball", desc: "Latex/rubber squeaky toy “Basketball”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj01524.webp",
+          az: { cat: "Lateks oyuncaq", name: "Reqbi topu", desc: "Səsli lateks/rezin oyuncaq «Reqbi topu»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Мяч для регби", desc: "Латексная/резиновая игрушка-пищалка «Мяч для регби»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Rugby ball", desc: "Latex/rubber squeaky toy “Rugby ball”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beixj00602.webp",
+          az: { cat: "Lateks oyuncaq", name: "Quyruqlu reqbi topu", desc: "Səsli lateks/rezin oyuncaq «Quyruqlu reqbi topu»; yumşaq və gəmirməyə davamlı. Bir neçə rəngdə mövcuddur.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Мяч-регби с хвостом", desc: "Латексная/резиновая игрушка-пищалка «Мяч-регби с хвостом»; мягкая и устойчивая к покусыванию. Доступно в нескольких цветах.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Rugby ball with tail", desc: "Latex/rubber squeaky toy “Rugby ball with tail”; soft and chew-resistant. Available in several colours.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beixj00603.webp",
+          az: { cat: "Lateks oyuncaq", name: "Balıq quyruqlu reqbi topu", desc: "Səsli lateks/rezin oyuncaq «Balıq quyruqlu reqbi topu»; yumşaq və gəmirməyə davamlı. Bir neçə rəngdə mövcuddur.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Регби-мяч с хвостом рыбки", desc: "Латексная/резиновая игрушка-пищалка «Регби-мяч с хвостом рыбки»; мягкая и устойчивая к покусыванию. Доступно в нескольких цветах.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Fish-tail rugby ball", desc: "Latex/rubber squeaky toy “Fish-tail rugby ball”; soft and chew-resistant. Available in several colours.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beixj00288.webp",
+          az: { cat: "Lateks oyuncaq", name: "Tikanlı top", desc: "Səsli lateks/rezin oyuncaq «Tikanlı top»; yumşaq və gəmirməyə davamlı.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Мяч с шипами", desc: "Латексная/резиновая игрушка-пищалка «Мяч с шипами»; мягкая и устойчивая к покусыванию.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Spiky ball", desc: "Latex/rubber squeaky toy “Spiky ball”; soft and chew-resistant.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beitj00795.webp",
+          az: { cat: "Lateks oyuncaq", name: "Ürəkli top", desc: "Səsli lateks/rezin oyuncaq «Ürəkli top»; yumşaq və gəmirməyə davamlı. Bir neçə rəngdə mövcuddur.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Мячик с сердечками", desc: "Латексная/резиновая игрушка-пищалка «Мячик с сердечками»; мягкая и устойчивая к покусыванию. Доступно в нескольких цветах.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Ball with hearts", desc: "Latex/rubber squeaky toy “Ball with hearts”; soft and chew-resistant. Available in several colours.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj06635.webp",
+          az: { cat: "Lateks oyuncaq", name: "Pişik topu", desc: "Səsli lateks/rezin oyuncaq «Pişik topu»; yumşaq və gəmirməyə davamlı. Bir neçə rəngdə mövcuddur.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Мячик-котик", desc: "Латексная/резиновая игрушка-пищалка «Мячик-котик»; мягкая и устойчивая к покусыванию. Доступно в нескольких цветах.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Cat face ball", desc: "Latex/rubber squeaky toy “Cat face ball”; soft and chew-resistant. Available in several colours.", tags: ["Latex", "Squeaky"] } }
+      ]
+    },
+    {
+      group: { az: "Futbol və tennis topları", ru: "Футбольные и теннисные мячи", en: "Soccer & tennis balls" },
+      species: "dogs",
+      items: [
+        { img: "assets/products/misoko-kinmsk70106.webp",
+          az: { cat: "Top", name: "Tutacaqlı futbol topu", desc: "Oyun topu «Tutacaqlı futbol topu»; aktiv oyun, atma və apportirovka üçün.", tags: ["Top"] },
+          ru: { cat: "Мячик", name: "Футбольный мяч с захватами", desc: "Игровой мячик «Футбольный мяч с захватами»; для активной игры, бросков и апортировки.", tags: ["Мяч"] },
+          en: { cat: "Ball", name: "Soccer ball with tabs", desc: "Play ball “Soccer ball with tabs”; for active play, throwing and fetch.", tags: ["Ball"] } },
+        { img: "assets/products/misoko-kinmsk70555.webp",
+          az: { cat: "Top", name: "Tutacaqlı Lime futbol topu", desc: "Oyun topu «Tutacaqlı Lime futbol topu»; aktiv oyun, atma və apportirovka üçün.", tags: ["Top"] },
+          ru: { cat: "Мячик", name: "Футбольный мяч Лайм с захватами", desc: "Игровой мячик «Футбольный мяч Лайм с захватами»; для активной игры, бросков и апортировки.", tags: ["Мяч"] },
+          en: { cat: "Ball", name: "Lime soccer ball with tabs", desc: "Play ball “Lime soccer ball with tabs”; for active play, throwing and fetch.", tags: ["Ball"] } },
+        { img: "assets/products/misoko-kinmsk70556.webp",
+          az: { cat: "Top", name: "Tutacaqlı Qarpız futbol topu", desc: "Oyun topu «Tutacaqlı Qarpız futbol topu»; aktiv oyun, atma və apportirovka üçün.", tags: ["Top"] },
+          ru: { cat: "Мячик", name: "Футбольный мяч Арбуз с захватами", desc: "Игровой мячик «Футбольный мяч Арбуз с захватами»; для активной игры, бросков и апортировки.", tags: ["Мяч"] },
+          en: { cat: "Ball", name: "Watermelon soccer ball with tabs", desc: "Play ball “Watermelon soccer ball with tabs”; for active play, throwing and fetch.", tags: ["Ball"] } },
+        { img: "assets/products/misoko-anhmsk70139.webp",
+          az: { cat: "Top", name: "Tennis topu dəsti", desc: "Oyun topu «Tennis topu dəsti»; aktiv oyun, atma və apportirovka üçün.", tags: ["Top"] },
+          ru: { cat: "Мячик", name: "Набор теннисных мячей", desc: "Игровой мячик «Набор теннисных мячей»; для активной игры, бросков и апортировки.", tags: ["Мяч"] },
+          en: { cat: "Ball", name: "Tennis ball set", desc: "Play ball “Tennis ball set”; for active play, throwing and fetch.", tags: ["Ball"] } },
+        { img: "assets/products/misoko-msktxdt12501.webp",
+          az: { cat: "Top", name: "Kəndirli tennis topu", desc: "Oyun topu «Kəndirli tennis topu»; aktiv oyun, atma və apportirovka üçün.", tags: ["Top"] },
+          ru: { cat: "Мячик", name: "Теннисный мяч на канате", desc: "Игровой мячик «Теннисный мяч на канате»; для активной игры, бросков и апортировки.", tags: ["Мяч"] },
+          en: { cat: "Ball", name: "Tennis ball on rope", desc: "Play ball “Tennis ball on rope”; for active play, throwing and fetch.", tags: ["Ball"] } }
+      ]
+    },
+    {
+      group: { az: "Kəndir və çəkişmə oyuncaqları", ru: "Канатные игрушки и перетяжки", en: "Rope & tug toys" },
+      species: "dogs",
+      items: [
+        { img: "assets/products/misoko-shnpakdt5903.webp",
+          az: { cat: "Kəndir oyuncaq", name: "Düyünlü pambıq çəkişmə kəndiri", desc: "Kəndir oyuncaq «Düyünlü pambıq çəkişmə kəndiri»; çəkişmə oyunu və dişlərin təbii təmizlənməsi üçün.", tags: ["Kəndir", "Dartışma"] },
+          ru: { cat: "Канатная игрушка", name: "Канатная игрушка-погрызушка с узлами", desc: "Канатная игрушка «Канатная игрушка-погрызушка с узлами»; для перетягивания и естественной чистки зубов.", tags: ["Канат", "Перетягивание"] },
+          en: { cat: "Rope toy", name: "Cotton rope tug toy with knots", desc: "Rope toy “Cotton rope tug toy with knots”; for tug-of-war and natural teeth cleaning.", tags: ["Rope", "Tug"] } },
+        { img: "assets/products/misoko-mskakdt5905.webp",
+          az: { cat: "Kəndir oyuncaq", name: "Düyünlü kəndir", desc: "Kəndir oyuncaq «Düyünlü kəndir»; çəkişmə oyunu və dişlərin təbii təmizlənməsi üçün. Bir neçə rəngdə mövcuddur.", tags: ["Kəndir", "Dartışma"] },
+          ru: { cat: "Канатная игрушка", name: "Канат с узлами", desc: "Канатная игрушка «Канат с узлами»; для перетягивания и естественной чистки зубов. Доступно в нескольких цветах.", tags: ["Канат", "Перетягивание"] },
+          en: { cat: "Rope toy", name: "Knotted rope toy", desc: "Rope toy “Knotted rope toy”; for tug-of-war and natural teeth cleaning. Available in several colours.", tags: ["Rope", "Tug"] } },
+        { img: "assets/products/misoko-mskakdt5903.webp",
+          az: { cat: "Kəndir oyuncaq", name: "Düyünlü hörülmüş kəndir oyuncağı", desc: "Kəndir oyuncaq «Düyünlü hörülmüş kəndir oyuncağı»; çəkişmə oyunu və dişlərin təbii təmizlənməsi üçün.", tags: ["Kəndir", "Dartışma"] },
+          ru: { cat: "Канатная игрушка", name: "Плетёная игрушка-канат с узлами", desc: "Канатная игрушка «Плетёная игрушка-канат с узлами»; для перетягивания и естественной чистки зубов.", tags: ["Канат", "Перетягивание"] },
+          en: { cat: "Rope toy", name: "Braided rope toy with knots", desc: "Rope toy “Braided rope toy with knots”; for tug-of-war and natural teeth cleaning.", tags: ["Rope", "Tug"] } },
+        { img: "assets/products/misoko-shnptxdt15101.webp",
+          az: { cat: "Kəndir oyuncaq", name: "Hörmə kəndir oyuncağı", desc: "Kəndir oyuncaq «Hörmə kəndir oyuncağı»; çəkişmə oyunu və dişlərin təbii təmizlənməsi üçün.", tags: ["Kəndir", "Dartışma"] },
+          ru: { cat: "Канатная игрушка", name: "Плетёная игрушка-перетяжка", desc: "Канатная игрушка «Плетёная игрушка-перетяжка»; для перетягивания и естественной чистки зубов.", tags: ["Канат", "Перетягивание"] },
+          en: { cat: "Rope toy", name: "Woven rope tug mat", desc: "Rope toy “Woven rope tug mat”; for tug-of-war and natural teeth cleaning.", tags: ["Rope", "Tug"] } },
+        { img: "assets/products/misoko-beitr00117.webp",
+          az: { cat: "Kəndir oyuncaq", name: "Toplu kəndir", desc: "Kəndir oyuncaq «Toplu kəndir»; çəkişmə oyunu və dişlərin təbii təmizlənməsi üçün. Bir neçə rəngdə mövcuddur.", tags: ["Kəndir", "Dartışma"] },
+          ru: { cat: "Канатная игрушка", name: "Канат с мячом", desc: "Канатная игрушка «Канат с мячом»; для перетягивания и естественной чистки зубов. Доступно в нескольких цветах.", tags: ["Канат", "Перетягивание"] },
+          en: { cat: "Rope toy", name: "Rope with ball", desc: "Rope toy “Rope with ball”; for tug-of-war and natural teeth cleaning. Available in several colours.", tags: ["Rope", "Tug"] } },
+        { img: "assets/products/misoko-beitr00181.webp",
+          az: { cat: "Kəndir oyuncaq", name: "Rezin spiralli kəndir", desc: "Kəndir oyuncaq «Rezin spiralli kəndir»; çəkişmə oyunu və dişlərin təbii təmizlənməsi üçün. Bir neçə rəngdə mövcuddur.", tags: ["Kəndir", "Dartışma"] },
+          ru: { cat: "Канатная игрушка", name: "Канат с резиновой спиралью", desc: "Канатная игрушка «Канат с резиновой спиралью»; для перетягивания и естественной чистки зубов. Доступно в нескольких цветах.", tags: ["Канат", "Перетягивание"] },
+          en: { cat: "Rope toy", name: "Rope with rubber spiral", desc: "Rope toy “Rope with rubber spiral”; for tug-of-war and natural teeth cleaning. Available in several colours.", tags: ["Rope", "Tug"] } },
+        { img: "assets/products/misoko-msktxdt5303.webp",
+          az: { cat: "Kəndir oyuncaq", name: "Kəndirli parça sümük", desc: "Kəndir oyuncaq «Kəndirli parça sümük»; çəkişmə oyunu və dişlərin təbii təmizlənməsi üçün.", tags: ["Kəndir", "Dartışma"] },
+          ru: { cat: "Канатная игрушка", name: "Тканевая косточка с канатом", desc: "Канатная игрушка «Тканевая косточка с канатом»; для перетягивания и естественной чистки зубов.", tags: ["Канат", "Перетягивание"] },
+          en: { cat: "Rope toy", name: "Canvas bone with rope", desc: "Rope toy “Canvas bone with rope”; for tug-of-war and natural teeth cleaning.", tags: ["Rope", "Tug"] } },
+        { img: "assets/products/misoko-msktxdt5204.webp",
+          az: { cat: "Kəndir oyuncaq", name: "Kəndirli Y formalı parça sümük", desc: "Kəndir oyuncaq «Kəndirli Y formalı parça sümük»; çəkişmə oyunu və dişlərin təbii təmizlənməsi üçün.", tags: ["Kəndir", "Dartışma"] },
+          ru: { cat: "Канатная игрушка", name: "Тканевая косточка-игрек с канатом", desc: "Канатная игрушка «Тканевая косточка-игрек с канатом»; для перетягивания и естественной чистки зубов.", tags: ["Канат", "Перетягивание"] },
+          en: { cat: "Rope toy", name: "Canvas Y-bone with rope", desc: "Rope toy “Canvas Y-bone with rope”; for tug-of-war and natural teeth cleaning.", tags: ["Rope", "Tug"] } }
+      ]
+    },
+    {
+      group: { az: "Strong — möhkəm parça oyuncaqlar", ru: "Strong — прочные тканевые игрушки", en: "Strong — tough fabric toys" },
+      species: "dogs",
+      items: [
+        { img: "assets/products/misoko-hanyt133752.webp",
+          az: { cat: "Kəndir oyuncaq", name: "Kəndir oyuncaq Koala", desc: "Kəndir oyuncaq «Kəndir oyuncaq Koala»; çəkişmə oyunu və dişlərin təbii təmizlənməsi üçün.", tags: ["Kəndir", "Dartışma"] },
+          ru: { cat: "Канатная игрушка", name: "Канатная игрушка Коала", desc: "Канатная игрушка «Канатная игрушка Коала»; для перетягивания и естественной чистки зубов.", tags: ["Канат", "Перетягивание"] },
+          en: { cat: "Rope toy", name: "Koala rope toy", desc: "Rope toy “Koala rope toy”; for tug-of-war and natural teeth cleaning.", tags: ["Rope", "Tug"] } },
+        { img: "assets/products/misoko-hanyt133742.webp",
+          az: { cat: "Kəndir oyuncaq", name: "Sığın düyünlü kəndirlə", desc: "Kəndir oyuncaq «Sığın düyünlü kəndirlə»; çəkişmə oyunu və dişlərin təbii təmizlənməsi üçün.", tags: ["Kəndir", "Dartışma"] },
+          ru: { cat: "Канатная игрушка", name: "Лось с канатным узлом", desc: "Канатная игрушка «Лось с канатным узлом»; для перетягивания и естественной чистки зубов.", tags: ["Канат", "Перетягивание"] },
+          en: { cat: "Rope toy", name: "Moose with rope knot", desc: "Rope toy “Moose with rope knot”; for tug-of-war and natural teeth cleaning.", tags: ["Rope", "Tug"] } },
+        { img: "assets/products/misoko-hanyt125395.webp",
+          az: { cat: "Kəndir oyuncaq", name: "Timsah kəndirli oyuncaq", desc: "Kəndir oyuncaq «Timsah kəndirli oyuncaq»; çəkişmə oyunu və dişlərin təbii təmizlənməsi üçün.", tags: ["Kəndir", "Dartışma"] },
+          ru: { cat: "Канатная игрушка", name: "Крокодил с канатом (игрушка-перетяжка)", desc: "Канатная игрушка «Крокодил с канатом (игрушка-перетяжка)»; для перетягивания и естественной чистки зубов.", tags: ["Канат", "Перетягивание"] },
+          en: { cat: "Rope toy", name: "Crocodile rope tug toy", desc: "Rope toy “Crocodile rope tug toy”; for tug-of-war and natural teeth cleaning.", tags: ["Rope", "Tug"] } },
+        { img: "assets/products/misoko-hanyt125397.webp",
+          az: { cat: "Kəndir oyuncaq", name: "Eşşək kəndirli oyuncaq", desc: "Kəndir oyuncaq «Eşşək kəndirli oyuncaq»; çəkişmə oyunu və dişlərin təbii təmizlənməsi üçün.", tags: ["Kəndir", "Dartışma"] },
+          ru: { cat: "Канатная игрушка", name: "Ослик с канатом (игрушка-перетяжка)", desc: "Канатная игрушка «Ослик с канатом (игрушка-перетяжка)»; для перетягивания и естественной чистки зубов.", tags: ["Канат", "Перетягивание"] },
+          en: { cat: "Rope toy", name: "Donkey rope tug toy", desc: "Rope toy “Donkey rope tug toy”; for tug-of-war and natural teeth cleaning.", tags: ["Rope", "Tug"] } },
+        { img: "assets/products/misoko-hanyt125392.webp",
+          az: { cat: "Kəndir oyuncaq", name: "Zürafə kəndirli oyuncaq", desc: "Kəndir oyuncaq «Zürafə kəndirli oyuncaq»; çəkişmə oyunu və dişlərin təbii təmizlənməsi üçün.", tags: ["Kəndir", "Dartışma"] },
+          ru: { cat: "Канатная игрушка", name: "Жираф с канатом (игрушка-перетяжка)", desc: "Канатная игрушка «Жираф с канатом (игрушка-перетяжка)»; для перетягивания и естественной чистки зубов.", tags: ["Канат", "Перетягивание"] },
+          en: { cat: "Rope toy", name: "Giraffe rope tug toy", desc: "Rope toy “Giraffe rope tug toy”; for tug-of-war and natural teeth cleaning.", tags: ["Rope", "Tug"] } },
+        { img: "assets/products/misoko-hanyt133722.webp",
+          az: { cat: "Kəndir oyuncaq", name: "Timsah", desc: "Kəndir oyuncaq «Timsah»; çəkişmə oyunu və dişlərin təbii təmizlənməsi üçün.", tags: ["Kəndir", "Dartışma"] },
+          ru: { cat: "Канатная игрушка", name: "Крокодил", desc: "Канатная игрушка «Крокодил»; для перетягивания и естественной чистки зубов.", tags: ["Канат", "Перетягивание"] },
+          en: { cat: "Rope toy", name: "Crocodile", desc: "Rope toy “Crocodile”; for tug-of-war and natural teeth cleaning.", tags: ["Rope", "Tug"] } },
+        { img: "assets/products/misoko-hanyt133724.webp",
+          az: { cat: "Kəndir oyuncaq", name: "Fil", desc: "Kəndir oyuncaq «Fil»; çəkişmə oyunu və dişlərin təbii təmizlənməsi üçün.", tags: ["Kəndir", "Dartışma"] },
+          ru: { cat: "Канатная игрушка", name: "Слон", desc: "Канатная игрушка «Слон»; для перетягивания и естественной чистки зубов.", tags: ["Канат", "Перетягивание"] },
+          en: { cat: "Rope toy", name: "Elephant", desc: "Rope toy “Elephant”; for tug-of-war and natural teeth cleaning.", tags: ["Rope", "Tug"] } },
+        { img: "assets/products/misoko-hanyt133750.webp",
+          az: { cat: "Kəndir oyuncaq", name: "İt, elastik quyruqla", desc: "Kəndir oyuncaq «İt, elastik quyruqla»; çəkişmə oyunu və dişlərin təbii təmizlənməsi üçün.", tags: ["Kəndir", "Dartışma"] },
+          ru: { cat: "Канатная игрушка", name: "Собака с резинкой-хвостом", desc: "Канатная игрушка «Собака с резинкой-хвостом»; для перетягивания и естественной чистки зубов.", tags: ["Канат", "Перетягивание"] },
+          en: { cat: "Rope toy", name: "Dog with bungee tail", desc: "Rope toy “Dog with bungee tail”; for tug-of-war and natural teeth cleaning.", tags: ["Rope", "Tug"] } },
+        { img: "assets/products/misoko-hanyt133751.webp",
+          az: { cat: "Kəndir oyuncaq", name: "Tənbəlquşu, elastik və halqa ilə", desc: "Kəndir oyuncaq «Tənbəlquşu, elastik və halqa ilə»; çəkişmə oyunu və dişlərin təbii təmizlənməsi üçün.", tags: ["Kəndir", "Dartışma"] },
+          ru: { cat: "Канатная игрушка", name: "Ленивец с резинкой и кольцом", desc: "Канатная игрушка «Ленивец с резинкой и кольцом»; для перетягивания и естественной чистки зубов.", tags: ["Канат", "Перетягивание"] },
+          en: { cat: "Rope toy", name: "Sloth with bungee and ring", desc: "Rope toy “Sloth with bungee and ring”; for tug-of-war and natural teeth cleaning.", tags: ["Rope", "Tug"] } }
+      ]
+    },
+    {
+      group: { az: "Dişlər üçün gəmirmə oyuncaqları", ru: "Жевательные игрушки для зубов", en: "Dental chew toys" },
+      species: "dogs",
+      items: [
+        { img: "assets/products/misoko-beirj06757.webp",
+          az: { cat: "Gəmirək oyuncaq", name: "Gəmirmə tülkü", desc: "Gəmirək oyuncaq «Gəmirmə tülkü»; dişlərin və diş ətinin sağlamlığı üçün.", tags: ["Tülkü", "Diş"] },
+          ru: { cat: "Жевательная игрушка", name: "Жевательная лиса", desc: "Жевательная игрушка «Жевательная лиса»; для чистки зубов и здоровья дёсен.", tags: ["Лиса", "Зубы"] },
+          en: { cat: "Chew toy", name: "Chew fox", desc: "Chew toy “Chew fox”; for teeth cleaning and gum health.", tags: ["Fox", "Dental"] } },
+        { img: "assets/products/misoko-beirj06756.webp",
+          az: { cat: "Gəmirək oyuncaq", name: "Qarğıdalı-it", desc: "Gəmirək oyuncaq «Qarğıdalı-it»; dişlərin və diş ətinin sağlamlığı üçün.", tags: ["Diş"] },
+          ru: { cat: "Жевательная игрушка", name: "Собачка-кукуруза", desc: "Жевательная игрушка «Собачка-кукуруза»; для чистки зубов и здоровья дёсен.", tags: ["Зубы"] },
+          en: { cat: "Chew toy", name: "Corn dog", desc: "Chew toy “Corn dog”; for teeth cleaning and gum health.", tags: ["Dental"] } },
+        { img: "assets/products/misoko-beirj06758.webp",
+          az: { cat: "Gəmirək oyuncaq", name: "Gəmirmə timsah", desc: "Gəmirək oyuncaq «Gəmirmə timsah»; dişlərin və diş ətinin sağlamlığı üçün.", tags: ["Timsah", "Diş"] },
+          ru: { cat: "Жевательная игрушка", name: "Жевательный крокодил", desc: "Жевательная игрушка «Жевательный крокодил»; для чистки зубов и здоровья дёсен.", tags: ["Крокодил", "Зубы"] },
+          en: { cat: "Chew toy", name: "Chew crocodile", desc: "Chew toy “Chew crocodile”; for teeth cleaning and gum health.", tags: ["Crocodile", "Dental"] } },
+        { img: "assets/products/misoko-beirj04182.webp",
+          az: { cat: "Lateks oyuncaq", name: "Sümük", desc: "Səsli lateks/rezin oyuncaq «Sümük»; yumşaq və gəmirməyə davamlı. Bir neçə rəngdə mövcuddur.", tags: ["Lateks", "Səsli"] },
+          ru: { cat: "Латексная игрушка", name: "Косточка", desc: "Латексная/резиновая игрушка-пищалка «Косточка»; мягкая и устойчивая к покусыванию. Доступно в нескольких цветах.", tags: ["Латекс", "Пищалка"] },
+          en: { cat: "Latex toy", name: "Bone", desc: "Latex/rubber squeaky toy “Bone”; soft and chew-resistant. Available in several colours.", tags: ["Latex", "Squeaky"] } },
+        { img: "assets/products/misoko-beirj03457.webp",
+          az: { cat: "Gəmirək oyuncaq", name: "Kəndirli timsah", desc: "Gəmirək oyuncaq «Kəndirli timsah»; dişlərin və diş ətinin sağlamlığı üçün.", tags: ["Diş"] },
+          ru: { cat: "Жевательная игрушка", name: "Крокодил с канатом", desc: "Жевательная игрушка «Крокодил с канатом»; для чистки зубов и здоровья дёсен.", tags: ["Зубы"] },
+          en: { cat: "Chew toy", name: "Crocodile with rope", desc: "Chew toy “Crocodile with rope”; for teeth cleaning and gum health.", tags: ["Dental"] } },
+        { img: "assets/products/misoko-mskakdt5108.webp",
+          az: { cat: "Gəmirək oyuncaq", name: "Kauçuk və kəndir çubuğu", desc: "Gəmirək oyuncaq «Kauçuk və kəndir çubuğu»; dişlərin və diş ətinin sağlamlığı üçün.", tags: ["Diş"] },
+          ru: { cat: "Жевательная игрушка", name: "Резиновая палочка с канатом", desc: "Жевательная игрушка «Резиновая палочка с канатом»; для чистки зубов и здоровья дёсен.", tags: ["Зубы"] },
+          en: { cat: "Chew toy", name: "Rubber and rope chew stick", desc: "Chew toy “Rubber and rope chew stick”; for teeth cleaning and gum health.", tags: ["Dental"] } }
+      ]
+    },
+    {
+      group: { az: "İnteraktiv oyuncaqlar", ru: "Интерактивные игрушки", en: "Interactive toys" },
+      species: "dogs",
+      items: [
+        { img: "assets/products/misoko-hanyt133740.webp",
+          az: { cat: "İnteraktiv oyuncaq", name: "Vantuzlu lemur", desc: "İnteraktiv oyuncaq «Vantuzlu lemur»; zəkanı inkişaf etdirir və ev heyvanını məşğul edir.", tags: ["İnteraktiv"] },
+          ru: { cat: "Интерактивная игрушка", name: "Лемур на присоске", desc: "Интерактивная игрушка «Лемур на присоске»; развивает сообразительность и увлекает питомца.", tags: ["Интерактив"] },
+          en: { cat: "Interactive toy", name: "Lemur with suction cup", desc: "Interactive toy “Lemur with suction cup”; develops cleverness and keeps your pet engaged.", tags: ["Interactive"] } },
+        { img: "assets/products/misoko-hanyt133741.webp",
+          az: { cat: "İnteraktiv oyuncaq", name: "Vantuzlu meymun", desc: "İnteraktiv oyuncaq «Vantuzlu meymun»; zəkanı inkişaf etdirir və ev heyvanını məşğul edir.", tags: ["İnteraktiv"] },
+          ru: { cat: "Интерактивная игрушка", name: "Обезьяна на присоске", desc: "Интерактивная игрушка «Обезьяна на присоске»; развивает сообразительность и увлекает питомца.", tags: ["Интерактив"] },
+          en: { cat: "Interactive toy", name: "Monkey with suction cup", desc: "Interactive toy “Monkey with suction cup”; develops cleverness and keeps your pet engaged.", tags: ["Interactive"] } },
+        { img: "assets/products/misoko-beixj00089.webp",
+          az: { cat: "İnteraktiv oyuncaq", name: "Yem paylayan reqbi topu", desc: "İnteraktiv oyuncaq «Yem paylayan reqbi topu»; zəkanı inkişaf etdirir və ev heyvanını məşğul edir.", tags: ["İnteraktiv"] },
+          ru: { cat: "Интерактивная игрушка", name: "Мяч-регби для лакомств", desc: "Интерактивная игрушка «Мяч-регби для лакомств»; развивает сообразительность и увлекает питомца.", tags: ["Интерактив"] },
+          en: { cat: "Interactive toy", name: "Treat-dispensing rugby ball", desc: "Interactive toy “Treat-dispensing rugby ball”; develops cleverness and keeps your pet engaged.", tags: ["Interactive"] } }
+      ]
+    },
+    {
+      group: { az: "Gəzinti üçün su butulkaları", ru: "Поилки для прогулок", en: "Travel water bottles" },
+      species: "both",
+      items: [
+        { img: "assets/products/misoko-hanmsk70477.webp",
+          az: { cat: "Qab", name: "Səyahət üçün su qabı-butulka", desc: "«Səyahət üçün su qabı-butulka» — yem və su üçün.", tags: ["Qab"] },
+          ru: { cat: "Миска", name: "Дорожная поилка-бутылка", desc: "«Дорожная поилка-бутылка» — для корма и воды.", tags: ["Миска"] },
+          en: { cat: "Bowl", name: "Travel water bottle", desc: "“Travel water bottle” — for food and water.", tags: ["Bowl"] } },
+        { img: "assets/products/misoko-hanmsk70478.webp",
+          az: { cat: "Qab", name: "Yığılan su qabı-butulka", desc: "«Yığılan su qabı-butulka» — yem və su üçün.", tags: ["Qab"] },
+          ru: { cat: "Миска", name: "Складная поилка-бутылка", desc: "«Складная поилка-бутылка» — для корма и воды.", tags: ["Миска"] },
+          en: { cat: "Bowl", name: "Collapsible water bottle", desc: "“Collapsible water bottle” — for food and water.", tags: ["Bowl"] } }
+      ]
+    },
+    {
+      group: { az: "İtlər üçün birdəfəlik bezlər", ru: "Подгузники для собак", en: "Dog diapers" },
+      species: "dogs",
+      items: [
+        { img: "assets/products/misoko-shamsk63047.webp",
+          az: { cat: "Aksesuar", name: "Birdəfəlik bezlər", desc: "«Birdəfəlik bezlər» — gəzinti və gündəlik qulluq üçün aksesuar.", tags: ["Aksesuar"] },
+          ru: { cat: "Аксессуар", name: "Одноразовые подгузники", desc: "«Одноразовые подгузники» — аксессуар для прогулок и повседневного ухода.", tags: ["Аксессуар"] },
+          en: { cat: "Accessory", name: "Disposable diapers", desc: "“Disposable diapers” — an accessory for walks and everyday care.", tags: ["Accessory"] } },
+        { img: "assets/products/misoko-shamsk63048.webp",
+          az: { cat: "Gigiyena", name: "Birdəfəlik it bezləri (mavi naxış)", desc: "«Birdəfəlik it bezləri (mavi naxış)».", tags: ["Gigiyena"] },
+          ru: { cat: "Гигиена", name: "Одноразовые подгузники для собак (синий принт)", desc: "«Одноразовые подгузники для собак (синий принт)».", tags: ["Гигиена"] },
+          en: { cat: "Hygiene", name: "Disposable dog diapers (blue dogs print)", desc: "“Disposable dog diapers (blue dogs print)”.", tags: ["Hygiene"] } },
+        { img: "assets/products/misoko-shamsk63138.webp",
+          az: { cat: "Gigiyena", name: "Birdəfəlik it bezləri (narıncı-bənövşəyi naxış)", desc: "«Birdəfəlik it bezləri (narıncı-bənövşəyi naxış)».", tags: ["Gigiyena"] },
+          ru: { cat: "Гигиена", name: "Одноразовые подгузники для собак (оранжево-фиолетовый принт)", desc: "«Одноразовые подгузники для собак (оранжево-фиолетовый принт)».", tags: ["Гигиена"] },
+          en: { cat: "Hygiene", name: "Disposable dog diapers (orange/purple dogs print)", desc: "“Disposable dog diapers (orange/purple dogs print)”.", tags: ["Hygiene"] } }
+      ]
+    },
+    {
+      group: { az: "Altlıqlar və ləkə təmizləyici", ru: "Пелёнки и средство от пятен", en: "Pee pads & stain remover" },
+      species: "both",
+      items: [
+        { img: "assets/products/misoko-shamsk63055.webp",
+          az: { cat: "Gigiyena", name: "Birdəfəlik uducu altlıqlar (it naxışlı)", desc: "«Birdəfəlik uducu altlıqlar (it naxışlı)».", tags: ["Gigiyena"] },
+          ru: { cat: "Гигиена", name: "Одноразовые впитывающие пеленки (принт с собаками)", desc: "«Одноразовые впитывающие пеленки (принт с собаками)».", tags: ["Гигиена"] },
+          en: { cat: "Hygiene", name: "Disposable training pee pads (dog print)", desc: "“Disposable training pee pads (dog print)”.", tags: ["Hygiene"] } },
+        { img: "assets/products/misoko-shamsk63057.webp",
+          az: { cat: "Gigiyena", name: "Birdəfəlik kömürlü altlıqlar", desc: "«Birdəfəlik kömürlü altlıqlar».", tags: ["Gigiyena"] },
+          ru: { cat: "Гигиена", name: "Одноразовые угольные пеленки", desc: "«Одноразовые угольные пеленки».", tags: ["Гигиена"] },
+          en: { cat: "Hygiene", name: "Disposable charcoal pee pads", desc: "“Disposable charcoal pee pads”.", tags: ["Hygiene"] } },
+        { img: "assets/products/misoko-misok70743.webp",
+          az: { cat: "Gigiyena", name: "Ləkə və qoxu təmizləyici sprey", desc: "«Ləkə və qoxu təmizləyici sprey».", tags: ["Gigiyena"] },
+          ru: { cat: "Гигиена", name: "Спрей для удаления пятен и запахов", desc: "«Спрей для удаления пятен и запахов».", tags: ["Гигиена"] },
+          en: { cat: "Hygiene", name: "Stain & odour remover spray", desc: "“Stain & odour remover spray”.", tags: ["Hygiene"] } }
+      ]
+    }
+  ]
+};
+
+// ===== Разделы каталога (фильтр-чипы): бренд → РАЗДЕЛЫ → группы (подзаголовки) → карточки =====
+// Порядок в массиве = порядок чипов. Группы Araton / Tauro / Misoko получают section + стабильный sectionId ниже;
+// группы Nature's Protection (из PRODUCTS в translations.js) распределяются по разделам в main.js.
+const CATALOG_SECTIONS = {
+  np: [
+    { id: "superior-care", az: "Superior Care — quru qida, tük rənginə görə", ru: "Superior Care — сухой корм по цвету шерсти", en: "Superior Care — dry food by coat colour",
+      chip: { az: "Superior Care", ru: "Superior Care", en: "Superior Care" } },
+    { id: "dry",           az: "Quru qida",                        ru: "Сухой корм",                      en: "Dry food" },
+    { id: "wet",           az: "Yaş qida (konservlər)",            ru: "Влажный корм (консервы)",         en: "Wet food (cans)",
+      chip: { az: "Konservlər", ru: "Консервы", en: "Cans" } },
+    { id: "pouches",       az: "Pauçlar",                          ru: "Паучи",                           en: "Pouches" },
+    { id: "vet",           az: "Baytarlıq pəhrizi",                ru: "Ветеринарная диета",              en: "Veterinary diet",
+      chip: { az: "Baytarlıq pəhrizi", ru: "Ветдиета", en: "Vet diet" } },
+    { id: "treats",        az: "Qəlyanaltılar",                     ru: "Лакомства",                       en: "Treats" },
+    { id: "supplements",   az: "Qida əlavələri və vitaminlər",     ru: "Добавки и витамины",              en: "Supplements & vitamins",
+      chip: { az: "Əlavələr", ru: "Добавки", en: "Supplements" } }
+  ],
+  araton: [
+    { id: "dry", az: "Quru qida",            ru: "Сухой корм",            en: "Dry food" },
+    { id: "wet", az: "Yaş qida (pauçlar)",  ru: "Влажный корм (паучи)",  en: "Wet food (pouches)" }
+  ],
+  tpl: [
+    { id: "systems",     az: "Step kompleksləri",  ru: "Комплексы Step",   en: "Step systems" },
+    { id: "coat",        az: "Tük qulluğu",        ru: "Уход за шерстью",  en: "Coat care" },
+    { id: "paws",        az: "Pəncə və burun",     ru: "Лапы и нос",       en: "Paws & nose" },
+    { id: "accessories", az: "Aksesuarlar",        ru: "Аксессуары",       en: "Accessories" }
+  ],
+  misoko: [
+    { id: "soft",        az: "Yumşaq oyuncaqlar",           ru: "Мягкие игрушки",            en: "Soft toys" },
+    { id: "latex",       az: "Lateks oyuncaqlar",           ru: "Латексные игрушки",         en: "Latex toys" },
+    { id: "balls",       az: "Toplar",                      ru: "Мячи",                      en: "Balls" },
+    { id: "rope",        az: "Kəndir və möhkəm oyuncaqlar", ru: "Канаты и прочные игрушки",  en: "Rope & tough toys",
+      chip: { az: "Kəndirlər", ru: "Канаты", en: "Rope & tough" } },
+    { id: "interactive", az: "İnteraktiv oyuncaqlar",       ru: "Интерактивные",             en: "Interactive" },
+    { id: "walk",        az: "Gəzinti və gigiyena",         ru: "Прогулка и гигиена",        en: "Walks & hygiene" }
+  ]
+};
+
+// Привязка групп к разделам — по английскому названию группы (оно стабильно)
+(function assignSections() {
+  const MAP = {
+    araton: {
+      "Dry food for dogs": "dry", "Dry food for cats": "dry",
+      "Wet food for dogs (pouches)": "wet", "Wet food for cats (pouches)": "wet"
+    },
+    tpl: {
+      "Volume Boost — volume": "coat", "Anti-mat & detangling": "coat",
+      "For puppies & kittens — Puppy & Kitten": "coat", "Daily care": "coat",
+      "Ultra Natural Care": "coat", "Pure Nature": "coat",       // целиком в витринах Step — карточками не выводятся
+      "Paw & nose balms": "paws",
+      "Towels": "accessories", "Brushes & combs": "accessories", "Dental care": "accessories",
+      "Clippers & trimmers": "accessories", "Claw care": "accessories"
+    },
+    misoko: {
+      "Plush toys": "soft", "Comforter toys with blanket": "soft",
+      "Latex animals & figures": "latex", "Latex dinosaurs & reptiles": "latex", "Latex food & drinks": "latex",
+      "Latex toys with ribbons & legs": "latex", "Latex toys with rope": "latex",
+      "Squeaky latex balls": "balls", "Soccer & tennis balls": "balls",
+      "Rope & tug toys": "rope", "Strong — tough fabric toys": "rope", "Dental chew toys": "rope",
+      "Interactive toys": "interactive",
+      "Travel water bottles": "walk", "Dog diapers": "walk", "Pee pads & stain remover": "walk"
+    }
+  };
+  Object.keys(MAP).forEach(brand => {
+    const defs = CATALOG_SECTIONS[brand];
+    (BRANDS_EXTRA[brand] || []).forEach(g => {
+      const id = MAP[brand][g.group && g.group.en] || defs[defs.length - 1].id;
+      const def = defs.find(d => d.id === id);
+      g.sectionId = id;
+      g.section = { az: def.az, ru: def.ru, en: def.en };
+    });
+  });
+})();

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru" class="is-booting">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffffff" />
+  <title data-i18n="meta.title">Лапа — Каталог</title>
+  <meta name="description" data-i18n="meta.description" content="Каталог продукции для кошек и собак." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tokens.css?v=17" />
+  <link rel="stylesheet" href="css/spring.css?v=17" />
+  <link rel="stylesheet" href="css/styles.css?v=17" />
+  <link rel="stylesheet" href="css/catalog.css?v=17" />
+  <link rel="stylesheet" href="css/search.css?v=17" />
+  <link rel="stylesheet" href="css/list.css?v=17" />
+  <link rel="stylesheet" href="css/mobile.css?v=17" />
+  <link rel="stylesheet" href="css/mobile-catalog.css?v=17" />
+  <link rel="stylesheet" href="css/mobile-tauro.css?v=17" />
+  <link rel="stylesheet" href="css/tpl-why.css?v=17" />
+  <link rel="stylesheet" href="css/motion-catalog.css?v=17" />
+  <link rel="stylesheet" href="css/feed-calc.css?v=17" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+</head>
+<body class="page-enter">
+  <a class="skip-link" href="#products" data-i18n="a11y.skip">Перейти к каталогу</a>
+
+  <!-- ===== Header ===== -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="index.html" class="logo" aria-label="Лапа">
+        <svg class="logo__mark" viewBox="0 0 32 32" width="36" height="36" aria-hidden="true"><rect width="32" height="32" rx="9" class="logo__badge"/><g fill="#fff"><ellipse cx="9.4" cy="13.2" rx="2.4" ry="3" transform="rotate(-18 9.4 13.2)"/><ellipse cx="13.6" cy="9.2" rx="2.4" ry="3.1" transform="rotate(-6 13.6 9.2)"/><ellipse cx="18.4" cy="9.2" rx="2.4" ry="3.1" transform="rotate(6 18.4 9.2)"/><ellipse cx="22.6" cy="13.2" rx="2.4" ry="3" transform="rotate(18 22.6 13.2)"/><path d="M16 15.6c-3.5 0-6.8 4-6.8 6.7 0 1.9 1.6 2.9 3.4 2.6 1.2-.2 2.3-.7 3.4-.7s2.2.5 3.4.7c1.8.3 3.4-.7 3.4-2.6 0-2.7-3.3-6.7-6.8-6.7z"/></g></svg><span class="logo__text">Лапа</span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="index.html#home" class="nav__link" data-i18n="nav.home">Главная</a>
+        <a href="products.html" class="nav__link nav__link--active" data-i18n="nav.products">Продукция</a>
+        <a href="index.html#about" class="nav__link" data-i18n="nav.about">О бренде</a>
+        <a href="index.html#values" class="nav__link" data-i18n="nav.values">Ценности</a>
+        <a href="index.html#quality" class="nav__link" data-i18n="nav.quality">Качество</a>
+        <a href="index.html#stores" class="nav__link" data-i18n="nav.stores">Где купить</a>
+        <a href="index.html#contact" class="nav__link" data-i18n="nav.contact">Контакты</a>
+        <div class="nav-extra"><div class="nav-lang" role="group" aria-label="Выбор языка"><button type="button" class="nav-lang__btn" data-lang-pick="az" lang="az" aria-pressed="false">AZ</button><button type="button" class="nav-lang__btn" data-lang-pick="ru" lang="ru" aria-pressed="true">RU</button><button type="button" class="nav-lang__btn" data-lang-pick="en" lang="en" aria-pressed="false">EN</button></div></div>
+      </nav>
+
+      <div class="header__actions">
+        <a class="hdr-ico" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.9" class="dot"/></svg></a>
+        <a class="hdr-ico" href="https://www.whatsapp.com/" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.2-3.6A8 8 0 1 1 8.4 18.6z"/><path d="M9.2 8.6c.2-.4.6-.4.9-.2l.8 1.6c.1.3 0 .5-.2.7l-.5.5c.5 1 1.3 1.9 2.4 2.4l.5-.5c.2-.2.5-.3.7-.2l1.6.8c.3.2.3.6 0 .9-.5.7-1.3 1-2.1.7a8 8 0 0 1-4.4-4.4c-.3-.8 0-1.6.3-2.3z" class="dot"/></svg></a>
+        <div class="lang" id="lang">
+          <button class="lang__current" id="langBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="langMenu">
+            <span id="langLabel">RU</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="lang__menu" id="langMenu" role="menu">
+            <li><button data-lang="az" role="menuitem">AZ — Azərbaycan</button></li>
+            <li><button data-lang="ru" role="menuitem">RU — Русский</button></li>
+            <li><button data-lang="en" role="menuitem">EN — English</button></li>
+          </ul>
+        </div>
+        <button class="burger" id="burger" type="button" aria-label="Menu" aria-controls="nav" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+  <!-- ===== Products page hero ===== -->
+  <section class="page-hero">
+    <div class="container">
+      <a href="index.html" class="page-hero__back" data-i18n="products.backHome">← На главную</a>
+      <span class="section__tag" data-i18n="products.tag">Наша продукция</span>
+      <h1 class="section__title" data-i18n="products.title">Каталог продукции</h1>
+      <p class="section__subtitle" data-i18n="products.intro">Выберите бренд ниже и посмотрите корма, средства ухода и игрушки для кошек и собак.</p>
+    </div>
+  </section>
+
+  <!-- ===== Sticky catalog toolbar ===== -->
+  <div class="catalog-bar" id="catalogBar">
+    <div class="container catalog-bar__inner">
+      <div class="tabs" id="tabs" role="tablist" aria-label="Бренды">
+        <button class="tab is-active" type="button" role="tab" id="tab-np" aria-selected="true" aria-controls="productsGrid" data-brand="np">Nature's Protection</button>
+        <button class="tab" type="button" role="tab" id="tab-araton" aria-selected="false" aria-controls="productsGrid" tabindex="-1" data-brand="araton">Araton</button>
+        <button class="tab" type="button" role="tab" id="tab-tpl" aria-selected="false" aria-controls="productsGrid" tabindex="-1" data-brand="tpl">Tauro Pro Line</button>
+        <button class="tab" type="button" role="tab" id="tab-misoko" aria-selected="false" aria-controls="productsGrid" tabindex="-1" data-brand="misoko">Misoko</button>
+      </div>
+
+      <div class="catalog-bar__search" id="catalogSearch"></div>
+
+      <div class="species" id="species" role="radiogroup" aria-label="Для кого">
+        <button class="species__btn is-active" type="button" role="radio" aria-checked="true" data-species="all"><span data-i18n="products.all">Все</span></button>
+        <button class="species__btn" type="button" role="radio" aria-checked="false" tabindex="-1" data-species="cats"><span class="species__ico" aria-hidden="true">🐱</span><span class="species__lbl" data-i18n="products.tabCats">Для кошек</span><span class="species__lbl--s" data-i18n="m.sp.cats">Кошки</span></button>
+        <button class="species__btn" type="button" role="radio" aria-checked="false" tabindex="-1" data-species="dogs"><span class="species__ico" aria-hidden="true">🐶</span><span class="species__lbl" data-i18n="products.tabDogs">Для собак</span><span class="species__lbl--s" data-i18n="m.sp.dogs">Собаки</span></button>
+        <button class="species__btn species__btn--baby" type="button" role="radio" aria-checked="false" tabindex="-1" data-species="baby"><span class="species__ico" aria-hidden="true">🍼</span><span data-i18n="products.babies">Малыши</span></button>
+      </div>
+
+      <button class="m-search-btn" id="mSearchBtn" type="button" aria-label="Поиск" aria-controls="npSearchInput"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    </div>
+  </div>
+
+  <!-- ===== Catalog ===== -->
+  <section class="section section--top" id="products" tabindex="-1">
+    <div class="container">
+      <div class="cat-nav" id="catNav"></div>
+      <div class="cat-result" id="catResult"></div>
+
+      <div id="productsGrid" role="tabpanel" aria-labelledby="tab-np"></div>
+
+      <div class="ranges-block">
+        <h2 class="ranges__title" data-i18n="products.rangesTitle">Линейки Nature's Protection</h2>
+        <div class="ranges" id="rangesGrid"></div>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__col">
+        <a href="index.html" class="logo logo--light" aria-label="Лапа">
+          <svg class="logo__mark" viewBox="0 0 32 32" width="36" height="36" aria-hidden="true"><rect width="32" height="32" rx="9" class="logo__badge"/><g fill="#fff"><ellipse cx="9.4" cy="13.2" rx="2.4" ry="3" transform="rotate(-18 9.4 13.2)"/><ellipse cx="13.6" cy="9.2" rx="2.4" ry="3.1" transform="rotate(-6 13.6 9.2)"/><ellipse cx="18.4" cy="9.2" rx="2.4" ry="3.1" transform="rotate(6 18.4 9.2)"/><ellipse cx="22.6" cy="13.2" rx="2.4" ry="3" transform="rotate(18 22.6 13.2)"/><path d="M16 15.6c-3.5 0-6.8 4-6.8 6.7 0 1.9 1.6 2.9 3.4 2.6 1.2-.2 2.3-.7 3.4-.7s2.2.5 3.4.7c1.8.3 3.4-.7 3.4-2.6 0-2.7-3.3-6.7-6.8-6.7z"/></g></svg><span class="logo__text">Лапа</span>
+        </a>
+        <p data-i18n="footer.about">Премиальное питание и уход для кошек и собак, вдохновлённые природой.</p>
+      </div>
+      <div class="footer__col">
+        <h4 data-i18n="footer.nav">Навигация</h4>
+        <a href="index.html#home" data-i18n="nav.home">Главная</a>
+        <a href="index.html#about" data-i18n="nav.about">О бренде</a>
+        <a href="index.html#values" data-i18n="nav.values">Ценности</a>
+        <a href="index.html#quality" data-i18n="nav.quality">Качество</a>
+        <a href="index.html#contact" data-i18n="nav.contact">Контакты</a>
+      </div>
+      <div class="footer__col">
+        <h4 data-i18n="footer.contacts">Контакты</h4>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" data-i18n="contact.instagram">Наш Instagram</a>
+        <a href="https://www.whatsapp.com/" target="_blank" rel="noopener" data-i18n="contact.whatsapp">Наш WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <span>© <span id="year"></span> Лапа. <span data-i18n="footer.rights">Все права защищены.</span></span>
+      </div>
+    </div>
+  </footer>
+
+  <div id="npLive" class="sr-only" aria-live="polite"></div>
+
+  <!-- ===== Product detail modal ===== -->
+  <div class="pmodal" id="productModal" aria-hidden="true" inert>
+    <div class="pmodal__backdrop" data-close></div>
+    <div class="pmodal__dialog" role="dialog" aria-modal="true" aria-labelledby="pmodalName" tabindex="-1">
+      <div class="pmodal__actions"></div>
+      <button class="pmodal__close" type="button" data-close aria-label="Закрыть">&times;</button>
+      <div class="pmodal__body" id="pmodalBody"></div>
+    </div>
+  </div>
+
+  <script src="js/translations.js?v=17"></script>
+  <script src="js/spring.js?v=17"></script>
+  <script src="js/catalog.js?v=17"></script>
+  <script src="js/catalog-added.js?v=17"></script>
+  <script src="js/descriptions.js?v=17"></script>
+  <script src="js/np-official.js?v=17"></script>
+  <script src="js/tpl-system.js?v=17"></script>
+  <script src="js/search.js?v=17"></script>
+  <script src="js/list.js?v=17"></script>
+  <script src="js/mobile.js?v=17"></script>
+  <script src="js/motion-catalog.js?v=17"></script>
+  <script src="js/feed-calc.js?v=18"></script>
+  <script src="js/main.js?v=17"></script>
+</body>
+</html>
