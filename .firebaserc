@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "dolchemilk-portfolio"
+  },
+  "targets": {
+    "dolchemilk-portfolio": {
+      "hosting": {
+        "portfolio": [
+          "dolchemilk-portfolio"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

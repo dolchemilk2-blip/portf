@@ -1,0 +1,24 @@
+import fs from 'node:fs';
+import path from 'node:path';
+if (!process.argv[2]) throw new Error('Usage: node scripts/build-montage-demo.mjs <built-montage.html>');
+const source = path.resolve(process.argv[2]);
+const destination = path.resolve(import.meta.dirname, '../montage');
+let html = fs.readFileSync(source, 'utf8').replace(/\r\n/g, '\n');
+const replace = (before, after) => {
+  if (!html.includes(before)) throw new Error('Expected source marker missing: ' + before.slice(0, 80));
+  html = html.replace(before, after);
+};
+replace('<title>Монтажка</title>', '<title>Монтажка — демо для портфолио</title>');
+replace('<p class="home-kicker">аппаратная радиоспектакля — в браузере</p>', '<p class="home-kicker">демо для портфолио · без регистрации</p>');
+replace("function exportLocked() { const A = window.montageAccess; return !!(A && typeof A.locked === 'function' && A.locked()); }", 'function exportLocked() { return false; }');
+replace("async function exportBegin(what) { const A = window.montageAccess; return A && typeof A.exportBegin === 'function' ? A.exportBegin(what) : { commit: async () => true }; }", 'async function exportBegin() { return { commit: async () => true }; }');
+replace("addEventListener('montage-access', () => render());", '');
+html = html.replace(/^\/\/.*(?:пробный период|пробном периоде|страниц[аыейу]+ входа|window\.montageAccess|здесь — вопрос и счёт).*\n/gm, '');
+html = html.replace(/^\/\/ входа \(своя проверка, файл с диска\) ограничений нет\.\n/gm, '');
+replace('Кэфи:&#10;о нет.&#10;&#10;Энер (шёпотом):&#10;это второй вопрос!', 'Аня:&#10;Здесь начинается наша история.&#10;&#10;Марк (шёпотом):&#10;Тогда включаем запись.');
+replace('Флур (с сарказмом):\nслушай, я тебе честно скажу\n\n(пауза)\n\nЭнер: а я тебе — нет.', 'Аня:\nКажется, дождь закончился.\n\n(пауза)\n\nМарк:\nПойдём на прогулку.');
+if (/firebaseio|firebasedatabase|firebaseapp|authDomain|signInWith|window\.montageAccess|<script[^>]+src=/i.test(html)) throw new Error('Unexpected access backend or external script tag');
+fs.mkdirSync(destination, { recursive: true });
+fs.writeFileSync(path.join(destination, 'index.html'), html.replace(/\n/g, '\r\n'), 'utf8');
+const scripts = [...html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi)];
+console.log(JSON.stringify({ file: path.join(destination, 'index.html'), bytes: Buffer.byteLength(html), inlineScripts: scripts.length, accessBackendReferences: false, extraAssetsRequired: false }));

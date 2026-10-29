@@ -635,7 +635,7 @@ trackChessTurn();
 
 $('room-sub').textContent = cloud.mode === 'cloud'
   ? 'вы оба видите одно и то же в реальном времени'
-  : 'пока только на этом телефоне — см. SETUP.md';
+  : 'деморежим — данные сохраняются в вашем браузере';
 
 cloud.watch('presence', (data) => {
   const info = (data || {})[otherKey];
