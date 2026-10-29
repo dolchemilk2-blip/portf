@@ -6,6 +6,9 @@
     "dolchemilk-portfolio": {
       "hosting": {
         "portfolio": [
+          "webfolio-showcase-2026"
+        ],
+        "legacy": [
           "dolchemilk-portfolio"
         ]
       }

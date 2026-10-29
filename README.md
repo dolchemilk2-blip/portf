@@ -4,12 +4,14 @@
 
 | Сайт | Ссылка |
 |---|---|
-| Все проекты | https://dolchemilk-portfolio.web.app/ |
-| «Мы вдвоём» | https://dolchemilk-portfolio.web.app/couple/ |
-| Зоомагазин «Лапа» (AZ / RU / EN) | https://dolchemilk-portfolio.web.app/zoo/ |
-| «Монтажка» без входа | https://dolchemilk-portfolio.web.app/montage/ |
-| «Нити» — люди и связи | https://dolchemilk-portfolio.web.app/niti/ |
-| Azərbaycan dili | https://dolchemilk-portfolio.web.app/azerbaycan/ |
+| Все проекты | https://webfolio-showcase-2026.web.app/ |
+| «Мы вдвоём» | https://webfolio-showcase-2026.web.app/couple/ |
+| Зоомагазин «Лапа» (AZ / RU / EN) | https://webfolio-showcase-2026.web.app/zoo/ |
+| «Монтажка» без входа | https://webfolio-showcase-2026.web.app/montage/ |
+| «Нити» — люди и связи | https://webfolio-showcase-2026.web.app/niti/ |
+| Azərbaycan dili | https://webfolio-showcase-2026.web.app/azerbaycan/ |
+
+Публичный адрес: `webfolio-showcase-2026.web.app`. Прежние ссылки перенаправляются на новый адрес с сохранением пути.
 
 Все демо работают без серверной базы. Сообщения, карты и учебный прогресс
 сохраняются в браузере посетителя. Реальные аккаунты и их данные не подключены.
@@ -23,7 +25,7 @@
 
 ```sh
 node scripts/prepare-hosting.mjs
-firebase deploy --only hosting --project dolchemilk-portfolio
+firebase deploy --only hosting:portfolio,hosting:legacy --project dolchemilk-portfolio
 ```
 
 Скрипт копирует только пять каталогов демо и главную страницу в `dist/`.
